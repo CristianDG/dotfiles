@@ -1,0 +1,12 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorTheme": "Dracula",
+    "vsicons.dontShowNewVersionMessage": true,
+    "emmet.includeLanguages": {
+        "javascript":"javascriptreact"
+    },
+    "editor.fontFamily": "'JetBrains Mono','Fira Code','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"  ,
+    "editor.fontLigatures": true,
+    "vscode-neovim.neovimPath": "/ust/bin/nvim"
+}
