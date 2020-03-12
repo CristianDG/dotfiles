@@ -1,0 +1,64 @@
+* Startup
+** Personal Stuff
+
+  #+BEGIN_SRC emacs-lisp
+  
+  (setq inhibit-startup-screen t)
+  (tool-bar-mode 0)
+  (set-default-font "FiraCode 11")
+  
+  #+END_SRC
+
+** Packages
+   Here are all the package downloads and requirementes
+*** Downloads and setup
+   #+BEGIN_SRC emacs-lisp 
+
+   ;; Set up package.el to work with MELPA
+   (require 'package)
+   (add-to-list 'package-archives
+   	    '("melpa" . "https://melpa.org/packages/"))
+   (package-initialize)
+   ;;(package-refresh-contents)
+   
+   ;; Download Evil
+   (unless (package-installed-p 'evil)
+   (package-install 'evil))
+   
+   (require 'evil)
+   (evil-mode t)
+   
+   ;; Download Org-Bullets
+   (unless (package-installed-p 'org-bullets)
+   (package-install 'org-bullets))
+   
+   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+   
+   (require 'linum-relative)
+   (linum-relative-on)
+   
+   
+   (ido-mode t)
+   
+   #+END_SRC
+
+*** Configs
+    #+BEGIN_SRC emacs-lisp
+
+    (custom-set-variables
+    '(ansi-color-faces-vector
+    [default default default italic underline success warning error])
+    '(ansi-color-names-vector
+    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
+    '(custom-enabled-themes (quote (deeper-blue)))
+    '(package-selected-packages (quote (evil smex))))
+    (custom-set-faces)
+
+    ;; backup dir
+    (setq backup-directory-alist '(("." . "~/.emacs_saves")))
+
+    #+END_SRC
+**** Keybindings
+     #+BEGIN_SRC emacs-lisp
+	(global-set-key (kbd "M-x") 'smex)
+     #+END_SRC
