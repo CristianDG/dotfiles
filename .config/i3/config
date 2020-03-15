@@ -255,6 +255,7 @@ mode $o {
 
     bindsym c exec google-chrome --new-window ;; $md
     bindsym e exec emacs ;; $md
+    bindsym n exec nautilus ;; $md
     bindsym r exec gnome-terminal -e ranger ;; $md
     bindsym s exec google-chrome https://superanimes.org ;; workspace $ws1 ;; $md
 
