@@ -8,8 +8,9 @@ noremap <Right> <Nop>
 set mouse=a
 
 " normal configs
-let mapleader=","
+let mapleader=" "
 
+nnoremap <leader>sof :source %<cr> 
 nnoremap <leader>fd :exe 'edit '.stdpath('config').'/init.vim'<cr> 
 
 vmap <LeftRelease> "*ygv

@@ -113,6 +113,8 @@ set $ws8 "8"
 set $ws9 "9 Steam"
 set $ws10 "10 "
 
+set $wsp "P"
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -254,6 +256,7 @@ mode $o {
     set $md mode "default"
 
     bindsym c exec google-chrome --new-window ;; $md
+    bindsym i exec google-chrome --incognito ;; $md
     bindsym e exec emacs ;; $md
     bindsym n exec nautilus ;; $md
     bindsym r exec gnome-terminal -e ranger ;; $md
@@ -265,7 +268,7 @@ mode $o {
 
 bindsym $mod+shift+x exec i3lock
 bindsym $mod+Mod1+c  exec gnome-terminal -e 'nvim .config/i3/config ' 
-bindsym $mod+shift+p #Porno mode
+bindsym $mod+shift+p workspace $wsp
 bindsym $mod+shift+m exec xrandr --output HDMI-1 --auto --right-of eDP-1
 bindsym $mod+shift+n exec xrandr --output HDMI-1 --off
 
