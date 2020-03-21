@@ -1,11 +1,19 @@
 * Startup
 ** Personal Stuff
-
+  Some "important" settings
+ 
   #+BEGIN_SRC emacs-lisp
   
+  (defun package--save-selected-packages (&rest opt) nil)
+
   (setq inhibit-startup-screen t)
+
   (tool-bar-mode 0)
-  (set-default-font "FiraCode 11")
+
+  (set-default-font "FiraCode 10")
+
+  (global-display-line-numbers-mode t)
+  (setq global-display-line-numbers 'relative)
   
   #+END_SRC
 
@@ -21,44 +29,68 @@
    (package-initialize)
    ;;(package-refresh-contents)
    
-   ;; Download Evil
-   (unless (package-installed-p 'evil)
-   (package-install 'evil))
+   (defun packages-install (packages)
+     (dolist (it packages)
+       (when (not (package-installed-p it))
+         (package-install it)))
+       (delete-other-windows))
+
+   (require 'use-package)
+   ;; Install extensions if they're missing
+   (defun init--install-packages ()
+     (packages-install
+       '(
+       evil
+       auto-complete
+       use-package
+       flycheck
+       lua-mode
+       )))
+
+    (condition-case nil
+        (init--install-packages)
+      (error
+	(package-refresh-contents)
+	(init--install-packages)))
    
    (require 'evil)
    (evil-mode t)
    
-   ;; Download Org-Bullets
-   (unless (package-installed-p 'org-bullets)
-   (package-install 'org-bullets))
-   
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-   
-   (require 'linum-relative)
-   (linum-relative-on)
-   
    
    (ido-mode t)
    
+   (ac-config-default)
+   
+   (use-package flycheck
+   :ensure t
+   :init (global-flycheck-mode))
+
+   ;;;; This snippet enables lua-mode
+   (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
+
    #+END_SRC
 
 *** Configs
     #+BEGIN_SRC emacs-lisp
-
-    (custom-set-variables
-    '(ansi-color-faces-vector
-    [default default default italic underline success warning error])
-    '(ansi-color-names-vector
-    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
-    '(custom-enabled-themes (quote (deeper-blue)))
-    '(package-selected-packages (quote (evil smex))))
-    (custom-set-faces)
-
+    
+    (load-theme 'dracula t)
     ;; backup dir
     (setq backup-directory-alist '(("." . "~/.emacs_saves")))
 
     #+END_SRC
 **** Keybindings
      #+BEGIN_SRC emacs-lisp
-	(global-set-key (kbd "M-x") 'smex)
+
+     (global-set-key (kbd "M-x") 'smex)
+     (global-set-key (kbd "M-f") '()) ;; TODO
+     
+     (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+     (ac-set-trigger-key "TAB")
+     (setq ac-auto-start nil)
+     
+
      #+END_SRC
