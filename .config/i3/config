@@ -104,14 +104,14 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 "
 set $ws2 "2 "
-set $ws3 "3 "
+set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9 Steam"
-set $ws10 "10 "
+set $ws10 "10"
 
 set $wsp "P"
 
@@ -275,6 +275,7 @@ bindsym $mod+shift+n exec xrandr --output HDMI-1 --off
 exec polybar example
 exec flameshot
 exec google-chrome
+exec xset m 1/1 0
 # exec gnome-terminal -e ranger
 
 exec_always feh -Z --bg-scale /home/cristiandg/Imagens/Wallpaper/default_wallpaper.jpg

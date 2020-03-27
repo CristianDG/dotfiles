@@ -12,8 +12,8 @@
 
   (set-default-font "FiraCode 10")
 
-  (global-display-line-numbers-mode t)
-  (setq global-display-line-numbers 'relative)
+  ;; (global-display-line-numbers-mode t)
+  ;; (setq global-display-line-numbers 'relative)
   
   #+END_SRC
 
@@ -35,7 +35,6 @@
          (package-install it)))
        (delete-other-windows))
 
-   (require 'use-package)
    ;; Install extensions if they're missing
    (defun init--install-packages ()
      (packages-install
@@ -45,6 +44,11 @@
        use-package
        flycheck
        lua-mode
+       rainbow-delimiters
+       origami
+       all-the-icons
+       neotree
+       linum-relative
        )))
 
     (condition-case nil
@@ -52,6 +56,19 @@
       (error
 	(package-refresh-contents)
 	(init--install-packages)))
+
+   (require 'neotree)
+   (require 'linum)
+   (require 'use-package)
+
+   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+
+   (use-package all-the-icons)
+
+   (require 'linum-relative)
+   (add-hook 'prog-mode-hook 'linum-relative-mode)
+   ;; Use `display-line-number-mode` as linum-mode's backend for smooth performance
+   (setq linum-relative-backend 'display-line-numbers-mode)
    
    (require 'evil)
    (evil-mode t)
@@ -65,6 +82,10 @@
    (use-package flycheck
    :ensure t
    :init (global-flycheck-mode))
+
+   (require 'origami)
+   
+   (rainbow-delimiters-mode t)
 
    ;;;; This snippet enables lua-mode
    (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
@@ -80,7 +101,7 @@
     (load-theme 'dracula t)
     ;; backup dir
     (setq backup-directory-alist '(("." . "~/.emacs_saves")))
-
+    
     #+END_SRC
 **** Keybindings
      #+BEGIN_SRC emacs-lisp
@@ -88,9 +109,18 @@
      (global-set-key (kbd "M-x") 'smex)
      (global-set-key (kbd "M-f") '()) ;; TODO
      
-     (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
      (ac-set-trigger-key "TAB")
      (setq ac-auto-start nil)
      
-
+     (global-set-key [f12] 'neotree-toggle)
+     
+     (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+     (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+     (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+     (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+     (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+     (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+     (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+     (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+     (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
      #+END_SRC
