@@ -130,4 +130,4 @@ if [ "$TERM" != "linux" ]; then
 fi
 
 #fim
-alias config='/usr/bin/git --git-dir=/home/cristiandg/dotfiles/ --work-tree=/home/cristiandg'
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
