@@ -8,10 +8,15 @@ noremap <Right> <Nop>
 set mouse=a
 
 " normal configs
-let mapleader=" "
+let mapleader=";"
 
-nnoremap <leader>sof :source %<cr> 
-nnoremap <leader>fd :exe 'edit '.stdpath('config').'/init.vim'<cr> 
+nnoremap <leader>fd :exe 'edit '.stdpath('config').'/init.vim'<cr>
+nnoremap <leader>st :! stt <cr>
+nnoremap <leader>t :tabnew <cr>
+nnoremap <leader>w :w <cr>
+nnoremap <leader>q :q <cr>
+
+autocmd Filetype vim nnoremap <leader>sof :source %<cr> 
 
 vmap <LeftRelease> "*ygv
 imap <S-Insert> <C-R>*
