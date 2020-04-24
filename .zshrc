@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 #meus
-
+export PATH="${PATH}:${HOME}/.local/bin/"
 cod="$HOME/programas"
 alias cod="cd $cod"
 alias nvimcfg="nvim ~/.config/nvim/init.vim"
@@ -109,7 +109,12 @@ alias nvimcfg="nvim ~/.config/nvim/init.vim"
 #    tmux attach -t dev || tmux new -s dev
 # fi
 
+(cat ~/.cache/wal/sequences &)
+
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 #fim
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias n=nvim
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias nzrc="n $HOME/.zshrc"
+

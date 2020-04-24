@@ -1,0 +1,4 @@
+#! /usr/bin/sh
+
+bash /opt/multimc/run.sh
+
