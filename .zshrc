@@ -102,19 +102,27 @@ source $ZSH/oh-my-zsh.sh
 #meus
 export PATH="${PATH}:${HOME}/.local/bin/"
 cod="$HOME/programas"
-alias cod="cd $cod"
-alias nvimcfg="nvim ~/.config/nvim/init.vim"
+alias cod="$cod$@"
+alias ncfg="n ~/.config/nvim/init.vim"
 
 # if [ -z "$TMUX" ]; then
 #    tmux attach -t dev || tmux new -s dev
 # fi
 
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 #fim
+alias vim=nvim
+alias v=vim
 alias n=nvim
+alias reader="nvim -R"
+
+alias python=python3
+alias pip=pip3
+
 alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias nzrc="n $HOME/.zshrc"
+alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
 

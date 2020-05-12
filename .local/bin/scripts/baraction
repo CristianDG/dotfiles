@@ -1,0 +1,6 @@
+#! /usr/bin/bash
+
+while true; do
+    barinfo
+    sleep 2s
+done

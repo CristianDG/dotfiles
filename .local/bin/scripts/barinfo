@@ -1,0 +1,35 @@
+#! /usr/bin/bash
+
+temp(){
+    sensors | awk '/^CPU/ { print $1" "$2}'|sed "s/+//"
+}
+
+memory(){
+    echo $(free -h | awk '/^Mem/ { print $4 }')
+}
+
+battery(){
+    basedir="/sys/class/power_supply/BAT0"
+
+    status=$(cat $basedir/status)
+    capacity="$(cat $basedir/capacity)%"
+
+    echo $status $capacity
+}
+
+ndate(){
+    date "+%m/%d/%Y"
+}
+
+ntime(){
+    date "+%H:%M" | sed "s/^$//g"
+ }
+
+bar=""
+bar+=" [$(ndate)]"
+bar+="[Battery: $(battery)]"
+bar+=" [Mem Left: $(memory)]"
+bar+=" [$(temp)]"
+bar+=" - $(ntime)"
+
+echo $bar

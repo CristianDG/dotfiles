@@ -1,19 +1,47 @@
 #! /usr/bin/sh
-echo "Anime\nArtista\nMais Famosos" \
+
+download_content(){
+    route=$1
+    output=$2
+
+    curl -sL "https://lyrical-nonsense.com/$route" \
+        | sed -re "s/(<tr)/\n\1/g" \
+        | grep --color=never "<tr" \
+        | sed -re "s/<[\/\|]t[r\|d] *>//g;s/<t[r\|d]>//g" \
+        | sed -re "s/<a href=\"(.*\/)\"><span class=\"apmenuitem1\">(.*)<\/span><\/a>/\2|\1/g;s/<span class=\"apmenuitem2\">(.*)<\/span>/|\1/g" \
+        | sed "s/ /_/g;s/|/ | /g" \
+        | awk '{print $5,"- "$1,"["$3"]"}' \
+        | sed "s/_/ /g;s/^ [- ]*//g" > $output
+}
+
+
+name=$(echo "Anime\nArtista" \
     | dmenu \
-    | sed "s/Anime/series/;s/Artista/lyrics/;s/Mais Famosos//" \
-    | xargs -I '{}' curl -sL "https://lyrical-nonsense.com/{}" \
-    | sed -re "s/(<tr>)/\n\1/g" \
-    | grep --color=never "</tr>" \
-    | sed -re "s/<[\/\|]t[r\|d] *>//g;s/<t[r\|d]>//g" \
-    | sed -re "s/<a href=\"(.*\/)\"><span class=\"apmenuitem1\">(.*)<\/span><\/a>/\2|\1/g;s/<span class=\"apmenuitem2\">(.*)<\/span>/|\1/g" \
+    | sed "s/Anime/series/;s/Artista/lyrics/");
+
+filename="$HOME/.local/share/ly/$name"; 
+
+while getopts "r" o; do
+    case "${o}" in
+        r) download_content $name $filename
+            ;;
+    esac
+done
+
+site=$(cat $filename \
+    | dmenu -i -l 30 \
+    | sed -re "s/.*\[(http.*)\]/\1/g");
+
+
+title=$(_nonsenseinfo -t $site \
     | sed "s/ /_/g;s/|/ | /g" \
-    | awk '{print $5,"- "$1,"["$3"]"}' \
+    | awk '{print $1,"- "$5,"["$3"]"}' \
     | sed "s/_/ /g;s/^ [- ]*//g" \
     | dmenu -i -l 30 \
-    | sed -re "s/.*\[(.*)\]/\1/g" \
-    | xargs -I '{}' curl -sL "{}" \
+    | sed -re "s/.*\[(http.*)\]/\1/g")
 
-# TODO terminar o script
-# TODO fazer uma função que pega os elementos pra mim
-# TODO splitar o arquivo em ly_full (onde vai fzr o download), get_el (que pega os elementos) e esse ly (que vai ficar vendo um "banco de dados")
+
+echo "$(_nonsenseinfo -l $title \
+    | sed -re "s/^.*>$//g;s/^\s{2}//g")"
+
+# TODO tudo com cache offline

@@ -1,0 +1,45 @@
+#! /usr/bin/python3
+
+import sys
+import re
+import requests
+from bs4 import BeautifulSoup
+
+error_msg = 'Erro: uso comando [-t|-l] LINK'
+
+def lyric_parser(soup: BeautifulSoup):
+    div = soup.find(attrs={'id':'Romaji'})
+    lyrics = div.find(attrs={'class':'olyrictext'}).prettify()
+    return lyrics
+
+def main(option, url):
+
+    site = requests.get(url)
+    soup = BeautifulSoup(site.content, 'html.parser')
+
+    if option == "-t":
+
+        div = soup.find(attrs={"class":'sortablelist'})
+        titles = div.find('tbody').find_all('tr')
+        for title in titles:
+            song_tag = title.find(attrs={"class":"song_title"})
+            song_name = song_tag.find_all(attrs={"class": re.compile("apmenuitem")})[-1].text
+            print(song_name.replace(' ','_'), end='|')
+            href = song_tag.find('a')['href']
+            try:
+                tie_in = title.find(attrs={"class": re.compile("tie_in")}).find_all(attrs={"class":re.compile("apmenuitem")})[0].text
+                print(href.replace(' ','_'), end='|')
+                print(tie_in.replace(' ','_'), end='\n')
+            except:
+                print(href.replace(' ','_'), end='\n')
+
+    elif option == "-l":
+        print(lyric_parser(soup))
+    else:
+        print(error_msg)
+
+try:
+    main(sys.argv[1], sys.argv[2])
+except e:
+    print(e)
+    print(error_msg)
