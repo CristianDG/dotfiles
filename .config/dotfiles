@@ -1,0 +1,20 @@
+# vim
+# teste
+
+.spectrwm.conf
+.profile
+.zshrc
+.bashrc
+.fonts
+
+.emacs.d/configuration.org
+.emacs.d/init.el
+
+.config/dotfiles
+.config/alacritty
+.config/i3
+.config/mpd/playlists
+.config/mpd/mpd.conf
+.config/nvim/init.vim
+
+.local/bin/scripts

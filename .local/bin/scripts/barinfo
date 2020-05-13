@@ -18,7 +18,7 @@ battery(){
 }
 
 ndate(){
-    date "+%m/%d/%Y"
+    date "+%d/%m/%Y"
 }
 
 ntime(){
@@ -26,10 +26,10 @@ ntime(){
  }
 
 bar=""
-bar+=" [$(ndate)]"
-bar+="[Battery: $(battery)]"
+bar+=" [ $(ndate) ]"
+bar+=" [Battery: $(battery)]"
 bar+=" [Mem Left: $(memory)]"
 bar+=" [$(temp)]"
-bar+=" - $(ntime)"
+bar+=" [ $(ntime) ]"
 
 echo $bar

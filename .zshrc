@@ -122,7 +122,7 @@ alias reader="nvim -R"
 alias python=python3
 alias pip=pip3
 
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias nzrc="n $HOME/.zshrc"
 alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
+alias rome='google-chrome'
 

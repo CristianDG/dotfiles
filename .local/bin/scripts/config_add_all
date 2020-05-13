@@ -1,0 +1,5 @@
+#! /usr/bin/sh
+
+files="$(cat $HOME/.config/dotfiles | sed "s/#.*//g" | xargs -I '{}' echo $HOME/{})"
+
+echo $files | xargs -I {} config add {}
