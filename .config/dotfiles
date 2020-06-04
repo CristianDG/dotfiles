@@ -1,6 +1,9 @@
 # vim
 # teste
 
+
+README.md
+
 .spectrwm.conf
 .profile
 .zshrc
@@ -11,6 +14,7 @@
 .emacs.d/init.el
 
 .config/dotfiles
+.config/compton.conf
 .config/alacritty
 .config/i3
 .config/mpd/playlists

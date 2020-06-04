@@ -5,9 +5,19 @@ for now i will leave this file as it is (only with the commands with no explanat
 
 # pre-requisites
 ```bash
-sudo apt install git vim neovim spectrwm curl wget neofetch ncmpcpp mpd -y
+sudo apt install git vim neovim spectrwm curl wget neofetch ncmpcpp mpd htop syncthing compton flameshot feh -y
 ```
 
-[oh my zsh](https://ohmyz.sh/#install)
+[VimPlug](https://ohmyz.sh/#install)
 
-[alacritty](https://github.com/alacritty/alacritty/releases)
+script for neovim
+
+```sh
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
+
+[Oh My zsh](https://ohmyz.sh/#install)
+
+[Alacritty](https://github.com/alacritty/alacritty/releases)
