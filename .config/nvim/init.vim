@@ -14,7 +14,6 @@ nnoremap <leader>fd :exe 'edit '.stdpath('config').'/init.vim'<cr>
 nnoremap <leader>st :silent exec "!stt zsh" <cr>
 nnoremap <leader>t :tabnew <cr>
 nnoremap <leader>w :w <cr>
-nnoremap <leader>q :q <cr>
 nnoremap <leader>n :noh <cr>
 nnoremap <leader>p "+p <cr>
 nnoremap <leader>yy "+yy <cr>
@@ -78,7 +77,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-surround' 
 Plug 'dylanaraps/wal.vim', { 'as' : 'pywal' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-Plug 'elmcast/elm-vim'
+Plug 'zaptic/elm-vim'
 Plug 'luochen1990/rainbow'
 Plug 'wlangstroth/vim-racket'
 

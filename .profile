@@ -26,7 +26,16 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+
+# rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# meus scripts
 export PATH="$HOME/.local/bin/scripts:$PATH"
+
+# racket
 export PATH="/usr/local/racket/bin:$PATH"
 
+# nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm

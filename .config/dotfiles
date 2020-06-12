@@ -9,6 +9,7 @@ README.md
 .zshrc
 .bashrc
 .fonts
+.xinitrc
 
 .emacs.d/configuration.org
 .emacs.d/init.el
