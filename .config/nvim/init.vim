@@ -5,19 +5,9 @@
 "noremap <Left> <Nop>
 "noremap <Right> <Nop>
 
-
-" user configs
+" editor configs
 let mapleader=" "
 let maplocalleader="\\"
-
-nnoremap <leader>fd :exe 'edit '.stdpath('config').'/init.vim'<cr>
-nnoremap <leader>st :silent exec "!stt zsh" <cr>
-nnoremap <leader>t :tabnew <cr>
-nnoremap <leader>w :w <cr>
-nnoremap <leader>n :noh <cr>
-nnoremap <leader>p "+p <cr>
-nnoremap <leader>yy "+yy <cr>
-vnoremap <leader>y "+y <cr>
 
 " mpc player shortcuts
 
@@ -30,14 +20,32 @@ nnoremap <leader>P> :silent exec "!mpc next -p " port<cr>
 nnoremap <leader>Pz :silent exec "!mpc shuffle -p " port<cr>
 nnoremap <leader>Po :silent exec "!mplay"<cr>
 
+
+
+nmap <leader>fd :silent exec 'edit '.stdpath('config').'/init.vim'<cr>
+nmap <leader>st :silent exec "!stt zsh" <cr>
+nmap <leader>t :tabnew <cr>
+nmap <leader>w :w <cr>
+nmap <leader>n :noh <cr>
+nmap <leader>p "+p <cr>
+nmap <leader>yy "+yy <cr>
+vmap <leader>y "+y <cr>
+nmap <leader>' <C-w>s<C-w>j:terminal<cr>
+
 nnoremap <leader>fx :silent exec "!chmod +x %"<cr>
+
 autocmd Filetype vim nnoremap <LocalLeader>s :source %<cr> 
+
+au BufReadPost *.rkt,*.rktl set filetype=racket
+au filetype racket set lisp
+au filetype racket set autoindent
 
 " coisas aleatorias relativas a C-c C-v
 vmap <LeftRelease> "*ygv
 imap <S-Insert> <C-R>*
 
 " important set's
+
 set number
 set relativenumber
 set expandtab
@@ -49,11 +57,17 @@ set ignorecase
 set smartcase
 set showmatch
 
+set list
+set listchars=tab:\!·,trail:·,eol:¬
+
 set syntax=ON
 syntax enable
 
 set path+=**
-set wildmenu 
+set wildmenu
+
+
+" Statusline
 
 set statusline= 
 set statusline+=\ %F
@@ -68,6 +82,7 @@ set statusline+=\ [%{strftime('%T')}]
 filetype on
 filetype indent on
 filetype plugin on
+filetype plugin indent on
 
 set expandtab
 
@@ -80,17 +95,16 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'zaptic/elm-vim'
 Plug 'luochen1990/rainbow'
 Plug 'wlangstroth/vim-racket'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
 
-if has("autocmd")
-    au BufReadPost *.rkt,*.rktl set filetype=racket
-    au filetype racket set lisp
-    au filetype racket set autoindent
-endif
+let g:gruvbox_contrast_dark="medium"
 
 colorscheme dracula
+
 
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 let g:livepreview_previewer = 'zathura'

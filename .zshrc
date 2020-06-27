@@ -101,8 +101,6 @@ source $ZSH/oh-my-zsh.sh
 
 #meus
 export PATH="${PATH}:${HOME}/.local/bin/"
-cod="$HOME/programas"
-alias cod="$cod$@"
 alias ncfg="n ~/.config/nvim/init.vim"
 
 # if [ -z "$TMUX" ]; then
@@ -111,9 +109,11 @@ alias ncfg="n ~/.config/nvim/init.vim"
 
 #(cat ~/.cache/wal/sequences &)
 
-export VISUAL=nvim
-export EDITOR="$VISUAL"
+export EDITOR=nvim
 #fim
+
+
+# ALIASES
 alias vim=nvim
 alias v=vim
 alias n=nvim
