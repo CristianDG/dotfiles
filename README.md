@@ -8,7 +8,7 @@ for now i will leave this file as it is (only with the commands with no explanat
 sudo apt install git vim neovim spectrwm curl wget neofetch ncmpcpp mpd htop syncthing compton flameshot feh lm-sensors -y
 ```
 
-[VimPlug](https://ohmyz.sh/#install)
+[VimPlug](https://github.com/junegunn/vim-plug)
 
 script for neovim
 

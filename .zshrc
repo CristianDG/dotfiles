@@ -124,5 +124,6 @@ alias pip=pip3
 
 alias nzrc="n $HOME/.zshrc"
 alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
-alias rome='google-chrome'
+
+alias zathura='devour zathura'
 

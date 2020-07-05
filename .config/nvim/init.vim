@@ -97,6 +97,7 @@ Plug 'luochen1990/rainbow'
 Plug 'wlangstroth/vim-racket'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'morhetz/gruvbox'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 
 call plug#end()
 
