@@ -68,7 +68,7 @@ ZSH_THEME="intheloop"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,4 +126,7 @@ alias nzrc="n $HOME/.zshrc"
 alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
 
 alias zathura='devour zathura'
+alias feh='devour feh'
+alias pacman='sudo pacman'
+
 
