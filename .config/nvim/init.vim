@@ -74,6 +74,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'luochen1990/rainbow'
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -97,11 +99,27 @@ call plug#end()
 let mapleader=" "
 let maplocalleader="\\"
 
+" lightline
+
+set laststatus=2
+set noshowmode
+
+let g:lightline = {
+      \   'colorscheme': 'powerline',
+      \   'active': {
+      \     'left': [ [ 'mode', 'paste' ],
+      \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \   },
+      \   'component_function': {
+      \     'gitbranch': 'FugitiveHead'
+      \   },
+      \ }
+
 " Rust vim
 
 let g:rustfmt_autosave = 1
 
-" ale
+" ale (if i want to install ale again)
 
 let g:ale_linters = {'racket': ['raco']}
 let g:ale_lint_on_insert_leave = 1
@@ -275,7 +293,8 @@ nmap <leader>p "+p <cr>
 nmap <leader>yy "+yy <cr>
 vmap <leader>y "+y <cr>
 nmap <leader>' <C-w>s<C-w>j:terminal<cr>
-nmap <C-P> :Files<cr>
+nmap <C-P> :GFiles<cr>
+nmap <C-M-P> :Files<cr>
 
 nmap <leader>fx :silent exec "!chmod +x %"<cr>
 
@@ -284,6 +303,7 @@ imap <LocalLeader><C-e> €
 
 " AUTOCMD
 au Filetype vim nnoremap <LocalLeader>s :source %<cr> 
+au Filetype rust nnoremap <LocalLeader>r :Crun<cr> 
 
 au BufReadPre *.rkt[l] set filetype=racket
 au filetype racket
