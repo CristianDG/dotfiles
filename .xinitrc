@@ -1,7 +1,11 @@
 #! /usr/bin/sh
 
-pulseaudio --start &&
-    setxkbmap -layout br &&
-    xrandr --output eDP1 --auto && 
-    feh -F --bg-fill /home/cristiandg/Images/Wallpaper/default_wallpaper.jpg &&
-    picom --config ~/.config/compton.conf -b
+
+setxkbmap -layout br ;
+m-video ;
+mpd .config/mpd/mpd.conf ;
+fehbg ;
+/usr/bin/dunst ;
+nm-applet --no-agent ;
+picom --config ~/.config/compton.conf -b &&
+pulseaudio
