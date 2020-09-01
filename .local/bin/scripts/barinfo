@@ -23,13 +23,13 @@ ndate(){
 
 ntime(){
     date "+%H:%M" | sed "s/^$//g"
- }
+}
 
 bar=""
 bar+=" [ $(ndate) ]"
-bar+=" [Battery: $(battery)]"
-bar+=" [Mem Left: $(memory)]"
-bar+=" [$(temp)]"
+bar+=" [ Battery: $(battery) ]"
+bar+=" [ Mem Left: $(memory) ]"
+bar+=" [ $(temp) ]"
 bar+=" [ $(ntime) ]"
 
 echo $bar

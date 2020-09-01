@@ -10,8 +10,8 @@
 set number
 set relativenumber
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set foldcolumn=1
 set encoding=utf-8
 set ignorecase
@@ -76,20 +76,30 @@ Plug 'luochen1990/rainbow'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mattn/emmet-vim'
 
 Plug 'itchyny/lightline.vim'
 
+Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'zaptic/elm-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'neovimhaskell/haskell-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'ionide/Ionide-vim', {
+      \ 'do':  'make fsautocomplete',
+      \}
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -98,6 +108,20 @@ call plug#end()
 
 let mapleader=" "
 let maplocalleader="\\"
+
+" LanguageClient
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " lightline
 
@@ -293,8 +317,9 @@ nmap <leader>p "+p <cr>
 nmap <leader>yy "+yy <cr>
 vmap <leader>y "+y <cr>
 nmap <leader>' <C-w>s<C-w>j:terminal<cr>
-nmap <C-P> :GFiles<cr>
-nmap <C-M-P> :Files<cr>
+nmap <C-P> :Files<cr>
+nmap <C-M-P> :GFiles<cr>
+nmap <C-SPACE> <C-^><cr>
 
 nmap <leader>fx :silent exec "!chmod +x %"<cr>
 
@@ -306,6 +331,7 @@ au Filetype vim nnoremap <LocalLeader>s :source %<cr>
 au Filetype rust nnoremap <LocalLeader>r :Crun<cr> 
 
 au BufReadPre *.rkt[l] set filetype=racket
+au filetype sicp set filetype=racket
 au filetype racket
       \ set lisp |
       \ set autoindent

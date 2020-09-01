@@ -10,6 +10,9 @@ README.md
 .bashrc
 .fonts
 .xinitrc
+.ghci
+
+.xmonad/xmonad.hs
 
 .emacs.d/configuration.org
 .emacs.d/init.el
@@ -21,5 +24,6 @@ README.md
 .config/mpd/playlists
 .config/mpd/mpd.conf
 .config/nvim/init.vim
+.config/xmobar/xmobarrc
 
 .local/bin/scripts

@@ -26,6 +26,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+alias reboot="sudo reboot"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -36,6 +37,22 @@ export PATH="$HOME/.local/bin/scripts:$PATH"
 # racket
 export PATH="/usr/local/racket/bin:$PATH"
 
+
+export MPD_HOST=$HOME/.config/mpd/socket
+
 # nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+export NVM_DIR="$HOME/.nvm"
+
+# Dotnet
+
+export DOTNET_ROOT=/opt/dotnet
+
+# Cursor
+
+export XCURSOR_PATH=${XCURSOR_PATH}:~/.icons
+
+# nvm
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

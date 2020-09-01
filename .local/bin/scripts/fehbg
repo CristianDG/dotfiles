@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+
+feh -F --bg-fill $HOME/Images/Wallpaper/default_wallpaper.jpg

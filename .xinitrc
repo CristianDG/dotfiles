@@ -1,7 +1,7 @@
 #! /usr/bin/sh
 
 
-setxkbmap -layout br ;
+keyboardset ;
 m-video ;
 mpd .config/mpd/mpd.conf ;
 fehbg ;

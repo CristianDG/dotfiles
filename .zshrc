@@ -127,6 +127,6 @@ alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
 
 alias zathura='devour zathura'
 alias feh='devour feh'
-alias pacman='sudo pacman'
+alias p='sudo pacman'
 
 

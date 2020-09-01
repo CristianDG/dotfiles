@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#! /usr/bin/zsh
 
 download_content(){
     route=$1
@@ -15,8 +15,7 @@ download_content(){
 }
 
 
-name=$(echo "Anime\nArtista" \
-    | dmenu \
+name=$(echo "Anime\nArtista" | dmenu \
     | sed "s/Anime/series/;s/Artista/lyrics/");
 
 filename="$HOME/.local/share/ly/$name"; 
