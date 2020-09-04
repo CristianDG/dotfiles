@@ -90,6 +90,8 @@ Plug 'mattn/emmet-vim'
 
 Plug 'itchyny/lightline.vim'
 
+Plug 'mpickering/hlint-refactor-vim'
+Plug 'alx741/vim-hindent'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'zaptic/elm-vim'
@@ -320,6 +322,7 @@ nmap <leader>' <C-w>s<C-w>j:terminal<cr>
 nmap <C-P> :Files<cr>
 nmap <C-M-P> :GFiles<cr>
 nmap <C-SPACE> <C-^><cr>
+nmap <C-A> mtggyG't<cr>
 
 nmap <leader>fx :silent exec "!chmod +x %"<cr>
 
