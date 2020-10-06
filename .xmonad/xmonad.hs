@@ -80,7 +80,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     -- launch dmenu
-    , ((modm, xK_p), spawn "dmenu_run -i -f -fn ubuntu")
+    , ( (modm, xK_p)
+      , spawn "dmenu_run -i -f -fn Terminus:pixelsize=14:antialias=true")
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p), spawn "gmrun")
     -- close focused window
@@ -88,8 +89,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
      -- Rotate through the available layout algorithms
     , ((modm, xK_space), sendMessage NextLayout)
     --  Reset the layouts on the current workspace to default
-    , ( (modm .|. shiftMask, xK_space)
-      , setLayout $ XMonad.layoutHook conf)
+    , ((modm .|. shiftMask, xK_space), setLayout $ XMonad.layoutHook conf)
     -- Resize viewed windows to the correct size
     , ((modm, xK_n), refresh)
     -- Video settings
@@ -154,8 +154,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
     -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
-    [ ( (m .|. modm, key)
-      , screenWorkspace sc >>= flip whenJust (windows . f))
+    [ ((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
     | (key, sc) <- zip [xK_w, xK_e, xK_r] [0 ..]
     , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
     ]
@@ -229,6 +228,7 @@ myManageHook =
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
+-- TODO: lembrar de mempty
 myEventHook = mempty
 
 ------------------------------------------------------------------------
@@ -277,12 +277,9 @@ main = do
                       def
                           { ppOutput =
                                 (\x ->
-                                     hPutStrLn xmproc0 x >>
-                                     hPutStrLn xmproc1 x)
-                          , ppCurrent =
-                                xmobarColor "cyan" "" . wrap "[" "]"
-                          , ppTitle =
-                                xmobarColor "green" "" . shorten 40
+                                     hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x)
+                          , ppCurrent = xmobarColor "cyan" "" . wrap "[" "]"
+                          , ppTitle = xmobarColor "green" "" . shorten 40
                           , ppVisible = wrap "(" ")"
                           , ppUrgent = xmobarColor "red" "yellow"
                           }
