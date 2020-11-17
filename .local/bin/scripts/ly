@@ -15,7 +15,7 @@ download_content(){
 }
 
 
-name=$(echo "Anime\nArtista" | dmenu \
+name=$(echo "Anime\nArtista" | dmenuu \
     | sed "s/Anime/series/;s/Artista/lyrics/");
 
 filename="$HOME/.local/share/ly/$name"; 
@@ -28,7 +28,7 @@ while getopts "r" o; do
 done
 
 site=$(cat $filename \
-    | dmenu -i -l 30 \
+    | dmenuu -l 30 \
     | sed -re "s/.*\[(http.*)\]/\1/g");
 
 
@@ -36,11 +36,11 @@ title=$(_nonsenseinfo -t $site \
     | sed "s/ /_/g;s/|/ | /g" \
     | awk '{print $1,"- "$5,"["$3"]"}' \
     | sed "s/_/ /g;s/^ [- ]*//g" \
-    | dmenu -i -l 30 \
+    | dmenuu -l 30 \
     | sed -re "s/.*\[(http.*)\]/\1/g")
 
 
 echo "$(_nonsenseinfo -l $title \
     | sed -re "s/^.*>$//g;s/^\s{2}//g")"
 
-# TODO tudo com cache offline
+# TODO musicas com cache offline

@@ -68,7 +68,7 @@ ZSH_THEME="intheloop"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
+plugins=(git z )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,7 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-#meus
 export PATH="${PATH}:${HOME}/.local/bin/"
 alias ncfg="n ~/.config/nvim/init.vim"
 
@@ -110,7 +109,6 @@ alias ncfg="n ~/.config/nvim/init.vim"
 #(cat ~/.cache/wal/sequences &)
 
 export EDITOR=nvim
-#fim
 
 
 # ALIASES
@@ -128,5 +126,4 @@ alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
 alias zathura='devour zathura'
 alias feh='devour feh'
 alias p='sudo pacman'
-
 

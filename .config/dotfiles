@@ -24,6 +24,7 @@ README.md
 .config/mpd/playlists
 .config/mpd/mpd.conf
 .config/nvim/init.vim
+.config/nvim/plugins.vim
 .config/xmobar/xmobarrc
 
 .local/bin/scripts

@@ -12,6 +12,7 @@ import System.Exit
 import XMonad
 import XMonad.Hooks.DynamicBars
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Spacing
@@ -229,7 +230,7 @@ myManageHook =
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 -- TODO: lembrar de mempty
-myEventHook = mempty
+myEventHook = fullscreenEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -254,6 +255,7 @@ main = do
     xmproc0 <- spawnPipe $ "xmobar -x 0"
     xmproc1 <- spawnPipe $ "xmobar -x 1"
     xmonad $
+        ewmh $
         docks
             def
       -- simple stuff
