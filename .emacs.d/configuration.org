@@ -1,133 +1,143 @@
 * Startup
 ** Personal Stuff
-  Some "important" settings
- 
-  #+BEGIN_SRC emacs-lisp
-  
-  (defun package--save-selected-packages (&rest opt) nil)
+Some "important" settings
 
-  (setq inhibit-startup-screen t)
+#+BEGIN_SRC emacs-lisp
 
-  (tool-bar-mode 0)
+(defun package--save-selected-packages (&rest opt) nil)
 
-  (set-default-font "FiraCode 11")
+(setq inhibit-startup-screen t)
 
-  ;; (global-display-line-numbers-mode t)
-  ;; (setq global-display-line-numbers 'relative)
-  
-  #+END_SRC
+(tool-bar-mode 0)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+;;(set-default-font "FiraCode 11")
+
+;; (global-display-line-numbers-mode t)
+;; (setq global-display-line-numbers 'relative)
+
+#+END_SRC
 
 ** Packages
-   Here are all the package downloads and requirementes
+Here are all the package downloads and requirementes
+
 *** Downloads and setup
-   #+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp 
 
-   ;; Set up package.el to work with MELPA
-   (require 'package)
-   (add-to-list 'package-archives
-   	    '("melpa" . "https://melpa.org/packages/"))
-   (package-initialize)
-   ;;(package-refresh-contents)
-   
-   (defun packages-install (packages)
-     (dolist (it packages)
-       (when (not (package-installed-p it))
-         (package-install it)))
-       (delete-other-windows))
+;; Set up package.el to work with MELPA
+(require 'package)
+(add-to-list 'package-archives
+	'("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+;;(package-refresh-contents)
 
-   ;; Install extensions if they're missing
-   (defun init--install-packages ()
-     (packages-install
-       '(
-       evil
-       auto-complete
-       use-package
-       flycheck
-       lua-mode
-       rainbow-delimiters
-       origami
-       all-the-icons
-       neotree
-       linum-relative
-       yasnippet
-       php-mode
-       )))
+(require 'use-package)
 
-    (condition-case nil
-        (init--install-packages)
-      (error
-	(package-refresh-contents)
-	(init--install-packages)))
+(defvar my-packages 
+    '(
+    evil
+    auto-complete
+    use-package
+    flycheck
+    lua-mode
+    rainbow-delimiters
+    origami
+    all-the-icons
+    neotree
+    linum-relative
+    yasnippet
+    php-mode
+    smex
+    lsp-mode
+    ))
+(use-package cl-lib :defer t)
 
-   (require 'neotree)
-   (require 'linum)
-   (require 'use-package)
-   (require 'php-mode)
+(defun my-packages-installed-p ()
+    (cl-loop for p in my-packages
+	when (not (package-installed-p p)) do (cl-return nil)
+	finally (cl-return t)))
 
-   (require 'yasnippet)
-   (yas-reload-all)
-   (add-hook 'prog-mode-hook #'yas-minor-mode)
+(unless (my-packages-installed-p)
+  ;; check for new packages (package versions)
+  (package-refresh-contents)
+  ;; install the missing packages
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+    (package-install p))))
 
-   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(use-package lsp-mode
+    :init (add-hook 'prog-mode-hook #'lsp))
 
-   (use-package all-the-icons)
+(use-package neotree)
+(use-package php-mode)
 
-   (require 'linum-relative)
-   (add-hook 'prog-mode-hook 'linum-relative-mode)
-   ;; Use `display-line-number-mode` as linum-mode's backend for smooth performance
-   (setq linum-relative-backend 'display-line-numbers-mode)
-   
-   (require 'evil)
-   (evil-mode t)
-   
-   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-   
-   (ido-mode t)
-   
-   (ac-config-default)
-   
-   (use-package flycheck
-   :ensure t
-   :init (global-flycheck-mode))
+(use-package yasnippet
+    :config (yas-reload-all)
+    :init (add-hook 'prog-mode-hook #'yas-minor-mode)
 
-   (require 'origami)
-   
-   (rainbow-delimiters-mode t)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-   ;;;; This snippet enables lua-mode
-   (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+(use-package all-the-icons)
+
+(use-package linum)
+(use-package linum-relative
+    :config 
+    ;; Use `display-line-number-mode` as linum-mode's backend for smooth performance
+    (setq linum-relative-backend 'display-line-numbers-mode)
+    :hook prog-mode))
 
 
-   #+END_SRC
+
+(use-package evil
+    :config (evil-mode t))
+
+;;(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(ido-mode t)
+
+(ac-config-default)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package origami)
+
+;;;; This snippet enables lua-mode
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
+
+#+END_SRC
 
 *** Configs
-    #+BEGIN_SRC emacs-lisp
-    
-    (load-theme 'dracula t)
-    ;; backup dir
-    (setq backup-directory-alist '(("." . "~/.emacs_saves")))
-    
-    #+END_SRC
-**** Keybindings
-     #+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp
 
-     (global-set-key (kbd "M-x") 'smex)
-     (global-set-key (kbd "M-f") '()) ;; TODO
-     
-     (ac-set-trigger-key "TAB")
-     (setq ac-auto-start nil)
-     
-     (global-set-key [f12] 'neotree-toggle)
-     
-     (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-     (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-     (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-     (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-     (evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
-     (evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
-     (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
-     (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-     (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
-     #+END_SRC
+(load-theme 'gruvbox t)
+;; backup dir
+(setq backup-directory-alist '(("." . "~/.emacs_saves")))
+
+#+END_SRC
+**** Keybindings
+#+BEGIN_SRC emacs-lisp
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-f") '()) ;; TODO
+
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
+
+(global-set-key [f12] 'neotree-toggle)
+
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+#+END_SRC

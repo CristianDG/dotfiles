@@ -92,7 +92,6 @@ nmap <leader>fd :silent exec 'edit '.stdpath('config').'/init.vim'<cr>
 nmap <leader>fp :silent exec 'edit '.stdpath('config').'/plugins.vim'<cr>
 nmap <leader>st :silent exec "!stt zsh" <cr>
 nmap <leader>t :tabnew <cr>
-nmap <leader>w :w <cr>
 nmap <leader>n :noh <cr>
 "nmap <leader>p "+p <cr>
 nmap <leader>yy "+yy <cr>
@@ -111,6 +110,7 @@ nmap <leader>fx :silent exec "!chmod +x %"<cr>
 
 imap <C-l> λ
 imap <LocalLeader><C-e> €
+
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -135,7 +135,6 @@ imap <S-Insert> <C-R>*
 " imap { {}<esc>i
 " imap [ []<esc>i
 
-" Plugin specifico
-nnoremap <leader>p :Fern . -drawer -toggle<cr>
+command! -nargs=* Make :exec 'make'
 
 exec 'source '.stdpath('config').'/plugins.vim'

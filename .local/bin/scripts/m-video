@@ -3,4 +3,6 @@
 edp1=$(xrandr | awk '/^eDP/ {print $1}') 
 hdmi=$(xrandr | awk '/^HDMI/ {print $1}') 
 
-xrandr --output $hdmi --auto --scale-from 1440x900 --right-of $edp1
+# xrandr --output $hdmi --auto --right-of $edp1 --auto
+
+xrandr --output $hdmi --scale-from 1440x900 --right-of $edp1 --auto

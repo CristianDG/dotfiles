@@ -245,7 +245,8 @@ myEventHook = fullscreenEventHook
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawnOnce "sh .xinitrc &"
+    spawnOnce "sh .xinitrc ;"
+    spawnOnce "sudo ntpd -s ;"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.

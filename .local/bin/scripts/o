@@ -1,3 +1,20 @@
 #! /usr/bin/sh
 
+# script para abrir navegador, explorador de arquivos ...
+# reconhecer qual flag
 
+
+function browser(){
+    brave
+}
+
+function files() {
+    thunar
+}
+
+while getopts "bf" o; do
+    case "${o}" in
+        b) browser ;;
+        f) files ;;
+    esac
+done

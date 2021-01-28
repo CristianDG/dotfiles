@@ -110,6 +110,9 @@ alias ncfg="n ~/.config/nvim/init.vim"
 
 export EDITOR=nvim
 
+# Ocaml
+eval $(opam env)
+eval "$(starship init zsh)"
 
 # ALIASES
 alias vim=nvim
@@ -126,4 +129,5 @@ alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
 alias zathura='devour zathura'
 alias feh='devour feh'
 alias p='sudo pacman'
+alias updatesystem='p -Syyu && xmonad --recompile'
 

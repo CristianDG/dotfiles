@@ -5,6 +5,9 @@ call plug#begin(stdpath('data') . '/plugged')
 " file explore
 Plug 'lambdalisue/fern.vim'
 
+" VimWiki
+Plug 'vimwiki/vimwiki'
+
 " remove a bug
 Plug 'antoinemadec/FixCursorHold.nvim'
 
@@ -31,10 +34,21 @@ Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
+
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
+" Godot
+Plug 'habamax/vim-godot'
+
+" Toml
+Plug 'cespare/vim-toml'
 
 " html
 Plug 'mattn/emmet-vim'
+
+" reasonml
+Plug 'reasonml-editor/vim-reason-plus'
 
 " svelte
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
@@ -163,12 +177,14 @@ inoremap <silent><expr> <TAB>
   \ completion#trigger_completion()
 
 "Nvim lsp
+:lua << END
 
-lua require'nvim_lsp'.tsserver.setup{}
-lua require'nvim_lsp'.ghcide.setup{}
-lua require'nvim_lsp'.rls.setup{}
-lua require'nvim_lsp'.vimls.setup{}
+require'nvim_lsp'.tsserver.setup{}
+require'nvim_lsp'.ghcide.setup{}
+require'nvim_lsp'.rls.setup{}
+require'nvim_lsp'.vimls.setup{}
 
+END
 
 "nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -179,6 +195,13 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+" Plugin specifico
+nnoremap <leader>p :Fern . -drawer -toggle<cr>
+
+" Godot
+let g:godot_executable="~/.local/share/Steam/steamapps/common/Godot Engine/godot.x11.opt.tools.64"
+
 "" COC
 "
 "" Always show the signcolumn, otherwise it would shift the text each time

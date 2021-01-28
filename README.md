@@ -1,12 +1,15 @@
 # dotfiles
 My dotfiles and configurations
 
-for now i will leave this file as it is (only with the commands with no explanation), if you want to do the same to your dotfiles, simply go to this [link](https://www.atlassian.com/git/tutorials/dotfiles)
+for now i will leave this file as it is (only with the commands with no explanation),
+if you want to do the same to your dotfiles, simply go to this [link](https://www.atlassian.com/git/tutorials/dotfiles)
 
 # pre-requisites
 ```bash
-sudo apt install git vim neovim spectrwm curl wget neofetch ncmpcpp mpd htop syncthing compton flameshot feh lm-sensors -y
+sudo apt install -y git vim neovim spectrwm curl wget neofetch ncmpcpp mpd htop syncthing compton flameshot feh lm-sensors zsh
 ```
+
+## Other Utilities
 
 [VimPlug](https://github.com/junegunn/vim-plug)
 
@@ -17,7 +20,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-
 [Oh My zsh](https://ohmyz.sh/#install)
 
 [Alacritty](https://github.com/alacritty/alacritty/releases)
+
+[Starship Prompt](https://starship.rs/)

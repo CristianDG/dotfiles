@@ -19,6 +19,7 @@ README.md
 
 .config/dotfiles
 .config/compton.conf
+.config/starship.toml
 .config/alacritty
 .config/i3
 .config/mpd/playlists

@@ -119,7 +119,7 @@ fi
 # if [ -z "$TMUX" ]; then
 #     tmux attach -t dev || tmux new -s dev
 # fi
-alias config='/usr/bin/git --git-dir=/home/cristiandg/dotfiles/ --work-tree=/home/cristiandg'
+#alias config='/usr/bin/git --git-dir=/home/cristiandg/dotfiles/ --work-tree=/home/cristiandg'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
