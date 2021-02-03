@@ -33,6 +33,7 @@ set clipboard+=unnamedplus
 
 set list
 set listchars=tab:\!·,trail:·,eol:¬
+set tags=./tags;/
 
 set syntax=ON
 syntax enable
@@ -120,6 +121,8 @@ au Filetype vim nnoremap <LocalLeader>s :so %<cr>
 au Filetype rust nnoremap <LocalLeader>r :Crun<cr> 
 
 " au filetype haskell set include=^\\s*import\\s*\\(qualified\\|\\)\s*\\zs\\(\\S\\+\\)
+
+au BufReadPre *.svelte set filetype=svelte
 
 au BufReadPre *.rkt[l] set filetype=racket
 au filetype sicp set filetype=racket

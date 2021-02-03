@@ -11,6 +11,7 @@ README.md
 .fonts
 .xinitrc
 .ghci
+.gitconfig
 
 .xmonad/xmonad.hs
 

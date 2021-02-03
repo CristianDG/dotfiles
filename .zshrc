@@ -102,6 +102,10 @@ source $ZSH/oh-my-zsh.sh
 export PATH="${PATH}:${HOME}/.local/bin/"
 alias ncfg="n ~/.config/nvim/init.vim"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # if [ -z "$TMUX" ]; then
 #    tmux attach -t dev || tmux new -s dev
 # fi
@@ -129,5 +133,5 @@ alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
 alias zathura='devour zathura'
 alias feh='devour feh'
 alias p='sudo pacman'
-alias updatesystem='p -Syyu && xmonad --recompile'
+alias updatesystem='p -Syu && xmonad --recompile'
 

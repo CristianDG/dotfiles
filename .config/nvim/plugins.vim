@@ -11,6 +11,8 @@ Plug 'vimwiki/vimwiki'
 " remove a bug
 Plug 'antoinemadec/FixCursorHold.nvim'
 
+
+
 " qol
 
 Plug 'tpope/vim-surround' 
@@ -51,7 +53,8 @@ Plug 'mattn/emmet-vim'
 Plug 'reasonml-editor/vim-reason-plus'
 
 " svelte
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
+"Plug 'burner/vim-svelte'
+Plug 'leafoftree/vim-svelte-plugin'
 
 " JavaScript
 Plug 'maxmellon/vim-jsx-pretty'
@@ -179,14 +182,16 @@ inoremap <silent><expr> <TAB>
 "Nvim lsp
 :lua << END
 
-require'nvim_lsp'.tsserver.setup{}
-require'nvim_lsp'.ghcide.setup{}
-require'nvim_lsp'.rls.setup{}
-require'nvim_lsp'.vimls.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.ghcide.setup{}
+require'lspconfig'.rls.setup{}
+require'lspconfig'.vimls.setup{}
+--require'lspconfig'.erlang_ls.setup{cmd={ "erlang_ls" }}
 
 END
 
-"nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -201,6 +206,9 @@ nnoremap <leader>p :Fern . -drawer -toggle<cr>
 
 " Godot
 let g:godot_executable="~/.local/share/Steam/steamapps/common/Godot Engine/godot.x11.opt.tools.64"
+
+" Svelte
+let g:vim_svelte_plugin_load_full_syntax = 1
 
 "" COC
 "
