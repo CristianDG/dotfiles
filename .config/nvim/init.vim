@@ -6,6 +6,9 @@
 "noremap <Right> <Nop>
 
 " important set's
+"
+"" comandos legais
+" :digraphs
 
 set number
 set relativenumber
@@ -29,16 +32,23 @@ set completeopt=menuone,noinsert,noselect
 set pumheight=7
 set termguicolors
 
+"highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+"set colorcolumn=81
+
 set clipboard+=unnamedplus
 
 set list
-set listchars=tab:\!·,trail:·,eol:¬
-set tags=./tags;/
+set listchars=tab:\!·,nbsp:_,trail:·,eol:¬
+"set tags=./tags;/
 
 set syntax=ON
 syntax enable
 
 set expandtab
+
+set undofile
+set undodir=~/.local/share/nvim/undodir
 
 set path=.,**
 set wildmenu
@@ -87,7 +97,14 @@ nnoremap <leader>P> :silent exec "!mpc next -p " port<cr>
 nnoremap <leader>Pz :silent exec "!mpc shuffle -p " port<cr>
 nnoremap <leader>Po :silent exec "!mplay"<cr>
 
-" Q.O.L
+" Q.O.L ツ
+
+" parece legal
+"nnoremap ; :
+"nnoremap : ;
+
+"set spell spelllang=pt_br
+"set nospell
 
 nmap <leader>fd :silent exec 'edit '.stdpath('config').'/init.vim'<cr>
 nmap <leader>fp :silent exec 'edit '.stdpath('config').'/plugins.vim'<cr>
@@ -98,8 +115,8 @@ nmap <leader>n :noh <cr>
 nmap <leader>yy "+yy <cr>
 vmap <leader>y "+y <cr>
 nmap <leader>' <C-w>s<C-w>j:terminal<cr>
-nmap <C-P> :Files<cr>
-nmap <C-M-P> :GFiles<cr>
+nmap <C-P> :GFiles<cr>
+nmap <C-M-P> :Files<cr>
 nmap <C-SPACE> <C-^><cr>
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>

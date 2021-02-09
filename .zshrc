@@ -116,7 +116,9 @@ export EDITOR=nvim
 
 # Ocaml
 eval $(opam env)
-eval "$(starship init zsh)"
+
+# starship
+eval $(starship init zsh)
 
 # ALIASES
 alias vim=nvim
