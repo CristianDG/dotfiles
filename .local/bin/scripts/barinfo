@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! bash
 
 temp(){
     sensors | awk '/^CPU/ { print $1" "$2}'|sed "s/+//"

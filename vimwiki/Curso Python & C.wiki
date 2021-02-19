@@ -1,0 +1,6 @@
+
+- algoritmos
+- proposições lógicas / predicados
+- possivelmente variaveis
+  - tipos de variaveis
+- exercicios / pratica

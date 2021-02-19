@@ -29,21 +29,21 @@ fi
 alias reboot="sudo reboot"
 
 # rust
-export PATH="$HOME/.cargo/bin:$PATH"
+#export PATH="$HOME/.cargo/bin:$PATH"
 
 # meus scripts
 export PATH="$HOME/.local/bin/scripts:$PATH"
 
 # racket
-export PATH="/usr/local/racket/bin:$PATH"
+#export PATH="/usr/local/racket/bin:$PATH"
 
 # go
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin/:$PATH"
+#export GOPATH="$HOME/go"
+#export PATH="$GOPATH/bin/:$PATH"
 
 # mpd
 
-export MPD_HOST=$HOME/.config/mpd/socket
+export MPD_HOST="$HOME/.config/mpd/socket"
 
 # nvm
 
@@ -51,7 +51,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # deno
 
-export DENO_INSTALL="/home/cristiandg/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # Dotnet
@@ -68,6 +68,6 @@ export READER="zathura"
 
 # nvm
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

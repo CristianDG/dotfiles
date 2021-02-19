@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#! /usr/bin/env sh
 
 # script para abrir navegador, explorador de arquivos ...
 # reconhecer qual flag
@@ -9,7 +9,7 @@ function browser(){
 }
 
 function files() {
-    thunar
+    nautilus
 }
 
 while getopts "bf" o; do

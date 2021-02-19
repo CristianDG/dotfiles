@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#! /usr/bin/env sh
 
 files="$(cat $HOME/.config/dotfiles | sed "s/#.*//g" | xargs -I '{}' echo $HOME/{})"
 

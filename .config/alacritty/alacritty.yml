@@ -97,7 +97,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Fira Mono 
+    #TODO: baixar a fonte
+    #family: Fira Mono 
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -337,7 +338,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/zsh
+  program: zsh
 #  args:
 #    - --login
 

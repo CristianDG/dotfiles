@@ -1,2 +1,2 @@
-#! /usr/bin/zsh
+#! zsh
 dmenu -i -f -fn Terminus:pixelsize=14:antialias=true $1 $2

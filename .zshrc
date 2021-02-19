@@ -121,7 +121,6 @@ eval $(opam env)
 eval $(starship init zsh)
 
 # ALIASES
-alias vim=nvim
 alias v=vim
 alias n=nvim
 alias reader="nvim -R"
@@ -136,4 +135,6 @@ alias zathura='devour zathura'
 alias feh='devour feh'
 alias p='sudo pacman'
 alias updatesystem='p -Syu && xmonad --recompile'
+
+export PATH="$HOME/.local/bin/scripts:$PATH"
 

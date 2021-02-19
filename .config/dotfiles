@@ -13,6 +13,9 @@ README.md
 .ghci
 .gitconfig
 
+# pasta
+vimwiki
+
 .xmonad/xmonad.hs
 
 .emacs.d/configuration.org
@@ -25,8 +28,10 @@ README.md
 .config/i3
 .config/mpd/playlists
 .config/mpd/mpd.conf
+.config/ncmpcpp/config
 .config/nvim/init.vim
 .config/nvim/plugins.vim
 .config/xmobar/xmobarrc
 
+# pasta
 .local/bin/scripts

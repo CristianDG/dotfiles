@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#! /usr/bin/env sh
 
 edp1=$(xrandr | awk '/^eDP/ {print $1}') 
 hdmi=$(xrandr | awk '/^HDMI/ {print $1}') 

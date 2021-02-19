@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! bash
 
 while true; do
     barinfo
