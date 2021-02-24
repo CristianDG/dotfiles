@@ -121,20 +121,6 @@ eval $(opam env)
 eval $(starship init zsh)
 
 # ALIASES
-alias v=vim
-alias n=nvim
-alias reader="nvim -R"
-
-alias python=python3
-alias pip=pip3
-
-alias nzrc="n $HOME/.zshrc"
-alias ytdl='youtube-dl -ix --embed-thumbnail --audio-format "mp3"'
-
-alias zathura='devour zathura'
-alias feh='devour feh'
-alias p='sudo pacman'
-alias updatesystem='p -Syu && xmonad --recompile'
-
-export PATH="$HOME/.local/bin/scripts:$PATH"
-
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi

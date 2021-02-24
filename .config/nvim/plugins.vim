@@ -13,6 +13,8 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 
 
+
+
 " qol
 
 Plug 'tpope/vim-surround' 
@@ -39,6 +41,10 @@ Plug 'junegunn/fzf.vim'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " Godot
 Plug 'habamax/vim-godot'
@@ -212,6 +218,10 @@ let g:godot_executable="~/.local/share/Steam/steamapps/common/Godot Engine/godot
 
 " Svelte
 let g:vim_svelte_plugin_load_full_syntax = 1
+
+" VimWiki
+"let g:vimwiki_list = [{'path':'~/vimwiki','syntax': 'media'}]
+
 
 "" COC
 "

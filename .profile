@@ -29,8 +29,7 @@ fi
 alias reboot="sudo reboot"
 
 # rust
-#export PATH="$HOME/.cargo/bin:$PATH"
-
+#
 # meus scripts
 export PATH="$HOME/.local/bin/scripts:$PATH"
 
@@ -71,3 +70,4 @@ export READER="zathura"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+source "$HOME/.cargo/env"

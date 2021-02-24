@@ -1,2 +1,16 @@
 
+{{{python
+
+def main():
+    pass
+
+}}}
+
+== TODOS ==
+
+- [ ] Aprender J
+- [ ] Aprender LISP
+
+== UNI ==
+
 [[Curso Python & C]]
