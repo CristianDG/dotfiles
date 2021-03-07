@@ -2,8 +2,6 @@
 
 OS="$(cat /etc/*-release | grep '^ID' | sed "s/ID=//")"
 
-echo $OS
-
 if [ $OS = debian ]; then
     alias picom='compton'
 fi

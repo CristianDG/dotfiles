@@ -35,8 +35,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " language completion
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'nvim-lua/completion-nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -77,8 +77,8 @@ Plug 'zaptic/elm-vim'
 Plug 'wlangstroth/vim-racket'
 
 " haskell
-Plug 'mpickering/hlint-refactor-vim'
-Plug 'alx741/vim-hindent'
+"Plug 'mpickering/hlint-refactor-vim'
+"Plug 'alx741/vim-hindent'
 Plug 'pbrisbin/vim-syntax-shakespeare'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'neovimhaskell/haskell-vim'
@@ -188,10 +188,10 @@ inoremap <silent><expr> <TAB>
 "Nvim lsp
 :lua << END
 
---require'lspconfig'.tsserver.setup{}
---require'lspconfig'.ghcide.setup{}
---require'lspconfig'.rls.setup{}
---require'lspconfig'.vimls.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.rls.setup{}
+require'lspconfig'.ghcide.setup{cmd={"ghcup", "--lsp"}}
+require'lspconfig'.vimls.setup{}
 
 
 --require'lspconfig'.erlang_ls.setup{cmd={ "erlang_ls" }}
@@ -200,15 +200,15 @@ END
 
 
 " TODO: quando o lsp funcionar, adicionar de volta
-" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-" nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-" nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-" nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-" nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-" nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-" nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 " Plugin specifico
 nnoremap <leader>p :Fern . -drawer -toggle<cr>

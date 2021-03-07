@@ -1,0 +1,18 @@
+
+= Coisas que deve ter =
+
+* Multiplayer
+* Proficiência
+* Criação de armas
+* Dano e defesa elementar
+* Reforges
+* Criação de skills
+* Skills
+  - Foraging, Mining...
+* Sistema de party finding
+* Movimentação por mouse?
+* PVE
+* Organização dos aventureiros
+* Quests
+* Guildas
+

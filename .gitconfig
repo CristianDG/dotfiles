@@ -1,5 +1,10 @@
+[core]
+    pager= "diff-so-fancy" | less -RFX
+    whitespace= blank-at-eol, tab-in-indent
 [user]
     email= 39601699+CristianDG@users.noreply.github.com
-	name = CristianDG
+    name = CristianDG
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
+[diff]
+    context= 4

@@ -124,3 +124,4 @@ eval $(starship init zsh)
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
+[ -f "/home/cristiandg/.ghcup/env" ] && source "/home/cristiandg/.ghcup/env" # ghcup-env

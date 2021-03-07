@@ -1,0 +1,14 @@
+
+
+
+* Tecnologias
+  * React
+  * Sqlite
+  * Next.js
+
+- [ ] Crud
+  - [ ] Itens
+  - [ ] Usuários
+  - [ ] Permições
+
+- [ ] SiG

@@ -1,15 +1,13 @@
 
-{{{python
-
-def main():
-    pass
-
-}}}
-
 == TODOS ==
 
 - [ ] Aprender J
 - [ ] Aprender LISP
+
+== PROJETOS ==
+
+- [[CRUD]]
+- [[Jogo]]
 
 == UNI ==
 
