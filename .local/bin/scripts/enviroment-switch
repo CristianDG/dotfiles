@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+case $1 in
+    "java" )
+        export PATH="/opt/jdk-15/bin:$PATH" ;;
+    "scala" )
+        source enviroment-switch java
+        export PATH="/opt/scala-2.13.5/bin:$PATH" ;;
+esac
