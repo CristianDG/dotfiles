@@ -222,7 +222,10 @@ let g:vim_svelte_plugin_load_full_syntax = 1
 " VimWiki
 "let g:vimwiki_list = [{'path':'~/vimwiki','syntax': 'media'}]
 
-
+" NvimGtk
+if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'FiraCode Light 12')
+endif
 "" COC
 "
 "" Always show the signcolumn, otherwise it would shift the text each time
