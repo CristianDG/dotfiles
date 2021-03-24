@@ -6,4 +6,6 @@ case $1 in
     "scala" )
         source enviroment-switch java
         export PATH="/opt/scala-2.13.5/bin:$PATH" ;;
+    "racket")
+        export PATH="/usr/local/racket/bin:$PATH" ;;
 esac

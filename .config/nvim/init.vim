@@ -33,7 +33,10 @@ set pumheight=7
 set termguicolors
 
 "highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+au filetype gitcommit
+    \ call matchadd('ColorColumn', '\%81v', 100)
+
+call matchadd('ColorColumn', '\%121v', 100)
 "set colorcolumn=81
 
 set clipboard+=unnamedplus
@@ -155,6 +158,6 @@ imap <S-Insert> <C-R>*
 " imap { {}<esc>i
 " imap [ []<esc>i
 
-command! -nargs=* Make :exec 'make'
+"command! -nargs=* Make :exec 'make'
 
 exec 'source '.stdpath('config').'/plugins.vim'

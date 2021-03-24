@@ -91,7 +91,7 @@ Plug 'tpope/vim-fireplace'
 "Plug 'Olical/conjure', {'tag': 'v4.4.0'}
 
 " Lisp dialects
-Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+"Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
 Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',

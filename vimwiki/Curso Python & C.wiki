@@ -1,9 +1,0 @@
-
-- algoritmos
-- [[proposições lógicas]]
-- possivelmente variaveis
-  - tipos de variaveis
-- exercicios / pratica
-
-
-

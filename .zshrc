@@ -114,6 +114,9 @@ export NVM_DIR="$HOME/.nvm"
 
 export EDITOR=nvim
 
+# racket
+export PATH="/usr/local/racket/bin:$PATH"
+
 # Ocaml
 eval $(opam env)
 
@@ -125,3 +128,5 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 [ -f "/home/cristiandg/.ghcup/env" ] && source "/home/cristiandg/.ghcup/env" # ghcup-env
+
+source ~/.env

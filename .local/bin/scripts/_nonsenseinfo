@@ -27,7 +27,9 @@ def main(option, url):
             print(song_name.replace(' ','_'), end='|')
             href = song_tag.find('a')['href']
             try:
-                tie_in = title.find(attrs={"class": re.compile("tie_in")}).find_all(attrs={"class":re.compile("apmenuitem")})[0].text
+                tie_in = title
+                            .find(attrs={"class": re.compile("tie_in")})
+                            .find_all(attrs={"class":re.compile("apmenuitem")})[0].text
                 print(href.replace(' ','_'), end='|')
                 print(tie_in.replace(' ','_'), end='\n')
             except:
