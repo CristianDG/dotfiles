@@ -123,9 +123,3 @@ paraCada [1 2 3] (item) => {
 }
 
 }}}
-
-= Generated Links =
-    - [[CRUD]]
-    - [[Hue br]]
-    - [[Jogo]]
-    - [[index]]
