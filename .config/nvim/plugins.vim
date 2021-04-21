@@ -11,10 +11,6 @@ Plug 'vimwiki/vimwiki'
 " remove a bug
 Plug 'antoinemadec/FixCursorHold.nvim'
 
-
-
-
-
 " qol
 
 Plug 'tpope/vim-surround' 
@@ -76,6 +72,9 @@ Plug 'zaptic/elm-vim'
 " racket
 Plug 'wlangstroth/vim-racket'
 
+" common lisp
+Plug 'vlime/vlime', {'rtp': 'vim/'}
+
 " haskell
 "Plug 'mpickering/hlint-refactor-vim'
 "Plug 'alx741/vim-hindent'
@@ -99,6 +98,8 @@ Plug 'ionide/Ionide-vim', {
 
 " style
 Plug 'gruvbox-community/gruvbox'
+Plug 'artanikin/vim-synthwave84'
+
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
@@ -117,9 +118,9 @@ endif
 
 let g:gruvbox_invert_selection='0'
 
-set background=dark
-colorscheme gruvbox
 
+"set background=dark
+"colorscheme gruvbox
 
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 let g:livepreview_previewer = 'zathura'
@@ -200,7 +201,7 @@ END
 
 
 " TODO: quando o lsp funcionar, adicionar de volta
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+"nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -221,6 +222,10 @@ let g:vim_svelte_plugin_load_full_syntax = 1
 
 " VimWiki
 "let g:vimwiki_list = [{'path':'~/vimwiki','syntax': 'media'}]
+
+" rainbow
+
+au Filetype scheme :RainbowToggleOff
 
 " NvimGtk
 if exists('g:GtkGuiLoaded')

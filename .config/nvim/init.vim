@@ -144,11 +144,16 @@ au Filetype rust nnoremap <LocalLeader>r :Crun<cr>
 
 au BufReadPre *.svelte set filetype=svelte
 
-au BufReadPre *.rkt[l] set filetype=racket
-au filetype sicp set filetype=racket
-au filetype racket
+"au BufReadPre *.rkt[l] set filetype=racket
+"au filetype sicp set filetype=racket
+"au filetype racket
+"      \ set lisp
+au filetype scheme
       \ set lisp |
-      \ set autoindent
+      \ set autoindent |
+      \ set tabstop=2 |
+      \ set softtabstop=2 |
+
 
 " coisas aleatorias relativas a C-c C-v
 vmap <LeftRelease> "*ygv
@@ -160,4 +165,7 @@ imap <S-Insert> <C-R>*
 
 "command! -nargs=* Make :exec 'make'
 
+"exec 'source '.stdpath('config').'/colors/mine.vim'
 exec 'source '.stdpath('config').'/plugins.vim'
+
+colorscheme synthwave84

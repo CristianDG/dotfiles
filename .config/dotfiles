@@ -13,6 +13,7 @@ README.md
 .xinitrc
 .ghci
 .gitconfig
+.sbclrc
 
 # pasta
 vimwiki
