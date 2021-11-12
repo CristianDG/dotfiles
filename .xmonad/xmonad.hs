@@ -96,6 +96,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
     -- Video settings
     , ((modm .|. shiftMask, xK_n), spawn "n-video")
     , ((modm .|. shiftMask, xK_m), spawn "m-video")
+    , ((modm .|. shiftMask, xK_s), spawn "fls")
     -- Audio settings
     , ( (0, xF86XK_AudioLowerVolume)
       , spawn

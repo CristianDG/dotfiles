@@ -13,10 +13,14 @@
 set number
 set relativenumber
 set expandtab
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
 set foldcolumn=1
+set foldmethod=manual
+au Filetype json set foldmethod=syntax
 set encoding=utf-8
 set ignorecase
 set smartcase
@@ -28,13 +32,19 @@ set laststatus=2
 set noshowmode
 "set signcolumn=number
 set shortmess+=c
-set completeopt=menuone,noinsert,noselect
+
+set completeopt=menu,menuone,noselect
+
+"set completeopt=menuone,noinsert,noselect
 set pumheight=7
 set termguicolors
 
+
+" highlight
+
+
 "highlight ColorColumn ctermbg=magenta
-au filetype gitcommit
-    \ call matchadd('ColorColumn', '\%81v', 100)
+au filetype gitcommit call matchadd('ColorColumn', '\%81v', 100)
 
 call matchadd('ColorColumn', '\%121v', 100)
 "set colorcolumn=81
@@ -124,6 +134,9 @@ nmap <C-SPACE> <C-^><cr>
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+" fold entire funcion
+nnoremap <leader>ff $zf%<CR>
+
 " selecionar todo o arquivo
 nmap <C-M-A> mtggyG'tzz<cr>
 
@@ -140,6 +153,15 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 au Filetype vim nnoremap <LocalLeader>s :so %<cr> 
 au Filetype rust nnoremap <LocalLeader>r :Crun<cr> 
 
+au Filetype haskell
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2
+
+au Filetype java |
+  \ inoremap <LocalLeader>psvm public static void main(String[] args){<enter>}<C-c>O |
+  \ inoremap <LocalLeader>sout System.out.println();<C-c>ba |
+
 " au filetype haskell set include=^\\s*import\\s*\\(qualified\\|\\)\s*\\zs\\(\\S\\+\\)
 
 au BufReadPre *.svelte set filetype=svelte
@@ -148,11 +170,11 @@ au BufReadPre *.svelte set filetype=svelte
 "au filetype sicp set filetype=racket
 "au filetype racket
 "      \ set lisp
-au filetype scheme
-      \ set lisp |
-      \ set autoindent |
-      \ set tabstop=2 |
-      \ set softtabstop=2 |
+"au filetype scheme
+"      \ set lisp |
+"      \ set autoindent |
+"      \ set tabstop=2 |
+"      \ set softtabstop=2 |
 
 
 " coisas aleatorias relativas a C-c C-v
@@ -163,9 +185,14 @@ imap <S-Insert> <C-R>*
 " imap { {}<esc>i
 " imap [ []<esc>i
 
-"command! -nargs=* Make :exec 'make'
 
 "exec 'source '.stdpath('config').'/colors/mine.vim'
 exec 'source '.stdpath('config').'/plugins.vim'
+
+" create highlight
+"syntax keyword highlightedItem WARN
+
+" set highlight
+"highlight default link highlightedItem Todo
 
 colorscheme synthwave84

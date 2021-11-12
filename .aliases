@@ -6,6 +6,8 @@ if [ $OS = debian ]; then
     alias picom='compton'
 fi
 
+alias cls=clear
+
 alias v=vim
 alias n=nvim
 alias reader="nvim -R"
@@ -16,10 +18,12 @@ alias pip=pip3
 alias nzrc="n $HOME/.zshrc"
 alias ytdl='youtube-dl -ixw --embed-thumbnail --audio-format "mp3"'
 
-alias zathura='devour zathura'
-alias feh='devour feh'
+#alias zathura='devour zathura'
+#alias feh='devour feh'
 alias p='sudo pacman'
 alias updatesystem='p -Syu && xmonad --recompile'
+
+alias rl=rlwrap
 
 # lisp interpreters
 alias scheme='rlwrap scheme'

@@ -1,8 +1,10 @@
 
 == TODOS ==
 
-- [ ] Aprender J
-- [ ] Aprender LISP
+- [ ] Chella
+- [ ] Thami
+- [ ] Correção Leila
+- [ ] Casos de teste Projeto
 
 == PROJETOS ==
 
