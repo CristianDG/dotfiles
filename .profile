@@ -61,6 +61,8 @@ export DOTNET_ROOT=/opt/dotnet
 
 export XCURSOR_PATH=${XCURSOR_PATH}:~/.icons
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # READER
 
 export READER="zathura"
