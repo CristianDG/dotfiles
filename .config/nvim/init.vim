@@ -42,6 +42,7 @@ set termguicolors
 
 " highlight
 
+set syntax=ON
 
 "highlight ColorColumn ctermbg=magenta
 au filetype gitcommit call matchadd('ColorColumn', '\%81v', 100)
@@ -57,6 +58,7 @@ set listchars=tab:\!·,nbsp:_,trail:·,eol:¬
 
 set syntax=ON
 syntax enable
+syntax sync fromstart
 
 set expandtab
 
@@ -194,5 +196,8 @@ exec 'source '.stdpath('config').'/plugins.vim'
 
 " set highlight
 "highlight default link highlightedItem Todo
+
+syntax enable
+syntax sync fromstart
 
 colorscheme synthwave84

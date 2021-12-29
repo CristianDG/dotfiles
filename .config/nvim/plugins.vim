@@ -102,14 +102,14 @@ Plug 'tpope/vim-fireplace'
 " Lisp dialects
 "Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
-Plug 'ionide/Ionide-vim', {
-      \ 'do':  'make fsautocomplete',
-      \}
+"Plug 'ionide/Ionide-vim', {
+"      \ 'do':  'make fsautocomplete',
+"      \}
 
 " style
 Plug 'gruvbox-community/gruvbox'
 Plug 'artanikin/vim-synthwave84'
-
+Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()

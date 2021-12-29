@@ -1,11 +1,4 @@
 
-== TODOS ==
-
-- [ ] Chella
-- [ ] Thami
-- [ ] Correção Leila
-- [ ] Casos de teste Projeto
-
 == PROJETOS ==
 
 - [[CRUD]]
