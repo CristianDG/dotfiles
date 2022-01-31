@@ -35,6 +35,7 @@ vimwiki
 .config/ncmpcpp/config
 .config/nvim/init.vim
 .config/nvim/plugins.vim
+.config/nvim/colors
 .config/xmobar/xmobarrc
 
 # pasta

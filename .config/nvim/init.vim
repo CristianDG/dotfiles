@@ -20,7 +20,7 @@ set shiftwidth=4
 
 set foldcolumn=1
 set foldmethod=manual
-au Filetype json set foldmethod=syntax
+"au Filetype json set foldmethod=syntax
 set encoding=utf-8
 set ignorecase
 set smartcase
@@ -46,8 +46,8 @@ set termguicolors
 "highlight ColorColumn ctermbg=magenta
 au filetype gitcommit call matchadd('ColorColumn', '\%81v', 100)
 
-call matchadd('ColorColumn', '\%121v', 100)
-"set colorcolumn=81
+"call matchadd('ColorColumn', '\%121v', 10)
+set colorcolumn=121
 
 set clipboard+=unnamedplus
 
@@ -101,14 +101,28 @@ let maplocalleader="\\"
 filetype plugin indent on
 
 
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+
 " mpc player shortcuts
-let port=6601
-nnoremap <leader>P <cr>
-nnoremap <leader>PP :silent exec "!mpc toggle -p " port<cr>
-nnoremap <leader>P< :silent exec "!mpc prev -p " port<cr>
-nnoremap <leader>P> :silent exec "!mpc next -p " port<cr>
-nnoremap <leader>Pz :silent exec "!mpc shuffle -p " port<cr>
-nnoremap <leader>Po :silent exec "!mplay"<cr>
+"let port=6601
+"nnoremap <leader>P <cr>
+"nnoremap <leader>PP :silent exec "!mpc toggle -p " port<cr>
+"nnoremap <leader>P< :silent exec "!mpc prev -p " port<cr>
+"nnoremap <leader>P> :silent exec "!mpc next -p " port<cr>
+"nnoremap <leader>Pz :silent exec "!mpc shuffle -p " port<cr>
+"nnoremap <leader>Po :silent exec "!mplay"<cr>
 
 " Q.O.L ツ
 
@@ -116,11 +130,12 @@ nnoremap <leader>Po :silent exec "!mplay"<cr>
 "nnoremap ; :
 "nnoremap : ;
 
-"set spell spelllang=pt_br
-"set nospell
+command Spell set spell spelllang=pt_br
+command NoSpell set nospell
 
 nmap <leader>fd :silent exec 'edit '.stdpath('config').'/init.vim'<cr>
 nmap <leader>fp :silent exec 'edit '.stdpath('config').'/plugins.vim'<cr>
+nmap <leader>fc :silent exec 'edit '.stdpath('config').'/colors/myColors.vim'<cr>
 nmap <leader>st :silent exec "!stt zsh" <cr>
 nmap <leader>t :tabnew <cr>
 nmap <leader>n :noh <cr>
@@ -130,7 +145,7 @@ vmap <leader>y "+y <cr>
 nmap <leader>' <C-w>s<C-w>j:terminal<cr>
 nmap <C-P> :GFiles<cr>
 nmap <C-M-P> :Files<cr>
-nmap <C-SPACE> <C-^><cr>
+"nmap <C-SPACE> <C-^><cr>
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -141,6 +156,8 @@ nnoremap <leader>ff $zf%<CR>
 nmap <C-M-A> mtggyG'tzz<cr>
 
 nmap <leader>fx :silent exec "!chmod +x %"<cr>
+
+tnoremap <Esc> <C-\><C-n>
 
 imap <C-l> λ
 imap <LocalLeader><C-e> €
@@ -186,7 +203,7 @@ imap <S-Insert> <C-R>*
 " imap [ []<esc>i
 
 
-"exec 'source '.stdpath('config').'/colors/mine.vim'
+exec 'source '.stdpath('config').'/colors/myColors.vim'
 exec 'source '.stdpath('config').'/plugins.vim'
 
 " create highlight
@@ -195,4 +212,6 @@ exec 'source '.stdpath('config').'/plugins.vim'
 " set highlight
 "highlight default link highlightedItem Todo
 
-colorscheme synthwave84
+"colorscheme synthwave84
+colorscheme gruvbox
+

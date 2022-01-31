@@ -61,6 +61,7 @@ export DOTNET_ROOT=/opt/dotnet
 
 export XCURSOR_PATH=${XCURSOR_PATH}:~/.icons
 
+# Java errors
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # READER
@@ -72,4 +73,11 @@ export READER="zathura"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source "$HOME/.cargo/env"
+# tsserver
+
+export TS_LOG="-level verbose"
+
+[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env";
+
+# TODO: resolver
+#set TERMINAL="kitty"

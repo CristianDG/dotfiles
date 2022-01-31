@@ -16,7 +16,7 @@ Plug 'editorconfig/editorconfig-vim'
 
 " qol
 Plug 'tpope/vim-surround' 
-Plug 'luochen1990/rainbow'
+"Plug 'luochen1990/rainbow'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 
@@ -41,6 +41,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
 
+" spell check
+Plug 'mateusbraga/vim-spell-pt-br'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -102,9 +104,9 @@ Plug 'tpope/vim-fireplace'
 " Lisp dialects
 "Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 
-Plug 'ionide/Ionide-vim', {
-      \ 'do':  'make fsautocomplete',
-      \}
+"Plug 'ionide/Ionide-vim', {
+"      \ 'do':  'make fsautocomplete',
+"      \}
 
 " style
 Plug 'gruvbox-community/gruvbox'
@@ -169,7 +171,7 @@ let $FZF_DEFAULT_OPTS='--reverse'
 
 " Rust vim
 
-let g:rustfmt_autosave = 1
+"let g:rustfmt_autosave = 1
 
 " ale
 
@@ -193,6 +195,7 @@ lua << EOF
 --        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
 --      end,
 --    },
+
     mapping = {
       ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -239,7 +242,7 @@ lua << EOF
     })
   })
 
-  
+
 
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -248,7 +251,7 @@ lua << EOF
     --'clangd',
     --'rust_analyzer',
     --'pyright',
-    'tsserver',
+    --'tsserver',
     'vimls',
   }
 

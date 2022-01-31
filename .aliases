@@ -10,7 +10,7 @@ alias cls=clear
 
 alias v=vim
 alias n=nvim
-alias reader="nvim -R"
+alias reader="nvim -RO"
 
 alias python=python3
 alias pip=pip3

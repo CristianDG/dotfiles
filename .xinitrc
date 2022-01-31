@@ -13,8 +13,8 @@ m-video &&
 echo "##Feh##" &&
 fehbg
 
-echo "##mpd?##" &&
-mpd .config/mpd/mpd.conf
+#echo "##mpd?##" &&
+#mpd .config/mpd/mpd.conf
 
 echo "##Notifications##" &&
 /usr/bin/env dunst
