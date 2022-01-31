@@ -111,7 +111,7 @@ Plug 'tpope/vim-fireplace'
 " style
 Plug 'gruvbox-community/gruvbox'
 Plug 'artanikin/vim-synthwave84'
-
+Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
@@ -306,3 +306,4 @@ let g:vim_svelte_plugin_load_full_syntax = 1
 if exists('g:GtkGuiLoaded')
     call rpcnotify(1, 'Gui', 'Font', 'FiraCode Light 12')
 endif
+

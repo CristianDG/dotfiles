@@ -40,6 +40,13 @@ export PATH="$HOME/.local/bin/scripts:$PATH"
 #export GOPATH="$HOME/go"
 #export PATH="$GOPATH/bin/:$PATH"
 
+# JAVA
+export PATH="/opt/jdk-15/bin:$PATH"
+
+# SCALA
+#export PATH="/opt/scala-2.13.5/bin:$PATH"
+export PATH="$PATH:/home/cristiandg/.local/share/coursier/bin"
+
 # mpd
 
 export MPD_HOST="$HOME/.config/mpd/socket"
@@ -68,6 +75,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export READER="zathura"
 
+export _JAVA_AWT_WM_NONREPARENTING=1
 # nvm
 
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

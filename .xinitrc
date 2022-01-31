@@ -1,31 +1,32 @@
 #! /usr/bin/env sh
 
+set -x
 
 #echo "##Keyboard##" &&
 #keyboardset &&
 
-echo "##video##" &&
-m-video &&
+#echo "##video##" &&
+#m-video &&
 
 #echo "##cursor##" &&
 #xsetroot -cursor_name left_ptr
 
-echo "##Feh##" &&
 fehbg
 
+<<<<<<< HEAD
 #echo "##mpd?##" &&
 #mpd .config/mpd/mpd.conf
+=======
+mpd .config/mpd/mpd.conf
+>>>>>>> 18a763c30525da2782b2cec972c56afe8279f0c7
 
-echo "##Notifications##" &&
 /usr/bin/env dunst
 
 #echo "##nm-applet##" &&
 #nm-applet --no-agent
 
-echo "##Picom##" &&
 picom --config ~/.config/compton.conf -b
 
-echo "##Pulseaudio kill##" &&
 pulseaudio --kill
-echo "##Pulseaudio daemonize##" &&
+
 pulseaudio --daemonize
