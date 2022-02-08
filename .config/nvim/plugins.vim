@@ -6,7 +6,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'lambdalisue/fern.vim'
 
 " VimWiki
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 " remove a bug
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -276,15 +276,15 @@ EOF
 "Nvim lsp
 
 " TODO: quando o lsp funcionar, adicionar de volta
-"nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-"nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-"nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-"nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-"nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-"nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-"nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-"nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-"nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <leader><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <leader><c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <leader>1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> <leader>gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <leader>g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> <leader>gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> <leader>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 " Fern
 nnoremap <leader>p :Fern . -reveal=% -drawer -toggle<cr>
@@ -295,8 +295,13 @@ let g:godot_executable="~/.local/share/Steam/steamapps/common/Godot Engine/godot
 " Svelte
 let g:vim_svelte_plugin_load_full_syntax = 1
 
+" Markdown
+let g:vim_markdown_folding_disabled = 1
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
 " VimWiki
-"let g:vimwiki_list = [{'path':'~/vimwiki','syntax': 'media'}]
+let g:vimwiki_list = [{'path':'~/vimwiki','syntax': 'media'}]
 
 " rainbow
 

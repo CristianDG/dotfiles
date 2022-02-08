@@ -3,7 +3,7 @@
 set -x
 
 #echo "##Keyboard##" &&
-#keyboardset &&
+keyboardset
 
 #echo "##video##" &&
 #m-video &&
@@ -24,6 +24,6 @@ fehbg
 
 picom --config ~/.config/compton.conf -b
 
-pulseaudio --kill
+#pulseaudio --kill
 
-pulseaudio --daemonize
+#pulseaudio --daemonize

@@ -39,6 +39,7 @@ set completeopt=menu,menuone,noselect
 set pumheight=7
 set termguicolors
 
+set conceallevel=2
 
 " highlight
 
@@ -115,16 +116,9 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+nnoremap <C-Space> :e#<cr>
 
 
-" mpc player shortcuts
-"let port=6601
-"nnoremap <leader>P <cr>
-"nnoremap <leader>PP :silent exec "!mpc toggle -p " port<cr>
-"nnoremap <leader>P< :silent exec "!mpc prev -p " port<cr>
-"nnoremap <leader>P> :silent exec "!mpc next -p " port<cr>
-"nnoremap <leader>Pz :silent exec "!mpc shuffle -p " port<cr>
-"nnoremap <leader>Po :silent exec "!mplay"<cr>
 
 " Q.O.L ツ
 

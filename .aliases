@@ -23,6 +23,8 @@ alias ytdl='youtube-dl -ixw --embed-thumbnail --audio-format "mp3"'
 alias p='sudo pacman'
 alias updatesystem='p -Syu && xmonad --recompile'
 
+alias typescript-language-server='tsserver'
+
 alias rl=rlwrap
 
 # lisp interpreters

@@ -15,7 +15,7 @@ Config {
    , alignSep = "}{"  -- separator between left-right alignment
    --, template = " %UnsafeStdinReader% | %battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %RJTT% | %date% || %kbd% " -- xmonad laptop
    --, template = " %UnsafeStdinReader% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %RJTT% | %date% || %kbd% " -- xmonad pc
-   , template = "  %UnsafeStdinReader% | %multicpu% | %coretemp%  }{ %memory% | %battery% | %dynnetwork% || %kbd% " -- i3 laptop
+   , template = " %UnsafeStdinReader% | %multicpu% | %coretemp%  }{ %memory% | %battery% | %dynnetwork% | %date% || %kbd% " -- i3 laptop
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
