@@ -116,7 +116,7 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-nnoremap <C-Space> :e#<cr>
+"nnoremap <C-Space> :e#<cr>
 
 
 
@@ -134,14 +134,14 @@ nmap <leader>fp :silent exec 'edit '.stdpath('config').'/plugins.vim'<cr>
 nmap <leader>fc :silent exec 'edit '.stdpath('config').'/colors/myColors.vim'<cr>
 nmap <leader>st :silent exec "!stt zsh" <cr>
 nmap <leader>t :tabnew <cr>
-nmap <leader>n :noh <cr>
+"nmap <leader>n :noh <cr>
 "nmap <leader>p "+p <cr>
 nmap <leader>yy "+yy <cr>
 vmap <leader>y "+y <cr>
 nmap <leader>' <C-w>s<C-w>j:terminal<cr>
 nmap <C-P> :GFiles<cr>
 nmap <C-M-P> :Files<cr>
-"nmap <C-SPACE> <C-^><cr>
+nmap <C-SPACE> <C-^><cr>
 " change directory to current file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 

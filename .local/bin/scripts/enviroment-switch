@@ -8,4 +8,9 @@ case $1 in
         export PATH="/opt/scala-2.13.5/bin:$PATH" ;;
     "racket")
         export PATH="/usr/local/racket/bin:$PATH" ;;
+    "nvm")
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        ;;
 esac

@@ -1,0 +1,8 @@
+#! /usr/bin/env sh
+
+case $1 in
+    "performance" )
+        sudo cpupower frequency-set --governor performance ;;
+    "powersave" )
+        sudo cpupower frequency-set --governor powersave ;;
+esac

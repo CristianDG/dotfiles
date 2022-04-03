@@ -75,6 +75,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export READER="zathura"
 
+export BROWSER="brave"
+
 export _JAVA_AWT_WM_NONREPARENTING=1
 # nvm
 

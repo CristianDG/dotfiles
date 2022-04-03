@@ -6,6 +6,7 @@ if [ $OS = debian ]; then
     alias picom='compton'
 fi
 
+
 alias cls=clear
 
 alias v=vim
@@ -18,7 +19,7 @@ alias pip=pip3
 alias nzrc="n $HOME/.zshrc"
 alias ytdl='youtube-dl -ixw --embed-thumbnail --audio-format "mp3"'
 
-#alias zathura='devour zathura'
+alias zz='zathura --fork'
 #alias feh='devour feh'
 alias p='sudo pacman'
 alias updatesystem='p -Syu && xmonad --recompile'
@@ -26,6 +27,8 @@ alias updatesystem='p -Syu && xmonad --recompile'
 alias typescript-language-server='tsserver'
 
 alias rl=rlwrap
+
+alias sudo=doas
 
 # lisp interpreters
 alias scheme='rlwrap scheme'
@@ -36,6 +39,7 @@ vlime_dir="$HOME/.local/share/nvim/plugged/vlime/"
 start_vlime="$vlime_dir/lisp/start-vlime.lisp"
 
 
+export EDITOR=nvim
 export PATH="$HOME/.local/bin/scripts:$PATH"
 
 

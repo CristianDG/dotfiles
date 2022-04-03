@@ -50,6 +50,10 @@ Plug 'mateusbraga/vim-spell-pt-br'
 " Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+
+" TLA+
+Plug 'florentc/vim-tla'
 
 " Godot
 Plug 'habamax/vim-godot'
@@ -200,7 +204,7 @@ lua << EOF
       ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      --['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
@@ -288,6 +292,9 @@ nnoremap <silent> <leader>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 " Fern
 nnoremap <leader>p :Fern . -reveal=% -drawer -toggle<cr>
+
+" emmet
+let g:user_emmet_leader_key='<C-Z>'
 
 " Godot
 let g:godot_executable="~/.local/share/Steam/steamapps/common/Godot Engine/godot.x11.opt.tools.64"

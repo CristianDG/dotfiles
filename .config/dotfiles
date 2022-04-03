@@ -25,6 +25,7 @@ vimwiki
 
 .config/dotfiles
 .config/compton.conf
+.config/picom.conf
 .config/starship.toml
 .config/alacritty
 .config/i3
