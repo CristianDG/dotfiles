@@ -9,9 +9,14 @@ fi
 
 alias cls=clear
 
+alias e='doom run'
 alias v=vim
 alias n=nvim
+alias h=hx
 alias reader="nvim -RO"
+
+alias emacsd="/usr/bin/emacs --daemon"
+alias emacsc="emacsclient -c"
 
 alias python=python3
 alias pip=pip3
@@ -24,22 +29,23 @@ alias zz='zathura --fork'
 alias p='sudo pacman'
 alias updatesystem='p -Syu && xmonad --recompile'
 
-alias typescript-language-server='tsserver'
+#alias typescript-language-server='tsserver'
 
 alias rl=rlwrap
 
 alias sudo=doas
 
 # lisp interpreters
-alias scheme='rlwrap scheme'
+alias scheme=chez
+alias lisp=sbcl
+# alias scheme='rlwrap scheme'
 alias guile='rlwrap guile'
 alias sbcl='rlwrap sbcl'
+
 
 vlime_dir="$HOME/.local/share/nvim/plugged/vlime/"
 start_vlime="$vlime_dir/lisp/start-vlime.lisp"
 
-
 export EDITOR=nvim
 export PATH="$HOME/.local/bin/scripts:$PATH"
-
 

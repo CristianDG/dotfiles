@@ -107,6 +107,16 @@ alias ncfg="n ~/.config/nvim/init.vim"
 #    tmux attach -t dev || tmux new -s dev
 # fi
 
+# flutter
+
+export PATH="$PATH:$HOME/programas/repos/flutter/bin"
+
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools/"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin/"
+export PATH="$PATH:$ANDROID_ROOT/emulator"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/"
+
 #(cat ~/.cache/wal/sequences &)
 
 export EDITOR=nvim
@@ -124,6 +134,16 @@ eval $(starship init zsh)
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
+
 [ -f "/home/cristiandg/.ghcup/env" ] && source "/home/cristiandg/.ghcup/env" # ghcup-env
 
 source ~/.env
+source ~/.profile
+
+# pnpm
+export PNPM_HOME="/home/cristiandg/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

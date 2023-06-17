@@ -1,4 +1,4 @@
-#! bash
+#! /usr/bin/env bash
 
 temp(){
     sensors | awk '/^CPU/ { print $1" "$2}'|sed "s/+//"
@@ -27,7 +27,7 @@ ntime(){
 
 bar=""
 bar+=" [ $(ndate) ]"
-bar+=" [ Battery: $(battery) ]"
+#bar+=" [ Battery: $(battery) ]"
 bar+=" [ Mem Left: $(memory) ]"
 bar+=" [ $(temp) ]"
 bar+=" [ $(ntime) ]"

@@ -41,7 +41,8 @@ export PATH="$HOME/.local/bin/scripts:$PATH"
 #export PATH="$GOPATH/bin/:$PATH"
 
 # JAVA
-export PATH="/opt/jdk-15/bin:$PATH"
+#export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+#export PATH="$JAVA_HOME/bin:$PATH"
 
 # SCALA
 #export PATH="/opt/scala-2.13.5/bin:$PATH"
@@ -89,5 +90,15 @@ export TS_LOG="-level verbose"
 
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env";
 
+if [[ $XDG_SESSION_TYPE == "wayland" ]]
+then
+  export QT_QPA_PLATFORM="wayland"
+else
+  export QT_QPA_PLATFORM="xcb"
+fi
+
+export QT_STYLE_OVERRIDE=kvantum
+
 # TODO: resolver
 #set TERMINAL="kitty"
+

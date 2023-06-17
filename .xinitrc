@@ -2,28 +2,34 @@
 
 set -x
 
+source .xprofile
+
 #echo "##Keyboard##" &&
-keyboardset
+#keyboardset &
 
 #echo "##video##" &&
-#m-video &&
+#m-video &
 
 #echo "##cursor##" &&
 #xsetroot -cursor_name left_ptr
 
-fehbg
+#fehbg &
 
+xrdb ~/.Xresources &
 
 #echo "##mpd?##" &&
 #mpd .config/mpd/mpd.conf
 
-/usr/bin/env dunst
+#/usr/bin/env dunst
 
 #echo "##nm-applet##" &&
 #nm-applet --no-agent
 
-picom --config ~/.config/compton.conf -b
+#picom --config ~/.config/compton.conf -b
 
 #pulseaudio --kill
 
 #pulseaudio --daemonize
+
+
+# exec xmonad

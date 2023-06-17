@@ -10,12 +10,15 @@ import Data.Monoid
 import Graphics.X11.ExtraTypes.XF86
 import System.Exit
 import XMonad
-import XMonad.Hooks.DynamicBars
+import XMonad.Hooks.StatusBar
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.IndependentScreens
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
@@ -216,7 +219,9 @@ myLayout = avoidStruts $ (tiled ||| Mirror tiled ||| Full)
 --
 myManageHook =
     composeAll
-        [ className =? "MPlayer" --> doFloat
+        [ isFullscreen --> doFullFloat
+        , className =? "MPlayer" --> doFloat
+        , checkDock --> doLower
         , className =? "Gimp" --> doFloat
         , resource  =? "desktop_window" --> doIgnore
         , resource  =? "kdesktop" --> doIgnore
@@ -231,7 +236,9 @@ myManageHook =
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
 -- TODO: lembrar de mempty
-myEventHook = fullscreenEventHook
+--myEventHook = XMonad.Layout.Fullscreen.fullscreenEventHook
+myEventHook = handleEventHook def -- <+> XMonad.Hooks.EwmhDesktops.fullscreenEventHook
+
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -246,7 +253,6 @@ myEventHook = fullscreenEventHook
 --
 -- By default, do nothing.
 myStartupHook = do
-    spawnOnce "sh .xinitrc ;"
     spawnOnce "sudo ntpd ;"
 
 ------------------------------------------------------------------------
@@ -256,39 +262,37 @@ myStartupHook = do
 main = do
     xmproc0 <- spawnPipe $ "xmobar -x 0"
     xmproc1 <- spawnPipe $ "xmobar -x 1"
-    xmonad $
-        ewmh $
-        docks
-            def
+    xmonad $ docks $ fullscreenSupportBorder $
+      ewmh def
       -- simple stuff
-                { terminal = myTerminal
-                , focusFollowsMouse = myFocusFollowsMouse
-                , clickJustFocuses = myClickJustFocuses
-                , borderWidth = myBorderWidth
-                , modMask = myModMask
-                , workspaces = myWorkspaces
-                , normalBorderColor = myNormalBorderColor
-                , focusedBorderColor = myFocusedBorderColor
+        { terminal = myTerminal
+        , focusFollowsMouse = myFocusFollowsMouse
+        , clickJustFocuses = myClickJustFocuses
+        , borderWidth = myBorderWidth
+        , modMask = myModMask
+        , workspaces = myWorkspaces
+        , normalBorderColor = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
       -- key bindings
-                , keys = myKeys
-                , mouseBindings = myMouseBindings
+        , keys = myKeys
+        , mouseBindings = myMouseBindings
       -- hooks, layouts
-                , layoutHook = myLayout
-                , manageHook = myManageHook
-                , handleEventHook = myEventHook
-                , logHook =
-                      dynamicLogWithPP $
-                      def
-                          { ppOutput =
-                                (\x ->
-                                     hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x)
-                          , ppCurrent = xmobarColor "cyan" "" . wrap "[" "]"
-                          , ppTitle = xmobarColor "green" "" . shorten 40
-                          , ppVisible = wrap "(" ")"
-                          , ppUrgent = xmobarColor "red" "yellow"
-                          }
-                , startupHook = myStartupHook
-                }
+        , layoutHook = avoidStruts $ smartBorders $ myLayout
+        , manageHook = manageDocks <+> myManageHook
+        , handleEventHook = myEventHook
+        , logHook =
+          dynamicLogWithPP $
+            def
+              { ppOutput =
+                (\x ->
+                  hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x)
+              , ppCurrent = xmobarColor "cyan" "" . wrap "[" "]"
+              , ppTitle = xmobarColor "green" "" . shorten 40
+              , ppVisible = wrap "(" ")"
+              , ppUrgent = xmobarColor "red" "yellow"
+              }
+        , startupHook = myStartupHook
+        }
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -299,7 +303,7 @@ main = do
 -- | Finally, a copy of the default bindings in simple textual tabular format.
 help :: String
 help =
-    unlines
+  unlines
         [ "The default modifier key is 'alt'. Default keybindings:"
         , ""
         , "-- launching and killing programs"

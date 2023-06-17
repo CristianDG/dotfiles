@@ -29,6 +29,8 @@ vimwiki
 .config/starship.toml
 .config/alacritty
 .config/i3
+.config/i3status
+.config/sway
 .config/kitty
 .config/configuration.nix.example
 .config/mpd/playlists

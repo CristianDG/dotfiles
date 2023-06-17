@@ -1,0 +1,12 @@
+
+#! /usr/bin/env sh
+
+STATE="1"
+
+case $1 in
+    "on" )
+        echo "0" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo ;;
+    "off" )
+        echo "1" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo ;;
+esac
+

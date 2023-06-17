@@ -2,4 +2,5 @@
 
 [ -z "$1" ] && cmd=$SHELL || cmd=$1
 
+
 kitty -e $cmd &

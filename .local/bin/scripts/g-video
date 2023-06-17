@@ -1,0 +1,23 @@
+#! /usr/bin/env sh
+
+edp1=$(xrandr | awk '/^eDP/ {print $1}') 
+hdmi=$(xrandr | awk '/^HDMI/ {print $1}') 
+
+# xrandr --output $hdmi --auto --right-of $edp1 --auto
+
+[ -z "$1" ] && escolha="3" || escolha=$1
+
+case $escolha in
+    "1" )
+        size=800x600
+        rate=74.99 ;;
+    "2" )
+        size=1024x768
+        rate=75.00 ;;
+    "3" )
+        size=1600x900
+        rate=60.00 ;;
+esac
+
+xrandr --output $edp1 --auto &&
+    xrandr --output $hdmi --primary --mode $size -r $rate --right-of $edp1

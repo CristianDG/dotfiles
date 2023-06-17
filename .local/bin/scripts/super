@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+case $1 in
+  on)
+    gsettings set org.gnome.mutter overlay-key 'Super'
+    ;;
+  off)
+    gsettings set org.gnome.mutter overlay-key ''
+    ;;
+esac
+
