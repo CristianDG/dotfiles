@@ -7,6 +7,7 @@ README.md
 .spectrwm.conf
 .profile
 .aliases
+.profile
 .zshrc
 .bashrc
 .fonts
@@ -36,10 +37,8 @@ vimwiki
 .config/mpd/playlists
 .config/mpd/mpd.conf
 .config/ncmpcpp/config
-.config/nvim/init.vim
-.config/nvim/plugins.vim
-.config/nvim/colors
 .config/xmobar/xmobarrc
 
 # pasta
+.config/nvim/
 .local/bin/scripts

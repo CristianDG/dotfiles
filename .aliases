@@ -2,7 +2,7 @@
 
 OS="$(cat /etc/*-release | grep '^ID' | sed "s/ID=//")"
 
-if [ $OS = debian ]; then
+if [ "$OS" = "debian" ]; then
     alias picom='compton'
 fi
 
@@ -12,7 +12,6 @@ alias cls=clear
 alias e='doom run'
 alias v=vim
 alias n=nvim
-alias h=hx
 alias reader="nvim -RO"
 
 alias emacsd="/usr/bin/emacs --daemon"
@@ -27,7 +26,7 @@ alias ytdl='youtube-dl -ixw --embed-thumbnail --audio-format "mp3"'
 alias zz='zathura --fork'
 #alias feh='devour feh'
 alias p='sudo pacman'
-alias updatesystem='p -Syu && xmonad --recompile'
+alias updatesystem='p -Syu'
 
 #alias typescript-language-server='tsserver'
 
