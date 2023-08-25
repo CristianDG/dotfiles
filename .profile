@@ -84,6 +84,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# NIM
+export PATH="$PATH:$HOME/.nimble/bin"
+
 # tsserver
 
 export TS_LOG="-level verbose"
@@ -99,6 +102,10 @@ fi
 
 export QT_STYLE_OVERRIDE=kvantum
 
+# go
+export PATH="$PATH:$(go env GOPATH)/bin/"
+
 # TODO: resolver
 #set TERMINAL="kitty"
 
+set HISTSIZE=-1

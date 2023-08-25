@@ -1,0 +1,3 @@
+#! /usr/bin/env sh
+
+swaylock -i "$HOME/Images/Wallpaper/default_wallpaper_2.png" $@

@@ -3,4 +3,7 @@
 [ -z "$1" ] && cmd=$SHELL || cmd=$1
 
 
-kitty -e $cmd &
+# alacritty -e $cmd &
+
+kitty --detach -e $cmd
+

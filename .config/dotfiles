@@ -15,6 +15,7 @@ README.md
 .ghci
 .gitconfig
 .sbclrc
+.inputrc
 
 # pasta
 vimwiki

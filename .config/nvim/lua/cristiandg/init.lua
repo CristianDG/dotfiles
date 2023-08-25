@@ -6,9 +6,16 @@ let g:opamshare = substitute(system('opam var share'),'\n$','','''')
 set rtp+=g:opamshare."/merlin/vim"
 set rtp+=/home/cristiandg/.opam/5.0.0+options/share/ocp-indent/vim
 
+let g:spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spell'
+let loaded_spellfile_plugin = 1
+
+command! Spell set spell!
+
 ]])
 
+vim.opt.spelllang = 'pt_BR'
 
+vim.o.foldenable = false
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.clipboard = "unnamedplus"

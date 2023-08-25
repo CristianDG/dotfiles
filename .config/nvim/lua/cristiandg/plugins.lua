@@ -1,4 +1,3 @@
-
 return {
 
   -- Git related plugins
@@ -20,12 +19,17 @@ return {
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim', tag = "legacy" ,opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
   },
+  -- Markdown
+
+  { 'godlygeek/tabular' },
+  { 'plasticboy/vim-markdown' },
+
 
   {
     -- Autocompletion
@@ -50,7 +54,11 @@ return {
 
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',       opts = {} },
+
+  -- git worktrees
+  { 'ThePrimeagen/git-worktree.nvim' },
+
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -64,7 +72,8 @@ return {
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -104,9 +113,18 @@ return {
       show_trailing_blankline_indent = false,
     },
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -135,7 +153,11 @@ return {
 
   { 'wbthomason/packer.nvim' },
   { 'theprimeagen/harpoon' },
-  { 'mbbill/undotree' }
+  { 'mbbill/undotree' },
 
+
+  -- EMMET
+  { 'https://github.com/mattn/emmet-vim' },
+  -- NIM
+  { 'alaviss/nim.nvim', ft = "nim" },
 }
-

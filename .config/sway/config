@@ -43,7 +43,9 @@ for_window [class=".*"] border pixel 0
 
 # start a terminal as fallback
 bindsym $mod+Control+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
+bindsym $mod+shift+Return exec kitty
+#bindsym $mod+shift+Return exec alacritty msg create-window --working-directory="$HOME" || alacritty
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -317,7 +319,6 @@ mode $o {
 bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
 bindsym $mod+shift+m exec m-video
 bindsym $mod+shift+n exec n-video
-bindsym $mod+shift+Return exec kitty
 bindsym $mod+shift+s exec fls
 bindsym $mod+shift+e exec $emacs
 bindsym $mod+x exec i3-display-swap
@@ -332,6 +333,7 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
 #exec doom run --daemon
 exec m-video && fehbg
+exec ~/.local/bin/scripts/swayidle-config
 
 exec_always fehbg
 exec_always autotiling
