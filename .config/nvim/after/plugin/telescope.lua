@@ -5,6 +5,9 @@
 
 require('telescope').setup {
   defaults = {
+    previewer = true,
+    layout_strategy = "flex",
+
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -39,7 +42,7 @@ vim.keymap.set('n', '<leader>gw', require('telescope').extensions.git_worktree.g
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>d', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 
 vim.keymap.set('n', '<leader>.', builtin.find_files, { desc = '[.] Search files' })
 vim.keymap.set('n', '<leader>,', builtin.buffers, { desc = '[,] Search in buffers' })

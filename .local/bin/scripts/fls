@@ -1,2 +1,2 @@
 #! /usr/bin/env sh
-flameshot gui
+XDG_CURRENT_DESKTOP=sway flameshot gui

@@ -35,9 +35,9 @@ floating_modifier $mod
 set $monitor_secundario "eDP-1"
 set $monitor_principal "HDMI-A-1"
 
-# output * bg /home/cristiandg/Images/Wallpaper/default_wallpaper.png fill
-output $monitor_principal bg /home/cristiandg/Images/Wallpaper/default_wallpaper_1.png fill
-output $monitor_secundario bg /home/cristiandg/Images/Wallpaper/default_wallpaper_2.png fill
+#output * bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
+output $monitor_principal bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
+#output $monitor_secundario bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
 
 for_window [class=".*"] border pixel 0
 
@@ -85,7 +85,7 @@ bindsym $mod+Shift+l move right
 # bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-# bindsym $mod+h split h
+bindsym $mod+q split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -106,6 +106,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -150,11 +151,9 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 
-output $monitor_secundario pos 0 0
-output $monitor_principal mode 2560x1080@75hz pos 1366 0
+output $monitor_principal mode 2560x1080@75hz pos 0 0
 
 
-bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 
 
 # Moving workspaces between screens 
@@ -176,12 +175,12 @@ bindsym $mod+Control+k resize shrink height 5 px or 5 ppt
 bindsym $mod+Control+l resize grow width 5 px or 5 ppt
 
 # reload the configuration file
-bindsym $mod+q reload
+bindsym $mod+Shift+q reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit sway (logs you out of your X session)
 
-bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Delete exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # resize window (you can also use the mouse for that)
 
@@ -273,9 +272,9 @@ bar {
 }
 
 
-set $sink "alsa_output.pci-0000_00_1f.3.analog-stereo"
-bindsym XF86AudioRaiseVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume up
-bindsym XF86AudioLowerVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume down
+set $sink "alsa_output.pci-0000_05_00.6.analog-stereo"
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume $sink up
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume $sink down
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute $sink toggle
 
 # Sreen brightness controls
@@ -283,7 +282,7 @@ bindsym XF86MonBrightnessUp   exec xbacklight -inc 20 # increase screen brightne
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 bindsym XF86AudioPlay   exec playerctl play-pause
@@ -307,6 +306,8 @@ mode $o {
     #bindsym i exec google-chrome --incognito ;; $md
     bindsym e exec $emacs ;; $md
     bindsym n exec nautilus ;; $md
+    bindsym b exec brave ;; $md
+    bindsym d exec discord-canary ;; $md
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
@@ -316,27 +317,28 @@ mode $o {
     bindsym Return $md
 }
 
-bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
-bindsym $mod+shift+m exec m-video
-bindsym $mod+shift+n exec n-video
-bindsym $mod+shift+s exec fls
-bindsym $mod+shift+e exec $emacs
-bindsym $mod+x exec i3-display-swap
-
-exec --no-startup-id "~/.local/bin/doom run --daemon"
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+
+bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
+bindsym $mod+shift+m exec /home/cristiandg/.local/bin/scripts/m-video
+bindsym $mod+shift+n exec /home/cristiandg/.local/bin/scripts/n-video
+bindsym $mod+shift+s exec /home/cristiandg/.local/bin/scripts/fls
+bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+bindsym $mod+shift+e exec nautilus
+
+exec --no-startup-id "~/.local/bin/doom run --daemon"
 
 #exec flameshot
 # exec gnome-terminal -e ranger
 
 #exec doom run --daemon
-exec m-video && fehbg
-exec ~/.local/bin/scripts/swayidle-config
+#exec m-video && fehbg
+#exec ~/.local/bin/scripts/swayidle-config
 
-exec_always fehbg
-exec_always autotiling
+#exec_always fehbg
+#exec_always autotiling
 
 input type:keyboard {
     xkb_layout br
