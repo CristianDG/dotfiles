@@ -1,0 +1,6 @@
+#! /usr/bin/env sh
+
+SINK="alsa_input.pci-0000_05_00.6.analog-stereo"
+
+pactl set-source-mute $SINK toggle
+

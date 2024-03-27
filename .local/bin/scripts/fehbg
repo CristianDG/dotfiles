@@ -1,3 +1,3 @@
 #! /usr/bin/env sh
 
-feh -F --bg-max --no-fehbg $HOME/Images/Wallpaper/default_wallpaper.png
+feh -F --bg-fill --no-fehbg $HOME/Pictures/Wallpaper/default_wallpaper.png

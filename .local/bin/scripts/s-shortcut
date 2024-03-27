@@ -1,0 +1,146 @@
+#! /usr/bin/env sh
+
+
+shortcut_alias () {
+    echo todo
+    exit 1
+}
+
+shortcut_list () {
+    echo todo
+    exit 1
+}
+
+shortcut_rename () {
+    echo todo
+    exit 1
+}
+
+shortcut_change_path () {
+    echo todo
+    exit 1
+}
+
+shortcut_echo () {
+
+    name=$1
+    [ -z $name ] && echo >&2 "blank name" && exit 1
+    [ ! -d "$save_folder/$name" ] && echo >&2 "Shortcut doesn't exists: $name" && exit 1
+
+    echo "$save_folder/$name"
+}
+
+shortcut_remove () {
+    name=$([ -z "$1" ] && prompt "name" || echo "$1")
+    [ -z $name ] && echo >&2 "blank name" && exit 1
+    [ ! -d "$save_folder/$name" ] && echo >&2 "Shortcut doesn't exists: $name" && exit 1
+
+    val=$(prompt "Do you really want to remove $name? [y/N]")
+    [ -z $val ] && exit 1
+
+    unlink "$save_folder/$name"
+}
+
+binary_prompt () {
+    prompt_s=$1
+    options=$2
+    default=$3
+
+    val=$(prompt $prompt_s)
+
+    # FIXME: ta errado
+    [ -z $val ] && exit 0 || exit 1
+}
+
+prompt () {
+    prompt=$1
+
+    if [ $use_dmenu == 1 ]; then
+        val=$(echo "" | dmenu -ip "$prompt")
+    else
+        echo >&2 "$prompt"
+        read val
+    fi
+
+    echo $val
+}
+
+sanitize_path () {
+    val=$1
+    if [ -z $val ]; then
+        path=$(pwd)
+    else
+        [ ! -d $val ] && echo >&2 "invalid path: $val" && exit 1
+        path=$(readlink --canonicalize $val)
+    fi
+    echo $path
+}
+
+
+shortcut_set () {
+
+    name=$([ -z "$1" ] && prompt "name" || echo "$1")
+    [ -z $name ] && echo >&2 "blank name" && exit 1
+    [ -d "$save_folder/$name" ] && echo >&2 "Shortcut already exists: $name" && exit 1
+    [ $interactive ] && echo >&2 "Name: $name"
+
+    path=$(sanitize_path $(prompt "set path: (current press enter)")) || exit 1
+
+    [ $interactive ] && echo >&2 "Path: $path"
+
+
+
+    ln -s $path "$save_folder/$name"
+}
+
+main () {
+
+    save_folder="$HOME/.local/share/s-shortcuts"
+    mkdir -p $save_folder
+
+
+    # set -x
+
+    [ -t 0 ] && use_dmenu=0 || use_dmenu=1;
+
+    shortcut_change_path_flag=
+    shortcut_list_flag=
+    shortcut_rename_flag=
+    shortcut_set_flag=
+    shortcut_alias_flag=
+    shortcut_remove_flag=
+    interactive=
+    usage=
+
+    no_flags=0
+    go=1
+    while getopts "ndlsrcaixh" opt; do
+        [ 1 -eq $no_flags ] && break
+        go=0
+        case "${opt}" in
+            n) no_flags=1; go=1 break;;
+            d) use_dmenu=1;;
+            c) shortcut_change_path_flag=1;;
+            l) shortcut_list_flag=1;;
+            r) shortcut_rename_flag=1;;
+            x) shortcut_remove_flag=1;;
+            s) shortcut_set_flag=1;;
+            a) shortcut_alias_flag=1;;
+            i) interactive=1;;
+            h) usage=1;;
+        esac
+    done
+
+    [ $usage ] && echo >&2 "s [options] [shortcut]" && exit 0
+    [ 1 -eq $go ] && shortcut_echo "$2" && exit 0
+    [ $shortcut_list_flag ] && shortcut_list && exit 0
+    [ $shortcut_set_flag ] && shortcut_set $2 && exit 0
+    [ $shortcut_change_path_flag ] && shortcut_change_path $1 && exit 0
+    [ $shortcut_rename_flag ] && shortcut_rename $2 && exit 0
+    [ $shortcut_remove_flag ] && shortcut_remove $2 && exit 0
+    [ $shortcut_alias_flag ] && shortcut_alias && exit 0
+
+}
+
+main $@
+

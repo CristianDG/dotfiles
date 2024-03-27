@@ -1,9 +1,11 @@
 #! /usr/bin/env bash
 
 edp1=$(xrandr | awk '/^eDP/ {print $1}');
-hdmi=$(xrandr | awk '/^HDMI/ {print $1}');
+# TODO: resolver
+#hdmi=$(xrandr | awk '/^HDMI/ {print $1}');
+hdmi="HDMI-A-0"
 
 # xrandr --output $hdmi --auto --right-of $edp1 --auto
+xrandr --output $hdmi --primary --scale-from 2560x1080 -r 74.99 # --right-of $edp1 && xrandr --output $edp1 --auto
+xrandr --output $hdmi --primary --mode 2560x1080 -r 74.99 # --right-of $edp1 && xrandr --output $edp1 --auto
 
-xrandr --output $edp1 --auto &&
-    xrandr --output $hdmi --primary --mode 2560x1080 -r 74.99  --right-of $edp1

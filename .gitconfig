@@ -10,3 +10,5 @@
     context= 4
 [safe]
 	directory = /opt/flutter
+[init]
+	defaultBranch = dev

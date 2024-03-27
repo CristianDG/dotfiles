@@ -76,7 +76,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export READER="zathura"
 
-export BROWSER="brave"
+export BROWSER="/usr/bin/chromium"
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 # nvm
@@ -109,3 +109,6 @@ export PATH="$PATH:$(go env GOPATH)/bin/"
 #set TERMINAL="kitty"
 
 set HISTSIZE=-1
+
+export ODIN_ROOT="$HOME/programas/repos/Odin"
+

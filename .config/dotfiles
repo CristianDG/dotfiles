@@ -18,8 +18,6 @@ README.md
 .inputrc
 
 # pasta
-vimwiki
-
 .xmonad/xmonad.hs
 
 .emacs.d/configuration.org
@@ -41,5 +39,6 @@ vimwiki
 .config/xmobar/xmobarrc
 
 # pasta
+.config/gdb
 .config/nvim/
 .local/bin/scripts

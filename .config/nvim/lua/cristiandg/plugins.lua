@@ -46,7 +46,10 @@ return {
       'rafamadriz/friendly-snippets',
     },
   },
-
+  {
+    'ray-x/lsp_signature.nvim',
+    event = "VeryLazy",
+  },
   -- icons
   { 'nvim-tree/nvim-web-devicons' },
   -- File tree
@@ -58,6 +61,17 @@ return {
 
   -- git worktrees
   { 'ThePrimeagen/git-worktree.nvim' },
+  {
+
+    'numToStr/Comment.nvim',
+    options = {
+      mappings = {
+        basic = false,
+        extra = false,
+      },
+    },
+    lazy = false,
+  },
 
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
@@ -72,8 +86,7 @@ return {
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         --vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -118,7 +131,13 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    -- TODO(Cristian):
     opts = {
+      highlight = {
+        multiline = false,
+        keyword="bg",
+        after = "",
+      },
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
@@ -156,10 +175,18 @@ return {
   { 'wbthomason/packer.nvim' },
   { 'theprimeagen/harpoon' },
   { 'mbbill/undotree' },
-
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
 
   -- EMMET
   { 'https://github.com/mattn/emmet-vim' },
   -- NIM
-  { 'alaviss/nim.nvim',                  ft = "nim" },
+  { 'alaviss/nim.nvim', ft = "nim" },
 }

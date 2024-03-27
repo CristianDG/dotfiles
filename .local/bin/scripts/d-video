@@ -1,0 +1,16 @@
+#! /usr/bin/env sh
+
+set -x
+
+# TODO: fazer funcionar para varios tipos de telas
+
+case $1 in
+  "-r")
+    xrandr --delmonitor RIGHT
+    xrandr --delmonitor LEFT
+  ;;
+  *)
+    xrandr --setmonitor RIGHT 640/167x1080/284+1920+0 none
+    xrandr --setmonitor LEFT 1920/506x1080/284+0+0 none
+  ;;
+esac

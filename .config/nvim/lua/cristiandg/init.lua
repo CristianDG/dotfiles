@@ -15,6 +15,9 @@ command! Spell set spell!
 
 vim.opt.spelllang = 'pt_BR'
 
+vim.o.foldmethod = 'marker'
+vim.o.foldmarker = '{{{,}}}'
+
 vim.o.foldenable = false
 vim.o.number = true
 vim.o.relativenumber = true

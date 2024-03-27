@@ -1,8 +1,9 @@
 #! /usr/bin/sh
 
 edp1=$(xrandr | awk '/^eDP/ {print $1}') 
-hdmi=$(xrandr | awk '/^HDMI/ {print $1}') 
 
-echo "$edp1"
+# TODO: resolver
+#hdmi=$(xrandr | awk '/^HDMI/ {print $1}') 
+hdmi="HDMI-A-0"
 
-xrandr --output $hdmi --scale-from 1920x1080 --right-of $edp1 --auto
+xrandr --output $hdmi --scale-from 1920x1080 # --right-of $edp1 --auto

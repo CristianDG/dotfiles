@@ -21,7 +21,7 @@ alias python=python3
 alias pip=pip3
 
 alias nzrc="n $HOME/.zshrc"
-alias ytdl='youtube-dl -ixw --embed-thumbnail --audio-format "mp3"'
+alias ytdl='yt-dlp -ixw --embed-thumbnail --audio-format "mp3"'
 
 alias zz='zathura --fork'
 #alias feh='devour feh'
@@ -47,4 +47,7 @@ start_vlime="$vlime_dir/lisp/start-vlime.lisp"
 
 export EDITOR=nvim
 export PATH="$HOME/.local/bin/scripts:$PATH"
+
+# TODO: criar um script próprio
+alias delete-monitor='xrandr --delmonitor'
 

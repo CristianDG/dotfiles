@@ -19,7 +19,6 @@ Kickstart.nvim is a template for your own configuration.
 
   And then you can explore or search through `:help lua-guide`
 
-
 Kickstart Guide:
 
 I have left several `:help X` comments throughout the init.lua
@@ -35,6 +34,9 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
+-- NOTE(CDG+):
+-- NOTE():
+-- NOTE(dd-d+):
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -264,8 +266,10 @@ lsp.denols.setup {
 }
 
 lsp.ols.setup {
+  cmd = { 'ols' },
   on_attach = on_attach,
   capabilities = capabilities,
+  -- root_dir = lsp.util.root_pattern("ols.json", "*.odin"),
 }
 
 lsp.tsserver.setup {
@@ -288,6 +292,14 @@ lsp.nim_langserver.setup {
   capabilities = capabilities,
 }
 
+lsp.gdscript.setup {
+  --force_setup = true, -- because the LSP is global. Read more on lsp-zero docs about this.
+  single_file_support = true,
+  root_dir = lsp.util.root_pattern('project.godot', '.git'),
+  filetypes = {'gd', 'gdscript', 'gdscript3' },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 
 
@@ -312,6 +324,7 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+---@diagnostic disable-next-line: missing-fields
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -329,18 +342,14 @@ cmp.setup {
       select = true,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
+      if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       else
         fallback()
       end
     end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.locally_jumpable(-1) then
+      if luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()

@@ -128,7 +128,8 @@ export PATH="/usr/local/racket/bin:$PATH"
 eval $(opam env)
 
 # starship
-eval $(starship init zsh)
+eval "$(starship init zsh)"
+
 
 # ALIASES
 if [ -f ~/.aliases ]; then
@@ -153,3 +154,4 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
