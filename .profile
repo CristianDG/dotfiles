@@ -112,3 +112,7 @@ set HISTSIZE=-1
 
 export ODIN_ROOT="$HOME/programas/repos/Odin"
 
+# dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export PATH="$HOME/.dotnet/tools:$PATH"
+

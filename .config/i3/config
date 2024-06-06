@@ -100,6 +100,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+i sticky toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -300,9 +301,11 @@ bindsym Shift+XF86AudioPrev   exec playerctl position 5-
 
 set $emacs "emacsclient -c -a 'doom run'"
 
-set $o "open"
-bindsym $mod+o mode $o
-mode $o {
+# FIXME: procurar saber se existe if
+
+set $openm "open multiple"
+bindsym $mod+Shift+o mode $openm
+mode $openm {
     set $md mode "default"
 
     #bindsym c exec google-chrome --new-window ;; $md
@@ -321,6 +324,28 @@ mode $o {
     bindsym Escape $md
     bindsym Return $md
 }
+set $open "open"
+bindsym $mod+o mode $open
+mode $open {
+    set $md mode "default"
+
+    #bindsym c exec google-chrome --new-window ;; $md
+    #bindsym i exec google-chrome --incognito ;; $md
+    bindsym e exec stt nvim ;; $md
+    bindsym b exec $browser ;; $md
+    bindsym c exec $browser ;; $md
+    bindsym d exec discord-canary ;; $md
+    #bindsym r exec gnome-terminal -e ranger ;; $md
+
+    # Bons tempos
+    # bindsym s exec google-chrome https://superanimes.org ;; workspace $ws1 ;; $md
+
+    bindsym $mod+p $md
+    bindsym p      $md
+    bindsym Escape $md
+    bindsym Return $md
+}
+
 
 #exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 #exec --no-startup-id dbus-update-activation-environment --all
@@ -335,6 +360,8 @@ bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 bindsym $mod+shift+e exec nautilus
 
 exec --no-startup-id "~/.local/bin/doom run --daemon"
+exec --no-startup-id /usr/libexec/gsd-xsettings
+exec --no-startup-id /usr/lib/gsd-xsettings
 
 #exec flameshot
 # exec gnome-terminal -e ranger

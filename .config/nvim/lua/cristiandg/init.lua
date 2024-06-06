@@ -15,9 +15,9 @@ command! Spell set spell!
 
 vim.opt.spelllang = 'pt_BR'
 
+
 vim.o.foldmethod = 'marker'
 vim.o.foldmarker = '{{{,}}}'
-
 vim.o.foldenable = false
 vim.o.number = true
 vim.o.relativenumber = true
@@ -43,4 +43,31 @@ vim.o.updatetime = 250
 vim.o.statusline=[[%F %M %y %r%=%c:%l/%L [%p%%] |%{strftime('%T')}| ]]
 vim.o.swapfile=false
 vim.o.undodir= os.getenv("HOME") .. "/.local/share/nvim/undodir"
+
+-- vim.api.nvim_create_autocmd('BufEnter', {
+--  pattern = 'term://*',
+--  command = ':startinsert'
+-- })
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*.go',
+  callback = function () vim.o.tabstop = 2 end
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*.cs',
+  callback = function ()
+    vim.o.tabstop = 2
+    vim.o.shiftwidth = 2
+  end
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*.html',
+  callback = function ()
+    vim.o.tabstop = 2
+    vim.o.shiftwidth = 2
+  end
+})
+
 

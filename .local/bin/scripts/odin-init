@@ -1,0 +1,29 @@
+#! /usr/bin/env bash
+
+mkdir -p bin
+mkdir -p src
+
+if ! [ -f src/main.odin ]; then
+cat << EOF > src/main.odin
+package main
+
+import "core:fmt"
+
+main :: proc() {
+  fmt.println("opa")
+}
+EOF
+fi
+
+if ! [ -f build.sh ]; then
+cat << EOF > build.sh
+#! /usr/bin/env sh
+
+odin build src -out:bin/out
+
+EOF
+fi
+
+chmod +x build.sh
+
+touch ols.json
