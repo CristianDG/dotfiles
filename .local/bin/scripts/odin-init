@@ -3,6 +3,13 @@
 mkdir -p bin
 mkdir -p src
 
+
+if ! [ -f bin/.gitignore ]; then
+echo "
+*
+!.gitignore" > bin/.gitignore
+fi
+
 if ! [ -f src/main.odin ]; then
 cat << EOF > src/main.odin
 package main
@@ -14,6 +21,7 @@ main :: proc() {
 }
 EOF
 fi
+
 
 if ! [ -f build.sh ]; then
 cat << "EOF" > build.sh
