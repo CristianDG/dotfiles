@@ -198,25 +198,7 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
 
-  -- NOTE: para saber se é deno ou node, desativando um na hora de usar o outro
-  local active_clients = vim.lsp.get_active_clients()
-  for _, client in pairs(active_clients) do
-    if client.name == 'tsserver' then
-      for _, client_ in pairs(active_clients) do
-        -- prevent tsserver from starting if denols is already active
-        if client_.name == 'denols' then
-          client.stop()
-        end
-      end
-    elseif client.name == 'denols' then
-      for _, client_ in pairs(active_clients) do
-        -- stop tsserver if denols is already active
-        if client_.name == 'tsserver' then
-          client_.stop()
-        end
-      end
-    end
-  end
+  -- FIXME: para saber se é deno ou node, desativando um na hora de usar o outro
 end
 
 -- Enable the following language servers
@@ -269,7 +251,19 @@ lsp.ols.setup {
   cmd = { 'ols' },
   on_attach = on_attach,
   capabilities = capabilities,
-  -- root_dir = lsp.util.root_pattern("ols.json", "*.odin"),
+  root_dir = lsp.util.root_pattern("ols.json", ".git", "src"),-- "*.odin"),
+  single_file_support = true,
+  settings = {
+    enable_document_symbols = true,
+    enable_procedure_context = true,
+    enable_inlay_hints = true,
+    enable_fake_methods = true,
+    enable_references = true,
+    enable_procedure_snippet = true,
+    enable_semantic_tokens = true,
+    enable_snippets = true,
+    verbose = true,
+  },
 }
 
 lsp.tsserver.setup {

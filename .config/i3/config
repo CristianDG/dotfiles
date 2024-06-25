@@ -60,7 +60,7 @@ bindsym $mod+Shift+c kill
 # installed.
 
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -l 10' --entry-type=Name ;; $md
-bindsym $mod+p exec --no-startup-id dmenu_run -f -i -fn Terminus:pixelsize=14:antialias=true ;; $md
+bindsym $mod+p exec --no-startup-id dmenu_run -f -i -fn Terminus:pixelsize=16:antialias=true ;; $md
 
 
 # change focus
@@ -313,7 +313,7 @@ mode $openm {
     bindsym e exec stt nvim
     bindsym b exec $browser
     bindsym c exec $browser
-    bindsym d exec discord-canary
+    bindsym d exec discord
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
@@ -334,7 +334,7 @@ mode $open {
     bindsym e exec stt nvim ;; $md
     bindsym b exec $browser ;; $md
     bindsym c exec $browser ;; $md
-    bindsym d exec discord-canary ;; $md
+    bindsym d exec discord  ;; $md
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos

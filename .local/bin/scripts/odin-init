@@ -16,14 +16,24 @@ EOF
 fi
 
 if ! [ -f build.sh ]; then
-cat << EOF > build.sh
+cat << "EOF" > build.sh
 #! /usr/bin/env sh
 
-odin build src -out:bin/out
+[[ -z $BUILD_DIR ]] && BUILD_DIR=src
+[[ -z $OUT_FILE  ]] && OUT_FILE=bin/out
+
+odin build $BUILD_DIR -out:$OUT_FILE
 
 EOF
-fi
 
 chmod +x build.sh
+fi
 
-touch ols.json
+
+if ! [ -f ols.json ]; then
+  touch ols.json
+#   ols_filepath="$(whereis -b ols | awk '{print $2}')"
+#   ols_filepath="$(readlink $ols_filepath)"
+#   cp "$ols_filepath.json" .
+fi
+

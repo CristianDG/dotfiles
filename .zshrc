@@ -125,10 +125,12 @@ export EDITOR=nvim
 export PATH="/usr/local/racket/bin:$PATH"
 
 # Ocaml
-eval $(opam env)
+command -v opam &> /dev/null && \
+  eval $(opam env)
 
 # starship
-eval "$(starship init zsh)"
+command -v starship &> /dev/null && \
+  eval "$(starship init zsh)"
 
 
 # ALIASES

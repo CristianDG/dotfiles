@@ -1,3 +1,10 @@
+local ok, _ = pcall(function ()
+  require('nvim-tree')
+end)
+
+if not ok then
+  return
+end
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1

@@ -52,8 +52,19 @@ return {
   },
   -- icons
   { 'nvim-tree/nvim-web-devicons' },
+
   -- File tree
-  { 'nvim-tree/nvim-tree.lua' },
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+
+  -- {
+  --   'stevearc/oil.nvim',
+  --   opts = {},
+  --   -- Optional dependencies
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- },
 
 
   -- Useful plugin to show you pending keybinds.
@@ -175,6 +186,16 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+  },
+
+  {
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "nvim-neotest/nvim-nio",
+    },
+
   },
 
   { 'wbthomason/packer.nvim' },
