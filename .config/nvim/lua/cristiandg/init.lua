@@ -42,7 +42,9 @@ vim.o.updatetime = 250
 
 vim.o.statusline=[[%F %M %y %r%=%c:%l/%L [%p%%] |%{strftime('%T')}| ]]
 vim.o.swapfile=false
-vim.o.undodir= os.getenv("HOME") .. "/.local/share/nvim/undodir"
+if not vim.fn.has('windows') then
+  vim.o.undodir= os.getenv("HOME") .. "/.local/share/nvim/undodir"
+end
 
 -- vim.api.nvim_create_autocmd('BufEnter', {
 --  pattern = 'term://*',
