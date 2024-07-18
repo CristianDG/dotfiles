@@ -213,7 +213,7 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  --tsserver = {},
+  -- tsserver = {},
 
   lua_ls = {
     Lua = {
@@ -264,6 +264,13 @@ lsp.ols.setup {
     enable_snippets = true,
     verbose = true,
   },
+}
+
+lsp.zls.setup {
+  cmd = { 'zls' },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lsp.util.root_pattern("build.zig"),-- "*.odin"),
 }
 
 lsp.tsserver.setup {

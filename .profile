@@ -71,6 +71,7 @@ export XCURSOR_PATH=${XCURSOR_PATH}:~/.icons
 
 # Java errors
 export _JAVA_AWT_WM_NONREPARENTING=1
+export ALSOFT_DRIVERS=pulse
 
 # READER
 
@@ -78,7 +79,6 @@ export READER="zathura"
 
 export BROWSER="/usr/bin/chromium"
 
-export _JAVA_AWT_WM_NONREPARENTING=1
 # nvm
 
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

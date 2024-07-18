@@ -56,20 +56,4 @@ vim.api.nvim_create_autocmd('BufEnter', {
   callback = function () vim.o.tabstop = 2 end
 })
 
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*.cs',
-  callback = function ()
-    vim.o.tabstop = 2
-    vim.o.shiftwidth = 2
-  end
-})
-
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*.html',
-  callback = function ()
-    vim.o.tabstop = 2
-    vim.o.shiftwidth = 2
-  end
-})
-
 
