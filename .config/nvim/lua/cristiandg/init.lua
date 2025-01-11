@@ -15,12 +15,14 @@ command! Spell set spell!
 
 vim.opt.spelllang = 'pt_BR'
 
+-- TODO: trocar entre windows e linux
+vim.o.makeprg = "sh build.sh"
 
 vim.o.foldmethod = 'marker'
 vim.o.foldmarker = '{{{,}}}'
 vim.o.foldenable = false
 vim.o.number = true
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 vim.o.clipboard = "unnamedplus"
 vim.o.tabstop=2
 vim.o.softtabstop=2
@@ -46,14 +48,16 @@ if not vim.fn.has('windows') then
   vim.o.undodir= os.getenv("HOME") .. "/.local/share/nvim/undodir"
 end
 
--- vim.api.nvim_create_autocmd('BufEnter', {
---  pattern = 'term://*',
---  command = ':startinsert'
--- })
+vim.api.nvim_create_autocmd('BufEnter', {
+ pattern = 'term://*',
+ command = ':startinsert'
+})
 
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*.go',
   callback = function () vim.o.tabstop = 2 end
 })
 
+vim.cmd.colorscheme 'onedark'
+-- vim.cmd.colorscheme 'simp'
 

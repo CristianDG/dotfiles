@@ -39,8 +39,13 @@ return {
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
 
+
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -73,9 +78,9 @@ return {
   -- git worktrees
   { 'ThePrimeagen/git-worktree.nvim' },
   {
-
     'numToStr/Comment.nvim',
     options = {
+      ignore = '^$',
       mappings = {
         basic = false,
         extra = false,
@@ -107,24 +112,16 @@ return {
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
+    -- priority = 1000,
+    -- config = function()
+    --   vim.cmd.colorscheme 'onedark'
+    -- end,
   },
 
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
   },
   {
     -- Add indentation guides even on blank lines
@@ -144,6 +141,9 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     -- TODO(Cristian): sla
     opts = {
+      keywords = {
+        CLEANUP = { color = "warning" },
+      },
       merge_keywords = true, -- when true, custom keywords will be merged with the defaults
       highlight = {
         multiline = true, -- enable multine todo comments
@@ -156,7 +156,7 @@ return {
         comments_only = true, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this
         exclude = {}, -- list of file types to exclude highlighting
-      }
+      },
     }
   },
 
@@ -215,4 +215,6 @@ return {
   { 'https://github.com/mattn/emmet-vim' },
   -- NIM
   { 'alaviss/nim.nvim', ft = "nim" },
+  -- c3
+  { 'Airbus5717/c3.vim', ft = "c3" },
 }

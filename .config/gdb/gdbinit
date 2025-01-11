@@ -1,1 +1,3 @@
+# layout src
 set debuginfod enabled off
+# set history save on

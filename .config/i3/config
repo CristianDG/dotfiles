@@ -171,6 +171,7 @@ bindsym $mod+Tab       workspace next
 bindsym $mod+Shift+Tab workspace prev
 # Special windows
 assign [class="discord"] $ws8
+assign [class="vesktop*"] $ws8
 assign [class="Steam"]   $ws7
 
 bindsym $mod+Control+h resize shrink width 5 px or 5 ppt
@@ -313,7 +314,8 @@ mode $openm {
     bindsym e exec stt nvim
     bindsym b exec $browser
     bindsym c exec $browser
-    bindsym d exec discord
+    bindsym s exec strawberry
+    bindsym d exec vesktop
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
@@ -334,7 +336,8 @@ mode $open {
     bindsym e exec stt nvim ;; $md
     bindsym b exec $browser ;; $md
     bindsym c exec $browser ;; $md
-    bindsym d exec discord  ;; $md
+    bindsym s exec strawberry ;; $md
+    bindsym d exec vesktop  ;; $md
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
@@ -352,13 +355,14 @@ mode $open {
 #exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
 #bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
-bindsym $mod+shift+m exec /home/cristiandg/.local/bin/scripts/m-video
-bindsym $mod+shift+n exec /home/cristiandg/.local/bin/scripts/n-video
-bindsym $mod+shift+s exec /home/cristiandg/.local/bin/scripts/fls
-bindsym $mod+shift+a exec "/home/cristiandg/.local/bin/scripts/toggle-mic"
+bindsym $mod+shift+m exec "~/.local/bin/scripts/m-video"
+bindsym $mod+shift+n exec "~/.local/bin/scripts/n-video"
+bindsym $mod+shift+s exec "~/.local/bin/scripts/fls"
+bindsym $mod+shift+a exec "~/.local/bin/scripts/toggle-mic"
 bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 bindsym $mod+shift+e exec nautilus
 
+exec --no-startup-id playerctld
 exec --no-startup-id "~/.local/bin/doom run --daemon"
 exec --no-startup-id /usr/libexec/gsd-xsettings
 exec --no-startup-id /usr/lib/gsd-xsettings

@@ -5,6 +5,7 @@ ft({'ocaml'}, {'', '(*%s*)'})
 ft({'go', 'rust'}, ft.get('c'))
 ft({'toml', 'graphql'}, '#%s')
 
+-- NOTE: isso ta bugado :+1:, só o l funciona
 local comment_char = ';'
 if vim.fn.has('windows') then
   comment_char = 'l'

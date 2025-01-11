@@ -1,17 +1,17 @@
 
+vim.keymap.set('n', '<leader>st', function () vim.cmd [[:silent exec "!stt"]] end, { desc = "[s]pawn [t]erminal" })
 
-vim.keymap.set('n', '<leader>st', function () vim.cmd [[:silent exec "!stt"]] end)
 vim.keymap.set('n', '<leader>m', ':make<cr>', { desc = ":make" })
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set('n', '<leader>t', function () vim.cmd [[:tabnew]] end)
+vim.keymap.set('n', '<leader>t', ":tabnew<cr>")
 
 vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { desc = "move line down"})
 vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { desc = "move line up"})
 
-vim.keymap.set('n', '<M-TAB>', ":normal gt<cr>", { desc = "change tab"})
-vim.keymap.set('t', '<M-TAB>', "<C-\\><C-n>:normal gt<cr>", { desc = "change tab"})
+vim.keymap.set('n', '<M-S-l>', ":normal gt<cr>", { desc = "change tab"})
+vim.keymap.set('t', '<M-S-l>', "<C-\\><C-n>:normal gt<cr>", { desc = "change tab"})
 vim.keymap.set('t', '<M-\'>' , "<C-\\><C-n>", { desc = "esc terminal mode"})
 vim.keymap.set('t', '<M-q>'  , "<C-\\><C-n>", { desc = "esc terminal mode"})
 vim.keymap.set('t', '<M-h>'  , "<C-\\><C-n><C-W>h", { desc = ""})
@@ -23,3 +23,17 @@ vim.keymap.set('n', '<M-j>'  , "<C-W>j",      { desc = ""})
 vim.keymap.set('n', '<M-k>'  , "<C-W>k",      { desc = ""})
 vim.keymap.set('n', '<M-l>'  , "<C-W>l",      { desc = ""})
 
+vim.keymap.set('n', '<C-Space>', ":e #<cr>", { desc = "edit alt file"})
+
+-- TODO: WIP
+-- se estou em um buffer de terminal, trocar para o último arquivo aberto, senão trocar para o terminal
+vim.keymap.set('n', '<M-\'>', function ()
+  -- if vim.bo.filetype ~= "terminal" then
+  --   for buf_nr, buf in ipairs(vim.api.nvim_list_bufs()) do
+  --     vim.notify(vim.api.nvim_buf_get_name(buf))
+  --     -- vim.print('sla', buf_nr, buf)
+  --   end
+  -- else
+  -- end
+
+end, { desc = "switch to term" } )

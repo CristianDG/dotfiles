@@ -26,6 +26,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# NOTE: emscripten
+if [ -d "/usr/lib/emscripten/" ] ; then
+    PATH="$PATH:/usr/lib/emscripten/"
+fi
+
 alias reboot="sudo reboot"
 
 # rust
@@ -115,4 +120,4 @@ export ODIN_ROOT="$HOME/programas/repos/Odin"
 # dotnet
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH="$HOME/.dotnet/tools:$PATH"
-
+export PATH="$HOME/.nix-profile/bin:$PATH"

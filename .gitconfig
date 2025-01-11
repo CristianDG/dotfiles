@@ -11,4 +11,4 @@
 [safe]
 	directory = /opt/flutter
 [init]
-	defaultBranch = dev
+	defaultBranch = main

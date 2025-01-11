@@ -41,10 +41,10 @@ alias lisp=sbcl
 alias guile='rlwrap guile'
 alias sbcl='rlwrap sbcl'
 
-
 vlime_dir="$HOME/.local/share/nvim/plugged/vlime/"
 start_vlime="$vlime_dir/lisp/start-vlime.lisp"
 
+# NOTE: ?????
 export EDITOR=nvim
 export PATH="$HOME/.local/bin/scripts:$PATH"
 

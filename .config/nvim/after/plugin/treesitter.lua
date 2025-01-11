@@ -12,15 +12,15 @@ require('nvim-treesitter.configs').setup {
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python', 'ocaml' } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
-    },
-  },
+  -- incremental_selection = {
+  --   enable = true,
+  --   keymaps = {
+  --     init_selection = '<c-space>',
+  --     node_incremental = '<c-space>',
+  --     scope_incremental = '<c-s>',
+  --     node_decremental = '<M-space>',
+  --   },
+  -- },
   textobjects = {
     select = {
       enable = true,
@@ -55,14 +55,14 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
+    -- swap = {
+    --   enable = true,
+    --   swap_next = {
+    --     ['<leader>a'] = '@parameter.inner',
+    --   },
+    --   swap_previous = {
+    --     ['<leader>A'] = '@parameter.inner',
+    --   },
+    -- },
   },
 }
