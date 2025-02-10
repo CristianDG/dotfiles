@@ -7,6 +7,9 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set('n', '<leader>t', ":tabnew<cr>")
 
+vim.keymap.set('n', '<leader>j', ":cnext<cr>")
+vim.keymap.set('n', '<leader>k', ":cprevious<cr>")
+
 vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { desc = "move line down"})
 vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { desc = "move line up"})
 
