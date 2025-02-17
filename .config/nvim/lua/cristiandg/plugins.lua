@@ -143,6 +143,8 @@ return {
     opts = {
       keywords = {
         CLEANUP = { color = "warning" },
+        STUDY = { color = "warning" },
+        IMPORTANT = { color = "warning" },
       },
       merge_keywords = true, -- when true, custom keywords will be merged with the defaults
       highlight = {

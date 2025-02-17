@@ -158,8 +158,6 @@ lsp.gdscript.setup {
   capabilities = capabilities,
 }
 
-
-
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
@@ -188,7 +186,7 @@ local i = luasnip.insert_node
 local t = luasnip.text_node
 
 luasnip.add_snippets("all", {
-  s("{{{ fold comment", {
+  s("fold comment", {
     i(1), t('{{{ }}}'),
   })
 })
