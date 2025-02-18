@@ -13,15 +13,15 @@ command! Spell set spell!
 
 ]])
 -- {{{
-local posix_shell_options = {
-  shellcmdflag = "-c",
-  shellpipe = "2>&1 | tee",
-  shellquote = "",
-  shellredir = ">%s 2>&1",
-  shelltemp = true,
-  shellxescape = "",
-  shellxquote = "",
-}
+-- local posix_shell_options = {
+--   shellcmdflag = "-c",
+--   shellpipe = "2>&1 | tee",
+--   shellquote = "",
+--   shellredir = ">%s 2>&1",
+--   shelltemp = true,
+--   shellxescape = "",
+--   shellxquote = "",
+-- }
 
 local nu_shell_options = {
   shellcmdflag = "--login --stdin --no-newline -c",
@@ -43,8 +43,8 @@ local function apply_shell_options()
   -- check if the shell ends with "nu"
   if vim.opt.shell:get():match("nu.exe$") ~= nil then
     set_options(nu_shell_options)
-  else
-    set_options(posix_shell_options)
+  -- else
+  --   set_options(posix_shell_options)
   end
 end
 
