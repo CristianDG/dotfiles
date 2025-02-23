@@ -136,6 +136,9 @@ return {
 
       tshl.highlights.punctuation_bracket = Highlight.new( "@punctuation.bracket", { })
       tshl.highlights.builtin = Highlight.new("@builtin", { link = tshl.highlights.type })
+      tshl.highlights.module = Highlight.new("@module", { link = gruber_hl.none })
+      tshl.highlights.module = Highlight.new("@module", { link = gruber_hl.none })
+
       tshl.highlights.variable_builtin = Highlight.new("@variable.builtin", { link = tshl.highlights.builtin })
       tshl.highlights.type_builtin = Highlight.new("@type.builtin", { link = tshl.highlights.builtin })
       tshl.highlights.type_definition = Highlight.new("@type.definition", { link = tshl.highlights.builtin })

@@ -71,12 +71,12 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  -- lua_ls = {
+  --   Lua = {
+  --     workspace = { checkThirdParty = false },
+  --     telemetry = { enable = false },
+  --   },
+  -- },
 }
 
 
@@ -129,7 +129,7 @@ lsp.zls.setup {
   root_dir = lsp.util.root_pattern("build.zig"),
 }
 
-lsp.tsserver.setup {
+lsp.ts_ls.setup {
   root_dir = lsp.util.root_pattern("package.json"),
   on_attach = on_attach,
   capabilities = capabilities,
