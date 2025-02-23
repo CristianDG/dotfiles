@@ -119,6 +119,31 @@ return {
   },
 
   {
+    "blazkowolf/gruber-darker.nvim",
+    init = function ()
+      local c = require('gruber-darker.palette')
+      local opts = require("gruber-darker.config").get_opts()
+      local gruber_hl = require("gruber-darker.highlights.colorscheme").highlights
+      local Highlight = require("gruber-darker.highlight")
+      local tshl = require("gruber-darker.highlights.treesitter")
+      local vim_hl = require("gruber-darker.highlights.vim")
+      -- local Color = require('gruber-darker.color')
+
+      gruber_hl.dark_niagara = Highlight.new("GruberDarkerDarkNiagara", { fg = c.niagara })
+      gruber_hl.dark_niagara_bold = Highlight.new("GruberDarkerDarkNiagaraBold", { fg = c.niagara, bold = opts.bold })
+      gruber_hl.darker_niagara = Highlight.new("GruberDarkerDarkestNiagara", { fg = c["niagara-1"] })
+      gruber_hl.darker_niagara_bold = Highlight.new("GruberDarkerDarkestNiagaraBold", { fg = c["niagara-1"], bold = opts.bold })
+
+      tshl.highlights.punctuation_bracket = Highlight.new( "@punctuation.bracket", { })
+      tshl.highlights.builtin = Highlight.new("@builtin", { link = tshl.highlights.type })
+      tshl.highlights.variable_builtin = Highlight.new("@variable.builtin", { link = tshl.highlights.builtin })
+      tshl.highlights.type_builtin = Highlight.new("@type.builtin", { link = tshl.highlights.builtin })
+      tshl.highlights.type_definition = Highlight.new("@type.definition", { link = tshl.highlights.builtin })
+
+    end
+  },
+
+  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`

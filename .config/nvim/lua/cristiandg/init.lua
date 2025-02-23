@@ -9,9 +9,13 @@ set rtp+=/home/cristiandg/.opam/5.0.0+options/share/ocp-indent/vim
 let g:spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spell'
 let loaded_spellfile_plugin = 1
 
+set list
+set listchars=tab:\!·,nbsp:_,trail:·
+
 command! Spell set spell!
 
 ]])
+
 -- {{{
 -- local posix_shell_options = {
 --   shellcmdflag = "-c",
@@ -97,6 +101,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
   callback = function () vim.o.tabstop = 2 end
 })
 
-vim.cmd.colorscheme 'onedark'
+vim.cmd.colorscheme 'gruber-darker'
+-- vim.cmd.colorscheme 'onedark'
 -- vim.cmd.colorscheme 'simp'
 
