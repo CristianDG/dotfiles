@@ -12,9 +12,6 @@ vim.keymap.set('n', '<C-K>', ":cprevious<cr>")
 
 vim.keymap.set('v', 'D', '"_d', { desc = "delete to narnia"})
 
-vim.keymap.set('v', '<M-p>', 'p', { desc = "normal paste"})
-vim.keymap.set('v', 'p', '"_dp', { desc = "paste to narnia"})
-
 vim.keymap.set('v', '<M-j>', ":m '>+1<CR>gv=gv", { desc = "move line down"})
 vim.keymap.set('v', '<M-k>', ":m '<-2<CR>gv=gv", { desc = "move line up"})
 vim.keymap.set('n', '<M-S-j>', ":m '>+1<CR>gv=gv", { desc = "move line down"})

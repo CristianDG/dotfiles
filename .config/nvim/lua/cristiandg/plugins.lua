@@ -163,6 +163,29 @@ return {
         char = '┊',
       },
     },
+    init = function ()
+      local hooks = require "ibl.hooks"
+
+      local isspace = function(str)
+        return str:match("%s") ~= nil
+      end
+
+      hooks.register(hooks.type.SKIP_LINE, function(_, _, _, line)
+        if #line == 0 then
+          return false
+        end
+
+        local skip = true
+        for i=1, #line do
+	        skip = skip and isspace(line:sub(i, i))
+          if not skip then
+            break
+          end
+        end
+
+        return skip
+      end)
+    end
   },
   {
     "folke/todo-comments.nvim",
