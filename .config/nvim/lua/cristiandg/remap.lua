@@ -1,7 +1,20 @@
 
 vim.keymap.set('n', '<leader>st', function () vim.cmd [[:silent exec "!stt"]] end, { desc = "[s]pawn [t]erminal" })
 
+vim.keymap.set('n', '<leader>cc',
+  function()
+    local qf_exists = false
+    for _, win in pairs(vim.fn.getwininfo()) do
+      if win["quickfix"] == 1 then
+        qf_exists = true
+      end
+    end
+    vim.cmd(qf_exists and 'cclose' or 'copen')
+  end,
+  { desc = ":make" })
+
 vim.keymap.set('n', '<leader>m', ':make<cr>', { desc = ":make" })
+vim.keymap.set('n', '<leader>M', ':make!<cr>', { desc = ":make no jump" })
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
