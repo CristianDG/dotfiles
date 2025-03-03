@@ -89,6 +89,9 @@ if not vim.fn.has('windows') then
   vim.o.undodir= os.getenv("HOME") .. "/.local/share/nvim/undodir"
 end
 
+vim.api.nvim_create_user_command('W', function() vim.cmd('w') end, {})
+vim.api.nvim_create_user_command('Q', function() vim.cmd('q') end, {})
+
 vim.api.nvim_create_autocmd('BufEnter', {
  pattern = 'term://*',
  command = ':startinsert'
