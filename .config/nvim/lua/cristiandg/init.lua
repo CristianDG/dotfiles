@@ -30,7 +30,7 @@ command! Spell set spell!
 
 local nu_shell_options = {
   shellcmdflag = "--login --stdin --no-newline -c",
-  shellpipe = " | tee { to text | save --force --raw %s }",
+  shellpipe = " out+err>| tee { to text | save --force --raw %s }",
   shellquote = "",
   shellredir = "out+err> %s",
   shelltemp = false,
