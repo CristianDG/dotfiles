@@ -32,7 +32,7 @@ alias updatesystem='p -Syu'
 
 alias rl=rlwrap
 
-alias sudo=doas
+#alias sudo=doas
 
 # lisp interpreters
 alias scheme=chez

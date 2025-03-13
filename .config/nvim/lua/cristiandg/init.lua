@@ -59,7 +59,7 @@ apply_shell_options()
 vim.opt.spelllang = 'pt_BR'
 
 -- TODO: trocar entre windows e linux
-vim.o.makeprg = "sh build.sh"
+vim.o.makeprg = "bash build.sh"
 
 vim.o.foldmethod = 'marker'
 vim.o.foldmarker = '{{{,}}}'
