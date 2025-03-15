@@ -87,6 +87,11 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
+lsp.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 lsp.ocamllsp.setup {
   cmd = { 'ocamllsp' },
   filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },

@@ -58,7 +58,6 @@ vim.opt.spelllang = 'pt_BR'
 
 -- TODO: trocar entre windows e linux
 vim.o.makeprg = "sh build.sh"
-
 vim.o.foldmethod = 'marker'
 vim.o.foldmarker = '{{{,}}}'
 vim.o.foldenable = false
