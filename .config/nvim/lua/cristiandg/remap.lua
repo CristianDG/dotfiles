@@ -1,4 +1,6 @@
 
+vim.api.nvim_create_user_command('ScratchBuffer', ':enew', {})
+
 vim.keymap.set('n', '<leader>st', function () vim.cmd [[:silent exec "!stt"]] end, { desc = "[s]pawn [t]erminal" })
 
 vim.keymap.set('n', '<leader>cc',
@@ -9,7 +11,7 @@ vim.keymap.set('n', '<leader>cc',
         qf_exists = true
       end
     end
-    vim.cmd(qf_exists and 'cclose' or 'copen')
+    vim.cmd('botright ' .. (qf_exists and 'cclose' or 'copen'))
   end,
   { desc = ":ctoggle" })
 

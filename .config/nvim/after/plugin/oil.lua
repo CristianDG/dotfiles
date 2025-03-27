@@ -183,3 +183,11 @@ require("oil").setup({
     border = "rounded",
   },
 })
+
+vim.keymap.set('n', '<leader>p',
+  function ()
+    require('oil').toggle_float()
+  end,
+  { desc = 'Open file tree on current file' }
+)
+

@@ -60,14 +60,27 @@ return {
     'ray-x/lsp_signature.nvim',
     event = "VeryLazy",
   },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+
   -- icons
-  { 'nvim-tree/nvim-web-devicons' },
+  -- { 'nvim-tree/nvim-web-devicons' },
 
   -- File tree
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
+  -- {
+  --   'nvim-tree/nvim-tree.lua',
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- },
 
   -- {
   --   'stevearc/oil.nvim',
@@ -270,15 +283,14 @@ return {
     build = ':TSUpdate',
   },
 
-  {
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-      "theHamsta/nvim-dap-virtual-text",
-      "nvim-neotest/nvim-nio",
-    },
-
-  },
+  -- {
+  --   'mfussenegger/nvim-dap',
+  --   dependencies = {
+  --     "rcarriga/nvim-dap-ui",
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "nvim-neotest/nvim-nio",
+  --   },
+  -- },
 
   { 'wbthomason/packer.nvim' },
   { 'theprimeagen/harpoon' },
