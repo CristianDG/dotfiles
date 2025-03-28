@@ -233,6 +233,7 @@ return {
       keywords = {
         CLEANUP = { color = "warning" },
         STUDY = { color = "warning" },
+        SPEED = { color = "error" },
         IMPORTANT = { color = "warning" },
       },
       merge_keywords = true, -- when true, custom keywords will be merged with the defaults
