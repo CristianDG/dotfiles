@@ -1,5 +1,24 @@
 
 vim.api.nvim_create_user_command('ScratchBuffer', ':enew', {})
+vim.api.nvim_create_user_command(
+  'Format',
+  function(args)
+    if args.count ~= -1 then
+      local start_row, _ = unpack(vim.api.nvim_buf_get_mark(0, "<"))
+      local end_row, _ = unpack(vim.api.nvim_buf_get_mark(0, ">"))
+      vim.lsp.buf.format({
+        range = {
+          ["start"] = { start_row, 0 },
+          ["end"] = { end_row, 0 },
+        },
+        async = true,
+      })
+    else
+      vim.lsp.buf.format({ async = true })
+    end
+  end,
+  { range = true }
+)
 
 vim.keymap.set('n', '<leader>st', function () vim.cmd [[:silent exec "!stt"]] end, { desc = "[s]pawn [t]erminal" })
 

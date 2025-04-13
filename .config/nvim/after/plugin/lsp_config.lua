@@ -49,12 +49,6 @@ local on_attach = function(_, bufnr)
   --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   -- end, '[W]orkspace [L]ist Folders')
 
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-
-  -- FIXME: para saber se é deno ou node, desativando um na hora de usar o outro
 end
 
 -- Enable the following language servers
@@ -134,11 +128,11 @@ lsp.zls.setup {
   root_dir = lsp.util.root_pattern("build.zig"),
 }
 
-lsp.ts_ls.setup {
-  root_dir = lsp.util.root_pattern("package.json"),
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+-- lsp.ts_ls.setup {
+--   root_dir = lsp.util.root_pattern("package.json"),
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
 
 lsp.serve_d.setup {
   cmd = {
