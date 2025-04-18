@@ -7,6 +7,8 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
+config.default_prog = { 'nu.exe' }
+
 config.enable_tab_bar = false
 
 -- style {{{
