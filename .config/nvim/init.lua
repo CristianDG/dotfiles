@@ -153,6 +153,5 @@ require('neodev').setup()
 -- vim: ts=2 sts=2 sw=2 et
 
 require('cristiandg')
-require('plugins.build_menu')
 
 

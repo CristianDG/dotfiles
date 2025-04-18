@@ -39,7 +39,7 @@ vim.keymap.set('n', '<leader>m', ':make!<cr>', { desc = ":make no jump" })
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set('n', '<leader>t', ":tabnew<cr>")
+-- vim.keymap.set('n', '<leader>tn', ":tabnew<cr>")
 
 vim.keymap.set('n', '<C-J>', ":cnext<cr>")
 vim.keymap.set('n', '<C-K>', ":cprevious<cr>")
