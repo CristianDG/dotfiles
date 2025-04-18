@@ -20,5 +20,7 @@ config.window_padding = {
 -- For example, changing the color scheme:
 config.color_scheme = 'Gruber (base16)'
 
+-- }}}
+
 -- and finally, return the configuration to wezterm
 return config
