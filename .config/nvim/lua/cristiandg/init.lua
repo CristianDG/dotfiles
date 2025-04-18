@@ -2,6 +2,9 @@ require('cristiandg.remap')
 
 vim.cmd([[
 
+" NOTE: when using nushell
+set shell=C:\Users\CristianDG\AppData\Local\Programs\nu\bin\nu.exe
+
 let g:opamshare = substitute(system('opam var share'),'\n$','','''')
 set rtp+=g:opamshare."/merlin/vim"
 set rtp+=/home/cristiandg/.opam/5.0.0+options/share/ocp-indent/vim
