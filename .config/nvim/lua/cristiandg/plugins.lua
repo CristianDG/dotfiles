@@ -188,12 +188,12 @@ return {
       local vim_hl = require("gruber-darker.highlights.vim")
       -- local Color = require('gruber-darker.color')
 
-      vim_hl.highlights.normal_float = Highlight.new("NormalFloat", { fg = c["niagara-2"], bg = c.bg })
-
       gruber_hl.dark_niagara = Highlight.new("GruberDarkerDarkNiagara", { fg = c.niagara })
       gruber_hl.dark_niagara_bold = Highlight.new("GruberDarkerDarkNiagaraBold", { fg = c.niagara, bold = opts.bold })
       gruber_hl.darker_niagara = Highlight.new("GruberDarkerDarkestNiagara", { fg = c["niagara-1"] })
       gruber_hl.darker_niagara_bold = Highlight.new("GruberDarkerDarkestNiagaraBold", { fg = c["niagara-1"], bold = opts.bold })
+
+      vim_hl.highlights.normal_float = Highlight.new("NormalFloat", { fg = c["fg"], bg = c["bg"] })
 
       tshl.highlights.punctuation_bracket = Highlight.new( "@punctuation.bracket", { })
       tshl.highlights.builtin = Highlight.new("@builtin", { link = tshl.highlights.type })
