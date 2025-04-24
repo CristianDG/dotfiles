@@ -49,6 +49,19 @@ local function toggle_terminal()
   end
 end
 
+local function detach()
+  state.floating.buf = -1
+end
+
+local function attach()
+    if vim.bo.buftype == "terminal" then
+      state.floating.buf = vim.api.nvim_get_current_buf()
+    end
+end
+
+
 vim.api.nvim_create_user_command("FTerm", toggle_terminal, {})
+vim.api.nvim_create_user_command("FTAttach", attach, {})
+vim.api.nvim_create_user_command("FTDetach", detach, {})
 vim.keymap.set("n", "<leader>tt", toggle_terminal, { desc = "[t]oggle [t]erminal"})
 
