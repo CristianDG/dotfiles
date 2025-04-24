@@ -54,9 +54,9 @@ local function detach()
 end
 
 local function attach()
-    if vim.bo.buftype == "terminal" then
-      state.floating.buf = vim.api.nvim_get_current_buf()
-    end
+  if vim.bo.buftype == "terminal" then
+    state.floating.buf = vim.api.nvim_get_current_buf()
+  end
 end
 
 
