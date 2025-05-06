@@ -57,7 +57,7 @@ end
 
 -- }}}
 
-vim.opt.spelllang = 'pt_BR'
+vim.opt.spelllang = 'pt'
 
 -- TODO: trocar entre windows e linux
 vim.o.makeprg = "sh build.sh"

@@ -194,6 +194,7 @@ return {
       gruber_hl.darker_niagara_bold = Highlight.new("GruberDarkerDarkestNiagaraBold", { fg = c["niagara-1"], bold = opts.bold })
 
       vim_hl.highlights.normal_float = Highlight.new("NormalFloat", { fg = c["fg"], bg = c["bg"] })
+      vim_hl.highlights.spell_bad = Highlight.new("SpellBad", { link = gruber_hl.red })
 
       tshl.highlights.punctuation_bracket = Highlight.new( "@punctuation.bracket", { })
       tshl.highlights.builtin = Highlight.new("@builtin", { link = tshl.highlights.type })
