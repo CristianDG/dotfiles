@@ -12,7 +12,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -25,6 +25,10 @@ local on_attach = function(_, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  if client.name ~= "jdtls" then
+    client.server_capabilities.completionProvider = false
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -121,12 +125,12 @@ lsp.ols.setup {
   },
 }
 
-lsp.zls.setup {
-  cmd = { 'zls' },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = lsp.util.root_pattern("build.zig"),
-}
+-- lsp.zls.setup {
+--   cmd = { 'zls' },
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   root_dir = lsp.util.root_pattern("build.zig"),
+-- }
 
 -- lsp.ts_ls.setup {
 --   root_dir = lsp.util.root_pattern("package.json"),
@@ -223,7 +227,7 @@ cmp.setup {
     -- end, { 'i', 's' }),
   },
   sources = {
-    -- { name = 'nvim_lsp' },
+    { name = 'nvim_lsp' },
     {
       name = 'buffer',
       option = {
