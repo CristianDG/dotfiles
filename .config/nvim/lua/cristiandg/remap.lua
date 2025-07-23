@@ -34,6 +34,18 @@ vim.keymap.set('n', '<leader>cc',
   end,
   { desc = ":ctoggle" })
 
+vim.keymap.set('n', '<leader>ll',
+  function()
+    local loclist_exists = false
+    for _, win in pairs(vim.fn.getwininfo()) do
+      if win["quickfix"] == 1 then
+        loclist_exists = true
+      end
+    end
+    vim.cmd('botright ' .. (loclist_exists and 'lclose' or 'lopen'))
+  end,
+  { desc = ":ltoggle" })
+
 vim.keymap.set('n', '<leader>M', ':make<cr>', { desc = ":make" })
 vim.keymap.set('n', '<leader>m', ':make!<cr>', { desc = ":make no jump" })
 
