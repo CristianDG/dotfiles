@@ -83,6 +83,7 @@ return {
     end,
   },
 
+  -- File tree using oil.nvim
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
@@ -98,19 +99,34 @@ return {
   -- icons
   -- { 'nvim-tree/nvim-web-devicons' },
 
-  -- File tree
+  -- File tree using nvim-tree
   -- {
   --   'nvim-tree/nvim-tree.lua',
   --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   lazy = true,
   -- },
 
+  -- File tree using nvim-neo-tree
   -- {
-  --   'stevearc/oil.nvim',
-  --   opts = {},
-  --   -- Optional dependencies
+  --   'nvim-neo-tree/neo-tree.nvim',
   --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --     "MunifTanjim/nui.nvim",
+  --     -- Optional image support for file preview: See `# Preview Mode` for more information.
+  --     -- {"3rd/image.nvim", opts = {}},
+  --     -- OR use snacks.nvim's image module:
+  --     -- "folke/snacks.nvim",
+  --   },
+  --   lazy = false, -- neo-tree will lazily load itself
+  --   ---@module "neo-tree"
+  --   ---@type neotree.Config?
+  --   opts = {
+  --     -- add options here
+  --   },
   -- },
-
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',          opts = {} },
@@ -188,9 +204,9 @@ return {
       local vim_hl = require("gruber-darker.highlights.vim")
       -- local Color = require('gruber-darker.color')
 
-      gruber_hl.dark_niagara = Highlight.new("GruberDarkerDarkNiagara", { fg = c.niagara })
-      gruber_hl.dark_niagara_bold = Highlight.new("GruberDarkerDarkNiagaraBold", { fg = c.niagara, bold = opts.bold })
-      gruber_hl.darker_niagara = Highlight.new("GruberDarkerDarkestNiagara", { fg = c["niagara-1"] })
+      gruber_hl.dark_niagara        = Highlight.new("GruberDarkerDarkNiagara"       , { fg = c.niagara })
+      gruber_hl.dark_niagara_bold   = Highlight.new("GruberDarkerDarkNiagaraBold"   , { fg = c.niagara, bold = opts.bold })
+      gruber_hl.darker_niagara      = Highlight.new("GruberDarkerDarkestNiagara"    , { fg = c["niagara-1"] })
       gruber_hl.darker_niagara_bold = Highlight.new("GruberDarkerDarkestNiagaraBold", { fg = c["niagara-1"], bold = opts.bold })
 
       vim_hl.highlights.normal_float = Highlight.new("NormalFloat", { fg = c["fg"], bg = c["bg"] })
