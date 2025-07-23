@@ -1,9 +1,11 @@
 require('cristiandg.remap')
+require('cristiandg.autocommands')
 
 vim.cmd([[
 
 " NOTE: when using nushell
 set shell=C:\Users\CristianDG\AppData\Local\Programs\nu\bin\nu.exe
+" set shell=sh.exe
 
 let g:opamshare = substitute(system('opam var share'),'\n$','','''')
 set rtp+=g:opamshare."/merlin/vim"
@@ -21,6 +23,12 @@ command! Spell set spell!
 
 -- {{{
 
+local function set_options(options)
+  for k, v in pairs(options) do
+    vim.opt[k] = v
+  end
+end
+
 -- local posix_shell_options = {
 --   shellcmdflag = "-c",
 --   shellpipe = "2>&1 | tee",
@@ -29,6 +37,7 @@ command! Spell set spell!
 --   shelltemp = true,
 --   shellxescape = "",
 --   shellxquote = "",
+--   shellslash = true,
 -- }
 
 local nu_shell_options = {
@@ -40,19 +49,9 @@ local nu_shell_options = {
   shellxescape = "",
   shellxquote = "",
 }
+set_options(nu_shell_options)
 
-local function set_options(options)
-  for k, v in pairs(options) do
-    vim.opt[k] = v
-  end
-end
 
--- check if the shell ends with "nu"
-if vim.opt.shell:get():match("nu.exe$") ~= nil then
-  set_options(nu_shell_options)
--- else
---   set_options(posix_shell_options)
-end
 
 
 -- }}}
@@ -94,15 +93,6 @@ end
 vim.api.nvim_create_user_command('W', function() vim.cmd('w') end, {})
 vim.api.nvim_create_user_command('Q', function() vim.cmd('q') end, {})
 
-vim.api.nvim_create_autocmd('BufEnter', {
- pattern = 'term://*',
- command = ':startinsert'
-})
-
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*.go',
-  callback = function () vim.o.tabstop = 2 end
-})
 
 vim.cmd.colorscheme 'gruber-darker'
 -- vim.cmd.colorscheme 'onedark'
