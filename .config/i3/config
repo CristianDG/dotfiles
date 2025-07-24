@@ -276,8 +276,8 @@ bar {
     }
 }
 
-
-set $sink "alsa_output.pci-0000_05_00.6.analog-stereo"
+# pactl list sinks
+set $sink "alsa_output.pci-0000_06_00.6.analog-stereo"
 bindsym XF86AudioRaiseVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume $sink up
 bindsym XF86AudioLowerVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume $sink down
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute $sink toggle
@@ -304,6 +304,8 @@ set $emacs "emacsclient -c -a 'doom run'"
 
 # FIXME: procurar saber se existe if
 
+set $discord_app "discord"
+# set $discord_app "discord"
 set $openm "open multiple"
 bindsym $mod+Shift+o mode $openm
 mode $openm {
@@ -315,7 +317,7 @@ mode $openm {
     bindsym b exec $browser
     bindsym c exec $browser
     bindsym s exec strawberry
-    bindsym d exec vesktop
+    bindsym d exec $discord_app
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
@@ -337,7 +339,7 @@ mode $open {
     bindsym b exec $browser ;; $md
     bindsym c exec $browser ;; $md
     bindsym s exec strawberry ;; $md
-    bindsym d exec vesktop  ;; $md
+    bindsym d exec $discord_app ;; $md
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
