@@ -5,6 +5,12 @@ local M = {}
 
 function load_configurations()
 
+  default_config = {
+    ["sh build.sh"] = { command = "sh build.sh" },
+    ["make"] = { command = "make -j4" },
+    ["make -B"] = { command = "make -B -j4" },
+  }
+
   -- Configurations are stored in `$cwd/build-commands.lua`
   --
   -- And specify
@@ -27,9 +33,9 @@ function load_configurations()
     else
       vim.api.nvim_err_writeln("Invalid configuration format in " .. config_path)
     end
-  else
-    vim.api.nvim_err_writeln("Configuration file not found: " .. config_path)
   end
+
+  return default_config
 end
 
 function M.select_build_command()
