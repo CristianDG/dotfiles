@@ -44,8 +44,6 @@ function M.select_build_command()
     table.insert(commands, {name = name, command = cmd.command })
   end
 
-  print(vim.inspect(commands))
-
   if #commands == 0 then
     vim.api.nvim_err_writeln("No build commands found in configuration.")
     return
@@ -54,6 +52,7 @@ function M.select_build_command()
   local function on_choice(choice)
     if choice and choice then
       vim.o.makeprg = choice.command
+      vim.cmd("make!")
     end
   end
 
@@ -105,5 +104,15 @@ vim.api.nvim_create_user_command(
   end,
   {}
 )
+
+
+vim.api.nvim_create_user_command(
+  'BuildMenuSetString',
+  function(opts)
+    vim.o.makeprg = table.concat(opts.fargs, " ")
+  end,
+  {nargs = "+"}
+)
+
 
 return M
