@@ -145,6 +145,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.g.zig_recommended_style = 0
+
 -- Setup neovim lua configuration
 require('neodev').setup()
 
