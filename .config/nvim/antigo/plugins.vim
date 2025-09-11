@@ -223,6 +223,7 @@ lua << EOF
     completion = { keyword_length = 3 },
     sources = cmp.config.sources({
       { name = 'lspconfig' },
+      { name = 'ctags' },
       { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
@@ -254,7 +255,6 @@ lua << EOF
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   local servers = {
-    --'clangd',
     --'rust_analyzer',
     --'pyright',
     --'tsserver',

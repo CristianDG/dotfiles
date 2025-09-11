@@ -79,6 +79,15 @@ vim.keymap.set('n', '<M-l>'  , "<C-W>l",      { desc = ""})
 
 vim.keymap.set('n', '<C-Space>', ":e #<cr>", { desc = "edit alt file"})
 
+
+local using_cmp = true
+if using_cmp then
+  vim.keymap.set('i', '<C-n>', require('cmp').complete)
+else
+  vim.keymap.set('i', '<C-n>', '<C-x><C-o>')
+end
+
+
 -- TODO: WIP
 -- se estou em um buffer de terminal, trocar para o último arquivo aberto, senão trocar para o terminal
 vim.keymap.set('n', '<M-\'>', function ()

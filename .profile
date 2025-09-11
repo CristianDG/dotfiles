@@ -121,3 +121,8 @@ export ODIN_ROOT="$HOME/programas/repos/Odin"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.nix-profile/bin:$PATH"
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/programas/repos/vim/src" ] ; then
+    PATH="$HOME/programas/repos/vim/src:$PATH"
+fi

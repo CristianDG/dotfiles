@@ -52,6 +52,7 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
 
+      'quangnguyen30192/cmp-nvim-tags',
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
@@ -61,27 +62,27 @@ return {
     event = "VeryLazy",
   },
 
-  {
-    'stevearc/conform.nvim',
-    opts = {
-      formatters_by_ft = {
-        c = { "clang_format" },
-        cpp = { "clang_format" },
-      },
-      default_format_opts = {
-        lsp_format = "fallback",
-      },
-      formatters = {
-        clang_format = {
-          prepend_args = { '--style=file', '--fallback-style=WebKit' },
-        },
-      }
-    },
-    init = function()
-      -- If you want the formatexpr, here is the place to set it
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
-  },
+  -- {
+  --   'stevearc/conform.nvim',
+  --   opts = {
+  --     formatters_by_ft = {
+  --       c = { "clang_format" },
+  --       cpp = { "clang_format" },
+  --     },
+  --     default_format_opts = {
+  --       -- lsp_format = "fallback",
+  --     },
+  --     formatters = {
+  --       clang_format = {
+  --         prepend_args = { '--style=file', '--fallback-style=WebKit' },
+  --       },
+  --     }
+  --   },
+  --   init = function()
+  --     -- If you want the formatexpr, here is the place to set it
+  --     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+  --   end,
+  -- },
 
   -- File tree using oil.nvim
   {
@@ -209,7 +210,7 @@ return {
       gruber_hl.darker_niagara      = Highlight.new("GruberDarkerDarkestNiagara"    , { fg = c["niagara-1"] })
       gruber_hl.darker_niagara_bold = Highlight.new("GruberDarkerDarkestNiagaraBold", { fg = c["niagara-1"], bold = opts.bold })
 
-      vim_hl.highlights.normal_float = Highlight.new("NormalFloat", { fg = c["fg"], bg = c["bg"] })
+      -- vim_hl.highlights.normal_float = Highlight.new("NormalFloat", { fg = c["fg"], bg = c["bg"] })
       vim_hl.highlights.spell_bad = Highlight.new("SpellBad", { link = gruber_hl.red })
 
       tshl.highlights.punctuation_bracket = Highlight.new( "@punctuation.bracket", { })
