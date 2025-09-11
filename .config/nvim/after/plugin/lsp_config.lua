@@ -1,5 +1,4 @@
 
-
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 
@@ -63,7 +62,6 @@ end
 local lsp = require 'lspconfig'
 
 local servers = {
-  -- clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
@@ -80,13 +78,18 @@ local servers = {
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
 lsp.clangd.setup {
-  on_attach = on_attach,
+  -- filetypes = { "cpp" },
+  on_attach = function(client, bufnr)
+    -- local active_instances = vim.lsp.get_clients({ name = "clangd" })
+    -- vim.print(#active_instances)
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
 }
 
@@ -165,15 +168,17 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    lsp[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
-  end,
-}
+-- TODO: quebrado olhar
+-- https://github.com/mason-org/mason-lspconfig.nvim/releases/tag/v2.0.0
+-- mason_lspconfig.setup_handlers {
+--   function(server_name)
+--     lsp[server_name].setup {
+--       capabilities = capabilities,
+--       on_attach = on_attach,
+--       settings = servers[server_name],
+--     }
+--   end,
+-- }
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
@@ -196,6 +201,9 @@ luasnip.add_snippets("all", {
 
 ---@diagnostic disable-next-line: missing-fields
 cmp.setup {
+  completion = {
+    autocomplete = false
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -227,7 +235,25 @@ cmp.setup {
     -- end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    -- {
+    --   name = 'tags',
+    --   option = {
+    --     -- this is the default options, change them if you want.
+    --     -- Delayed time after user input, in milliseconds.
+    --     complete_defer = 5,
+    --     -- Max items when searching `taglist`.
+    --     max_items = 10,
+    --     -- The number of characters that need to be typed to trigger
+    --     -- auto-completion.
+    --     keyword_length = 1,
+    --     -- Use exact word match when searching `taglist`, for better searching
+    --     -- performance.
+    --     exact_match = false,
+    --     -- Prioritize searching result for current buffer.
+    --     current_buffer_only = false,
+    --   },
+    -- },
+    -- { name = 'nvim_lsp' },
     {
       name = 'buffer',
       option = {
@@ -243,7 +269,8 @@ cmp.setup {
         end,
       }
     },
-    { name = 'luasnip' },
+    -- { name = 'luasnip' },
   },
 }
+
 
