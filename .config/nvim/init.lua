@@ -104,8 +104,12 @@ vim.o.mouse = 'a'
 -- Enable break indent
 vim.o.breakindent = true
 
--- vim.o.cindent = false
--- vim.o.autoindent = true
+-- vim.o.autoindent = false
+
+vim.o.cindent = false
+-- NOTE: default cinoptions
+-- vim.o.cinoptions=">s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l0,b0,gs,hs,N0,E0,ps,ts,is,+s,c3,C0,/0,(2s,us,U0,w0,W0,k0,m0,j0,J0,)20,*70,#0,P0"
+vim.o.cinoptions=">s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,ls,b1,gs,hs,N0,E0,ps,ts,is,+s,c3,C0,/0,(s,us,U0,w0,W0,k0,m0,j0,J0,)20,*70,#0,P0"
 
 -- Save undo history
 vim.o.undofile = true
