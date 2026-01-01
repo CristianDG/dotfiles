@@ -126,3 +126,11 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 if [ -d "$HOME/programas/repos/vim/src" ] ; then
     PATH="$HOME/programas/repos/vim/src:$PATH"
 fi
+
+if [ -d "$HOME/programas/repos/bingcc" ] ; then
+    PATH="$HOME/programas/repos/bingcc:$PATH"
+fi
+
+export PATH
+
+export ELECTRON_OZONE_PLATFORM_HINT=auto

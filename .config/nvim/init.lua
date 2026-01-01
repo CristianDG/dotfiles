@@ -109,7 +109,7 @@ vim.o.breakindent = true
 vim.o.cindent = false
 -- NOTE: default cinoptions
 -- vim.o.cinoptions=">s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,l0,b0,gs,hs,N0,E0,ps,ts,is,+s,c3,C0,/0,(2s,us,U0,w0,W0,k0,m0,j0,J0,)20,*70,#0,P0"
-vim.o.cinoptions=">s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,ls,b1,gs,hs,N0,E0,ps,ts,is,+s,c3,C0,/0,(s,us,U0,w0,W0,k0,m0,j0,J0,)20,*70,#0,P0"
+vim.o.cinoptions=">s,e0,n0,f0,{0,}0,^0,L-1,:s,=s,ls,b1,gs,hs,N0,E0,ps,ts,is,+s,c3,C0,/0,(s,us,U0,w0,W0,k0,m1,j0,J0,)20,*70,#0,P0"
 
 -- Save undo history
 vim.o.undofile = true
@@ -147,6 +147,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
 })
 
 vim.g.zig_recommended_style = 0
