@@ -12,6 +12,8 @@
 # set $mod Mod1
 set $mod Mod4
 
+set $browser brave
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 
@@ -35,10 +37,8 @@ floating_modifier $mod
 set $monitor_secundario "eDP-1"
 set $monitor_principal "HDMI-A-1"
 
-
-exec_always --no-startup-id swaybg -o $monitor_principal -i /home/cristiandg/Pictures/Wallpaper/default_wallpaper_4.png
-# output * bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
-# output $monitor_principal bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
+#output * bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
+#output $monitor_principal bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
 #output $monitor_secundario bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
 
 for_window [class=".*"] border pixel 0
@@ -59,8 +59,8 @@ bindsym $mod+Shift+c kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 
-bindsym $mod+d exec --no-startup-id fuzzel ;; $md
-bindsym $mod+p exec --no-startup-id dmenu_run -f -i -fn Terminus:pixelsize=14:antialias=true ;; $md
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -l 10' --entry-type=Name ;; $md
+bindsym $mod+p exec --no-startup-id dmenu_run -f -i -fn Terminus:pixelsize=16:antialias=true ;; $md
 
 
 # change focus
@@ -99,10 +99,10 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+shift+e layout toggle split
+bindsym $mod+e layout toggle split
+bindsym $mod+i sticky toggle
 
 # toggle tiling / floating
-bindsym $mod+Control+t sticky toggle
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -110,7 +110,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-bindsym $mod+Shift+a focus child
+#bindsym $mod+Shift+a focus child
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -155,12 +155,12 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 
-output $monitor_principal mode 2560x1080@75hz pos 0 0
+#output $monitor_principal mode 2560x1080@75hz pos 0 0
 
 
 
 
-# Moving workspaces between screens
+# Moving workspaces between screens 
 bindsym $mod+period move workspace to output right
 
 
@@ -171,6 +171,7 @@ bindsym $mod+Tab       workspace next
 bindsym $mod+Shift+Tab workspace prev
 # Special windows
 assign [class="discord"] $ws8
+assign [class="vesktop*"] $ws8
 assign [class="Steam"]   $ws7
 
 bindsym $mod+Control+h resize shrink width 5 px or 5 ppt
@@ -184,7 +185,7 @@ bindsym $mod+q reload
 bindsym $mod+Shift+r restart
 # exit sway (logs you out of your X session)
 
-bindsym $mod+Delete exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Delete exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 
@@ -266,19 +267,20 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     #status_command while date +'%d/%m/%Y %H:%M:%S %p'; do sleep 1; done
-    status_command  i3status
+    status_command i3status
 
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #323232ee #323232ee #6c6c6c
+        inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
 
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume up
-bindsym XF86AudioLowerVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume down
-bindsym XF86AudioMute        exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume toggle
+# pactl list sinks
+set $sink "alsa_output.pci-0000_06_00.6.analog-stereo"
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume $sink up
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/cristiandg/.local/bin/scripts/volume $sink down
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute $sink toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp   exec xbacklight -inc 20 # increase screen brightness
@@ -300,41 +302,72 @@ bindsym Shift+XF86AudioPrev   exec playerctl position 5-
 
 set $emacs "emacsclient -c -a 'doom run'"
 
-set $o "open"
-bindsym $mod+o mode $o
-mode $o {
+# FIXME: procurar saber se existe if
+
+set $discord_app "discord"
+# set $discord_app "discord"
+set $openm "open multiple"
+bindsym $mod+Shift+o mode $openm
+mode $openm {
     set $md mode "default"
 
     #bindsym c exec google-chrome --new-window ;; $md
     #bindsym i exec google-chrome --incognito ;; $md
-    bindsym e exec $emacs ;; $md
-    bindsym n exec nautilus ;; $md
-    bindsym c exec brave ;; $md
-    bindsym d exec discord ;; $md
+    bindsym e exec stt nvim
+    bindsym b exec $browser
+    bindsym c exec $browser
+    bindsym s exec strawberry
+    bindsym d exec $discord_app
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
     # Bons tempos
     # bindsym s exec google-chrome https://superanimes.org ;; workspace $ws1 ;; $md
 
+    bindsym $mod+p $md
+    bindsym p      $md
+    bindsym Escape $md
+    bindsym Return $md
+}
+set $open "open"
+bindsym $mod+o mode $open
+mode $open {
+    set $md mode "default"
+
+    #bindsym c exec google-chrome --new-window ;; $md
+    #bindsym i exec google-chrome --incognito ;; $md
+    bindsym e exec stt nvim ;; $md
+    bindsym b exec $browser ;; $md
+    bindsym c exec $browser ;; $md
+    bindsym s exec strawberry ;; $md
+    bindsym d exec $discord_app ;; $md
+    #bindsym r exec gnome-terminal -e ranger ;; $md
+
+    # Bons tempos
+    # bindsym s exec google-chrome https://superanimes.org ;; workspace $ws1 ;; $md
+
+    bindsym $mod+p $md
+    bindsym p      $md
     bindsym Escape $md
     bindsym Return $md
 }
 
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec --no-startup-id dbus-update-activation-environment --all
-exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
-bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
-bindsym $mod+shift+m exec /home/cristiandg/.local/bin/scripts/m-video
-bindsym $mod+shift+n exec /home/cristiandg/.local/bin/scripts/n-video
-# bindsym $mod+shift+s exec /home/cristiandg/.local/bin/scripts/fls
-bindsym $mod+shift+s exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+#exec --no-startup-id dbus-update-activation-environment --all
+#exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+
+#bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
+bindsym $mod+shift+m exec "~/.local/bin/scripts/m-video"
+bindsym $mod+shift+n exec "~/.local/bin/scripts/n-video"
+bindsym $mod+shift+s exec "~/.local/bin/scripts/fls"
+bindsym $mod+shift+a exec "~/.local/bin/scripts/toggle-mic"
 bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
-bindsym $mod+e exec nautilus
+bindsym $mod+shift+e exec nautilus
 
+exec --no-startup-id playerctld
 exec --no-startup-id "~/.local/bin/doom run --daemon"
-
-exec wl-paste -t text --watch clipman store --no-persist
+exec --no-startup-id /usr/libexec/gsd-xsettings
+exec --no-startup-id /usr/lib/gsd-xsettings
 
 #exec flameshot
 # exec gnome-terminal -e ranger
@@ -346,9 +379,16 @@ exec wl-paste -t text --watch clipman store --no-persist
 #exec_always fehbg
 #exec_always autotiling
 
-input type:keyboard {
-    xkb_layout br
-    repeat_rate 50
-    repeat_delay 400
-}
+#input type:keyboard {
+#    xkb_layout br
+#}
+
+exec flameshot
+# exec gnome-terminal -e ranger
+
+exec_always keyboardset
+exec_always fehbg
+exec_always picom
+#exec_always fehbg
+exec m-video
 

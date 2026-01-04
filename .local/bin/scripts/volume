@@ -1,13 +1,19 @@
 #! /usr/bin/env zsh
 
 percentage="$(pactl get-sink-volume 0 | awk '{print $5}')"
-sink="$1"
+option="$1"
 
+sink="$2"
+if [[ -z "$sink" ]]; then
+  sink="$(pactl list sinks short | awk '/analog/ {print $2}')"
+fi
 
-if [ "$2" = "up" ]; then
+if [ "$option" = "up" ]; then
   [[ $(( ${percentage%%(%)} < 100)) = "1" ]] && pactl set-sink-volume $sink +5%
-elif [ "$2" = "down" ]; then
+elif [ "$option" = "down" ]; then
   pactl set-sink-volume $sink -5%
+elif [ "$option" = "toggle" ]; then
+  pactl set-sink-mute $sink toggle
 else
   echo "$percentage"
 fi
