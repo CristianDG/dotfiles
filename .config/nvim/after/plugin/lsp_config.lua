@@ -120,6 +120,7 @@ lsp.ols.setup {
     enable_fake_methods = true,
     enable_references = true,
     enable_hover = true,
+    enable_unused_imports_reporting = false,
     verbose = true,
 
     enable_procedure_snippet = false,
