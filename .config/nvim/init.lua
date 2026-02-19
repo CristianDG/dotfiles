@@ -152,6 +152,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'o' })
+  end,
+})
+
 vim.g.zig_recommended_style = 0
 
 -- Setup neovim lua configuration
