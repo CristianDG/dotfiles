@@ -30,8 +30,9 @@ cat << "EOF" > build.sh
 [[ -z $COMMAND ]]   && COMMAND="build"
 [[ -z $BUILD_DIR ]] && BUILD_DIR=src
 [[ -z $OUT_FILE  ]] && OUT_FILE=bin/out
+[[ -z $FLAGS  ]]    && FLAGS=""
 
-odin $COMMAND $BUILD_DIR -out:$OUT_FILE -error-pos-style:unix -thread-count:4 $@
+odin $COMMAND $BUILD_DIR -out:$OUT_FILE -error-pos-style:unix -thread-count:4 $FLAGS $@
 
 EOF
 

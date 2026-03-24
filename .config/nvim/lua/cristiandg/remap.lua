@@ -22,6 +22,10 @@ vim.api.nvim_create_user_command(
 
 vim.keymap.set('n', '<leader>st', function () vim.cmd [[:silent exec "!stt"]] end, { desc = "[s]pawn [t]erminal" })
 
+vim.keymap.set('n', '<leader>e',     ':Run ' ,              { desc = 'Run program' })
+vim.keymap.set('n', '<leader>/',     ':RunSelect<cr>' ,     { desc = 'Select running program' })
+vim.keymap.set('n', '<leader><S-C>', ':RunSelectKill<cr>' , { desc = '[C]ill running program' })
+
 vim.keymap.set('n', '<leader>cc',
   function()
     local qf_exists = false
@@ -34,21 +38,19 @@ vim.keymap.set('n', '<leader>cc',
   end,
   { desc = ":ctoggle" })
 
-vim.keymap.set('n', '<leader>ll',
-  function()
-    local loclist_exists = false
-    for _, win in pairs(vim.fn.getwininfo()) do
-      if win["quickfix"] == 1 then
-        loclist_exists = true
-      end
-    end
-    vim.cmd('botright ' .. (loclist_exists and 'lclose' or 'lopen'))
-  end,
-  { desc = ":ltoggle" })
+-- vim.keymap.set('n', '<leader>ll',
+--   function()
+--     local loclist_exists = false
+--     for _, win in pairs(vim.fn.getwininfo()) do
+--       if win["quickfix"] == 1 then -- FIXME: não funciona
+--         loclist_exists = true
+--       end
+--     end
+--     vim.cmd('botright ' .. (loclist_exists and 'lclose' or 'lopen'))
+--   end,
+--   { desc = ":ltoggle" })
 
-vim.keymap.set('n', '<leader>M', ':make<cr>', { desc = ":make" })
-vim.keymap.set('n', '<leader>m', ':make!<cr>', { desc = ":make no jump" })
-
+vim.keymap.set('n', '<leader>m', ':Run<cr>', { desc = ":make async" })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- vim.keymap.set('n', '<leader>tn', ":tabnew<cr>")
