@@ -104,20 +104,28 @@ end
 
 -- TODO: remover daqui
 vim.api.nvim_create_user_command(
-  'BuildMenuSet',
+  'BuildMenu',
   function()
     M.select_build_command()
   end,
   {}
 )
 
+vim.api.nvim_create_user_command(
+  'BuildMenuRun',
+  function()
+    vim.cmd("make!")
+  end,
+  {}
+)
+
 
 vim.api.nvim_create_user_command(
-  'BuildMenuSetString',
+  'BuildMenuSet',
   function(opts)
     vim.o.makeprg = table.concat(opts.fargs, " ")
   end,
-  {nargs = "+"}
+  { nargs = "+", complete = "file" }
 )
 
 
