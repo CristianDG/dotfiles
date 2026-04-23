@@ -51,6 +51,9 @@ if vim.opt.shell:get():match("nu.exe$") ~= nil then
 --   set_options(posix_shell_options)
 end
 
+if vim.g.neovide then
+    vim.g.neovide_cursor_animation_length = 0
+end
 
 -- }}}
 
