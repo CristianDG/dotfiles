@@ -289,7 +289,7 @@ return {
         pattern = [[.*<((KEYWORDS)(\(.{-1,}\))?):]], -- pattern or table of patterns, used for highlighting (vim regex)
         comments_only = true, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this
-        exclude = {}, -- list of file types to exclude highlighting
+        exclude = { 'qf' }, -- list of file types to exclude highlighting
       },
       search = {
         -- ripgrep regex, supporting the pattern TODO(name):
