@@ -40,6 +40,9 @@ exec_always --no-startup-id swaybg -o $monitor_principal -i /home/cristiandg/Pic
 # output * bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
 # output $monitor_principal bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
 #output $monitor_secundario bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
+output DP-1 bg /home/cristiandg/Pictures/Wallpaper/default_wallpaper_2.png fill
+output $monitor_principal pos 0 0 res 2560x1080@60Hz
+output DP-1 pos 2560 0 res 1152x864@60Hz
 
 for_window [class=".*"] border pixel 0
 for_window [class="Godot"] floating enable
@@ -101,8 +104,10 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+shift+e layout toggle split
 
-# toggle tiling / floating
+# toggle sticky (pin window)
 bindsym $mod+Control+t sticky toggle
+
+# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -308,8 +313,9 @@ mode $o {
     #bindsym c exec google-chrome --new-window ;; $md
     #bindsym i exec google-chrome --incognito ;; $md
     bindsym e exec $emacs ;; $md
+    bindsym s exec strawberry ;; $md
     bindsym n exec nautilus ;; $md
-    bindsym c exec brave ;; $md
+    bindsym c exec brave --disable-features=ExtensionManifestV2Unsupported ;; $md
     bindsym d exec discord ;; $md
     #bindsym r exec gnome-terminal -e ranger ;; $md
 
@@ -324,7 +330,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec --no-startup-id dbus-update-activation-environment --all
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
-bindsym $mod+Mod1+c  exec kitty -e 'nvim .config/sway/config'
+# bindsym $mod+Mod1+c  exec kitty -e 'nvim ~/.config/sway/config'
 bindsym $mod+shift+m exec /home/cristiandg/.local/bin/scripts/m-video
 bindsym $mod+shift+n exec /home/cristiandg/.local/bin/scripts/n-video
 # bindsym $mod+shift+s exec /home/cristiandg/.local/bin/scripts/fls
