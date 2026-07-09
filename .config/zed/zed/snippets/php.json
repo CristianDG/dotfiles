@@ -1,0 +1,24 @@
+{
+  "->": {
+    "prefix": ".",
+    "body": ["->$0"],
+  },
+  "<php": {
+    "body": ["<?php $0 ?>"],
+  },
+  "<echo": {
+    "body": ["<?php echo $0 ?>"],
+  },
+  "<foreach": {
+    "body": [
+      "<?php foreach ($0) { ?> ",
+      "<?php } /* endforeach */ ?>"
+    ],
+  },
+  "<if" : {
+    "body": [
+      "<?php if ($0) { ?> ",
+      "<?php } /* endif */ ?>"
+    ],
+  }
+}
