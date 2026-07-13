@@ -3,6 +3,9 @@
     "prefix": ".",
     "body": ["->$0"],
   },
+  "pp": {
+    "body": ["<?php", "declare(strict_types=1);", ""],
+  },
   "<php": {
     "body": ["<?php $0 ?>"],
   },
@@ -13,6 +16,11 @@
     "body": [
       "<?php foreach ($0) { ?> ",
       "<?php } /* endforeach */ ?>"
+    ],
+  },
+  "<else" : {
+    "body": [
+      "<?php } else { ?>",
     ],
   },
   "<if" : {

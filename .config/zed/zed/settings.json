@@ -33,12 +33,15 @@
   "terminal": {
     "font_size": 15.0,
   },
+  "completions": {
+    "words": "enabled",
+  },
   "collaboration_panel": {
     "dock": "left",
   },
   "languages": {
     "PHP": {
-      "language_servers": ["!phpantom_lsp", "phpactor", "!intelephense"],
+      "language_servers": ["emmet-language-server", "!phpantom_lsp", "!phpactor", "intelephense"],
     },
   },
   "lsp": {
@@ -50,12 +53,13 @@
           "ftp", "gettext", "hash", "iconv", "json", "lexbor", "libxml", "openssl", "pcntl",
           "pcre", "PDO", "Phar", "posix", "random", "readline", "Reflection", "session",
           "shmop", "sockets", "sodium", "SPL", "standard", "sysvmsg", "sysvsem", "sysvshm",
-          "tokenizer", "uri", "Zend OPcache", "zlib",
+          "tokenizer", "uri", "Zend OPcache", "zlib", "mbstring"
         ],
       },
     },
   },
   "agent": {
+    "sidebar_side": "left",
     "default_model": {
       "provider": "google",
       "model": "gemini-2.5-flash",
@@ -89,5 +93,12 @@
     "mode": "dark",
     "light": "One Light",
     "dark": "One Dark",
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "color": "#717a82"
+      },
+    }
   },
 }

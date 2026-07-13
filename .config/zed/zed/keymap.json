@@ -370,5 +370,11 @@
     "bindings": {
       "ctrl-k": "editor::MoveToStartOfExcerpt"
     }
+  },
+  {
+    "context": "vim_operator == g~",
+    "unbind": {
+      "~": "vim::CurrentLine"
+    }
   }
 ]
