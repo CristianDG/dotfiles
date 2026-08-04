@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "indent_guides": {
+    "active_line_width": 1
+  },
+  "auto_indent_on_paste": false,
+  "tab_size": 2,
+  "hard_tabs": true,
   "toolbar": {
     "code_actions": false
   },
@@ -29,7 +35,9 @@
   "agent_ui_font_size": 16.0,
   "ui_font_weight": 400.0,
   "preferred_line_length": 120,
+  "show_wrap_guides": true,
   "soft_wrap": "editor_width",
+  "auto_indent": "syntax_aware",
   "terminal": {
     "font_size": 15.0,
   },
@@ -53,16 +61,22 @@
           "ftp", "gettext", "hash", "iconv", "json", "lexbor", "libxml", "openssl", "pcntl",
           "pcre", "PDO", "Phar", "posix", "random", "readline", "Reflection", "session",
           "shmop", "sockets", "sodium", "SPL", "standard", "sysvmsg", "sysvsem", "sysvshm",
-          "tokenizer", "uri", "Zend OPcache", "zlib", "mbstring"
+          "tokenizer", "uri", "Zend OPcache", "zlib", "mbstring", "superglobals", "xdebug"
         ],
       },
     },
   },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "google",
+      "model": "gemini-3.1-flash-lite",
+      "enable_thinking": false
+    },
     "sidebar_side": "left",
     "default_model": {
+      "effort": "low",
       "provider": "google",
-      "model": "gemini-2.5-flash",
+      "model": "gemini-3.1-flash-lite",
       "enable_thinking": true,
     },
     "dock": "right",

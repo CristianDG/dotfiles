@@ -217,7 +217,7 @@
     }
   },
   {
-    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "context": "(VimControl && !menu) || !Editor",
     "bindings": {
       "alt-h": "workspace::ActivatePaneLeft"
     }
@@ -229,7 +229,7 @@
     }
   },
   {
-    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "context": "(VimControl && !menu) || !Editor",
     "bindings": {
       "alt-l": "workspace::ActivatePaneRight"
     }

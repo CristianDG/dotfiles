@@ -28,5 +28,19 @@
       "<?php if ($0) { ?> ",
       "<?php } /* endif */ ?>"
     ],
-  }
+  },
+  "phpdoc" : {
+    "body": [
+      "/**",
+      " * ##comentario",
+      " *",
+      " * @author Cristian Di Giovanni cristiangiovanni@moobitech.com.br",
+      " *",
+      " * @param ##parametro",
+      " * @return ##tipo",
+      " * ",
+      " * @since 1.0.0 - Definição do versionamento da função",
+      " */",
+    ]
+  },
 }
