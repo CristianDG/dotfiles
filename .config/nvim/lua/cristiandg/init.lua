@@ -53,6 +53,13 @@ end
 
 if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0
+    vim.g.neovide_scale_factor = 0.75
+    vim.keymap.set(
+      {'n', 'v', 's', 'x', 'o', 'i', 'l', 'c', 't'},
+      '<C-S-v>',
+      function() vim.api.nvim_paste(vim.fn.getreg('+'), true, -1) end,
+      { noremap = true, silent = true }
+    )
 end
 
 -- }}}
