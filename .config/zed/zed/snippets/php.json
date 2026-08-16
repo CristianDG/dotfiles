@@ -1,0 +1,46 @@
+{
+  "->": {
+    "prefix": ".",
+    "body": ["->$0"],
+  },
+  "pp": {
+    "body": ["<?php", "declare(strict_types=1);", ""],
+  },
+  "<php": {
+    "body": ["<?php $0 ?>"],
+  },
+  "<echo": {
+    "body": ["<?php echo $0 ?>"],
+  },
+  "<foreach": {
+    "body": [
+      "<?php foreach ($0) { ?> ",
+      "<?php } /* endforeach */ ?>"
+    ],
+  },
+  "<else" : {
+    "body": [
+      "<?php } else { ?>",
+    ],
+  },
+  "<if" : {
+    "body": [
+      "<?php if ($0) { ?> ",
+      "<?php } /* endif */ ?>"
+    ],
+  },
+  "phpdoc" : {
+    "body": [
+      "/**",
+      " * ##comentario",
+      " *",
+      " * @author Cristian Di Giovanni cristiangiovanni@moobitech.com.br",
+      " *",
+      " * @param ##parametro",
+      " * @return ##tipo",
+      " * ",
+      " * @since 1.0.0 - Definição do versionamento da função",
+      " */",
+    ]
+  },
+}

@@ -1,0 +1,68 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_buffer_font_size": 14.0,
+  "agent_ui_font_size": 16.0,
+  "ui_font_weight": 400.0,
+  "preferred_line_length": 120,
+  "soft_wrap": "editor_width",
+  "terminal": {
+    "font_size": 14.0
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "languages": {
+    "PHP": {
+      "language_servers": ["!phpactor", "intelephense"]
+    }
+  },
+  "lsp": {
+    "intelephense": {
+      "settings": {
+        "environment.phpVersion": 7.1,
+      }
+    }
+  },
+  "agent": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash",
+      "enable_thinking": true
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "remove_trailing_whitespace_on_save": false,
+  "format_on_save": "off",
+  "outline_panel": {
+    "dock": "left"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "base_keymap": "VSCode",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "vim_mode": true,
+  "ui_font_size": 16.0,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "One Dark",
+  },
+}
